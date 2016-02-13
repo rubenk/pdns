@@ -1,4 +1,4 @@
-AM_CPPFLAGS = -I pdns $(LUA_CFLAGS) $(LIBEDIT_CFLAGS) $(YAHTTP_CFLAGS) $(BOOST_CPPFLAGS) $(SANITIZER_FLAGS) -O3 -Wall -pthread -DSYSCONFDIR=\"${sysconfdir}\"
+AM_CPPFLAGS = -I pdns $(SYSTEMD_CFLAGS) $(LUA_CFLAGS) $(LIBEDIT_CFLAGS) $(YAHTTP_CFLAGS) $(BOOST_CPPFLAGS) $(SANITIZER_FLAGS) -O3 -Wall -pthread -DSYSCONFDIR=\"${sysconfdir}\"
 
 ACLOCAL_AMFLAGS = -I m4
 
@@ -31,7 +31,8 @@ EXTRA_DIST=dnslabeltext.rl \
 	   build-aux/gen-version \
 	   ext/incbin/UNLICENSE \
 	   incfiles \
-	   src_js
+	   src_js \
+	   dnsdist.service.in
 
 if UNIT_TESTS
 bin_PROGRAMS = dnsdist testrunner
@@ -86,7 +87,8 @@ dnsdist_LDADD = \
 	$(RT_LIBS) \
 	$(YAHTTP_LIBS) \
 	$(LIBSODIUM_LIBS) \
-	$(SANITIZER_FLAGS)
+	$(SANITIZER_FLAGS) \
+	$(SYSTEMD_LIBS)
 
 
 testrunner_SOURCES = \
@@ -141,4 +143,14 @@ $(MANPAGES):
 	echo "You need pandoc to generate the manpages"
 	exit 1
 endif
+endif
+
+if HAVE_SYSTEMD
+dnsdist.service: dnsdist.service.in
+	$(AM_V_GEN)sed -e 's![@]bindir[@]!$(bindir)!' < $< > $@
+
+systemdsystemunitdir = $(SYSTEMD_DIR)
+
+systemdsystemunit_DATA = \
+	dnsdist.service
 endif

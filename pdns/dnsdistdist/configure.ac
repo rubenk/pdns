@@ -15,6 +15,9 @@ BOOST_FOREACH
 PDNS_ENABLE_UNIT_TESTS
 DNSDIST_ENABLE_DNSCRYPT
 
+AX_AVAILABLE_SYSTEMD
+AM_CONDITIONAL([HAVE_SYSTEMD], [ test x"$systemd" = "xy" ])
+
 AC_SUBST([YAHTTP_CFLAGS], ['-I$(top_srcdir)/ext/yahttp'])
 AC_SUBST([YAHTTP_LIBS], ['-L$(top_builddir)/ext/yahttp/yahttp -lyahttp'])
 

@@ -41,6 +41,10 @@
 #include "lock.hh"
 #include <getopt.h>
 
+#ifdef HAVE_SYSTEMD
+#include <systemd/sd-daemon.h>
+#endif
+
 /* Known sins:
 
    Receiver is currently single threaded
@@ -1106,6 +1110,14 @@ try
       break;
     }
   }
+
+#ifdef HAVE_SYSTEMD
+  char *sock;
+  sock = getenv("NOTIFY_SOCKET");
+  if(sock != NULL) // Are we indeed running inside of systemd?
+    g_cmdLine.beSupervised=true;
+#endif
+
   argc-=optind;
   argv+=optind;
   for(auto p = argv; *p; ++p) {
@@ -1309,6 +1321,9 @@ try
   thread stattid(maintThread);
   
   if(g_cmdLine.beDaemon || g_cmdLine.beSupervised) {
+#ifdef HAVE_SYSTEMD
+    sd_notify(0, "READY=1");
+#endif
     stattid.join();
   }
   else {
