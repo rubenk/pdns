@@ -10,7 +10,7 @@
 #define IGNORE std::ignore
 namespace funcptr = std;
 #else
-#ifdef HAVE_BOOST
+#ifdef HAVE_BOOST_VERSION_HPP
 #include <boost/function.hpp>
 #include <boost/tuple/tuple.hpp>
 #define IGNORE boost::tuples::ignore

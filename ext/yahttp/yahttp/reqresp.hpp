@@ -3,7 +3,7 @@
 #define HAVE_CPP_FUNC_PTR
 namespace funcptr = std;
 #else
-#ifdef HAVE_BOOST
+#ifdef HAVE_BOOST_VERSION_HPP
 #include <boost/function.hpp>
 namespace funcptr = boost;
 #define HAVE_CPP_FUNC_PTR
