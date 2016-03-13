@@ -53,7 +53,7 @@ AC_DEFUN([PDNS_CHECK_BOOST_PROGRAM_OPTIONS], [
     )],
     [
       AC_MSG_RESULT([yes])
-      BOOST_UNIT_TEST_FRAMEWORK_LIBS="$LIBS"
+      BOOST_PROGRAM_OPTIONS_LIBS="$LIBS"
     ],
     [AC_MSG_ERROR([Unable to find Boost.Program_options library])]
   )
@@ -90,7 +90,7 @@ AC_DEFUN([PDNS_CHECK_BOOST_UNIT_TEST], [
     )],
     [
       AC_MSG_RESULT([yes])
-      BOOST_PROGRAM_OPTIONS_LIBS="$LIBS"
+      BOOST_UNIT_TEST_FRAMEWORK_LIBS="$LIBS"
     ],
     [AC_MSG_ERROR([Unable to find Boost.Test library])]
   )
