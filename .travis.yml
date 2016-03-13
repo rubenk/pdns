@@ -177,7 +177,7 @@ script:
     --enable-tools
     --enable-unit-tests
     --enable-backend-unit-tests
-    --disable-dependency-tracking || :
+    --disable-dependency-tracking
   - cat config.log
   - deactivate
 
