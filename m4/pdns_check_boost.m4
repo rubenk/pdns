@@ -78,7 +78,7 @@ AC_DEFUN([PDNS_CHECK_BOOST_UNIT_TEST], [
 
        BOOST_AUTO_TEST_CASE(autoconf)
        {
-         BOOST_TEST(true);
+         BOOST_CHECK(true);
        }
 
        int main(int argc, char *argv[])
