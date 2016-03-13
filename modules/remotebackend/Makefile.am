@@ -139,7 +139,7 @@ libtestremotebackend_la_LIBADD = \
 
 libtestremotebackend_la_LDFLAGS = \
 	$(AM_LDFLAGS) \
-	$(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS)
+	$(BOOST_LDFLAGS)
 
 if REMOTEBACKEND_ZEROMQ
 libtestremotebackend_la_LIBADD += $(LIBZMQ_LIBS)

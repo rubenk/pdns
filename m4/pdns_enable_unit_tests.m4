@@ -20,6 +20,6 @@ AC_DEFUN([PDNS_ENABLE_UNIT_TESTS], [
   AM_CONDITIONAL([BACKEND_UNIT_TESTS], [test "x$enable_backend_unit_tests" != "xno"])
 
   AS_IF([test "x$enable_unit_tests" != "xno" || test "x$enable_backend_unit_tests" != "xno"], [
-     BOOST_TEST([mt])
+     PDNS_CHECK_BOOST_UNIT_TEST
    ])
 ])

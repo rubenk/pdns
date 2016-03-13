@@ -287,7 +287,7 @@ pdnsutil_SOURCES = \
 pdnsutil_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(DYNLINKFLAGS) \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS) \
+	$(BOOST_LDFLAGS) \
 	$(OPENSSL_LDFLAGS)
 
 pdnsutil_LDADD = \
@@ -582,7 +582,7 @@ dnstcpbench_SOURCES = \
 dnstcpbench_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(OPENSSL_LDFLAGS) \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS)
+	$(BOOST_LDFLAGS)
 
 dnstcpbench_LDADD = \
 	$(OPENSSL_LIBS) \
@@ -766,7 +766,7 @@ dnsbulktest_SOURCES = \
 dnsbulktest_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(OPENSSL_LDFLAGS) \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS)
+	$(BOOST_LDFLAGS)
 
 dnsbulktest_LDADD = \
 	$(OPENSSL_LIBS) \
@@ -795,7 +795,7 @@ comfun_SOURCES = \
 comfun_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(OPENSSL_LDFLAGS) \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS)
+	$(BOOST_LDFLAGS)
 
 comfun_LDADD = \
 	$(MBEDTLS_LIBS) \
@@ -854,7 +854,7 @@ dnsreplay_SOURCES = \
 dnsreplay_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(OPENSSL_LDFLAGS) \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS)
+	$(BOOST_LDFLAGS)
 
 dnsreplay_LDADD = \
 	$(OPENSSL_LIBS) \
@@ -883,7 +883,7 @@ nproxy_SOURCES = \
 nproxy_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(OPENSSL_LDFLAGS) \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS)
+	$(BOOST_LDFLAGS)
 
 nproxy_LDADD = \
 	$(OPENSSL_LIBS) \
@@ -913,7 +913,7 @@ notify_SOURCES = \
 notify_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(OPENSSL_LDFLAGS) \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS)
+	$(BOOST_LDFLAGS)
 
 notify_LDADD = \
 	$(OPENSSL_LIBS) \
@@ -944,7 +944,7 @@ dnsscope_SOURCES = \
 dnsscope_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(OPENSSL_LDFLAGS) \
-	$(BOOST_PROGRAM_OPTIONS_LDFLAGS)
+	$(BOOST_LDFLAGS)
 
 dnsscope_LDADD = \
 	$(OPENSSL_LIBS) \
@@ -1065,7 +1065,7 @@ testrunner_SOURCES = \
 testrunner_LDFLAGS = \
 	$(AM_LDFLAGS) \
 	$(OPENSSL_LDFLAGS) \
-	$(BOOST_UNIT_TEST_FRAMEWORK_LDFLAGS) 
+	$(BOOST_LDFLAGS)
 
 testrunner_LDADD = \
 	$(OPENSSL_LIBS) \
