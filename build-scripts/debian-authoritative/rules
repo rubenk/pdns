@@ -25,7 +25,6 @@ override_dh_auto_configure:
 		--libdir='$${prefix}/lib/$(DEB_HOST_MULTIARCH)' \
 		--libexecdir='$${prefix}/lib' \
 		--with-dynmodules="$(backends)" \
-		--with-modules="" \
 		--with-pgsql-includes=`pg_config --includedir` \
 		--enable-botan1.10 \
 		--enable-tools \

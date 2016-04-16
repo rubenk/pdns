@@ -77,7 +77,7 @@ from <http://www.sqlite.org/download.html>, or you can use packages
 (if your distribution provides those).
 
 When you've installed the library you can use:
-`./configure --with-modules="gsqlite3"` to configure PowerDNS to use the SQLite
+`./configure --with-dynmodules="gsqlite3"` to configure PowerDNS to use the SQLite
 backend. Compilation can then proceed as usual.
 
 SQLite is included in most PowerDNS binary releases.

@@ -3,8 +3,6 @@ AM_CPPFLAGS += $(ORACLE_CFLAGS)
 pkglib_LTLIBRARIES = liboraclebackend.la
 
 EXTRA_DIST = \
-	OBJECTFILES \
-	OBJECTLIBS \
 	drop-schema.oracle.sql \
 	schema.oracle.sql
 

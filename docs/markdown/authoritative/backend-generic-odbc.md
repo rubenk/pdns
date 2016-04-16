@@ -21,9 +21,9 @@ and installed drivers to connect to the databases supported by said drivers.
 gmysql), it is highly recommended to use that backend instead!
 
 # Enabling the backend
-When building PowerDNS yourself, append `godbc` to `--with-modules` or
-`--with-dynmodules`. It is expected that most pre-built packages contain this
-backend or be separately installable.
+When building PowerDNS yourself, append `godbc` to `--with-dynmodules`.
+It is expected that most pre-built packages contain this backend or
+be separately installable.
 
 # Configuration Parameters
 This section only details the configuration of PowerDNS for use with ODBC. For

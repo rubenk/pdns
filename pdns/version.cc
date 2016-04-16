@@ -104,10 +104,6 @@ void showBuildConfiguration()
     "verboselog" <<
 #endif
     endl;
-#ifdef PDNS_MODULES
-  // Auth only
-  theL()<<Logger::Warning<<"Built-in modules: "<<PDNS_MODULES<<endl;
-#endif
 #ifdef PDNS_CONFIG_ARGS
 #define double_escape(s) #s
 #define escape_quotes(s) double_escape(s)

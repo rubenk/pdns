@@ -355,7 +355,6 @@ build_auth() {
   # Build without --enable-botan1.10 option, Botan/SoftHSM conflict #2496
   run "CFLAGS='-O1' CXXFLAGS='-O1' ./configure \
     --with-dynmodules='bind gmysql geoip gpgsql gsqlite3 ldap lua mydns opendbx pipe random remote tinydns' \
-    --with-modules='' \
     --with-sqlite3 \
     --enable-libsodium \
     --enable-experimental-pkcs11 \
@@ -411,7 +410,7 @@ build_dnsdist(){
 build_docs() {
   run "./bootstrap"
   run "source $HOME/.venv/bin/activate"
-  run "./configure --disable-dependency-tracking --with-modules='' --with-dyn-modules=''"
+  run "./configure --disable-dependency-tracking --with-dyn-modules=''"
   run "make -C docs"
   run "deactivate"
 }

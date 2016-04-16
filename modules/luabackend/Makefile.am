@@ -1,7 +1,5 @@
 AM_CPPFLAGS += $(LUA_CFLAGS)
 
-EXTRA_DIST = OBJECTFILES OBJECTLIBS
-
 pkglib_LTLIBRARIES = libluabackend.la
 
 libluabackend_la_SOURCES = \

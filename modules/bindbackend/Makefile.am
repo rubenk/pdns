@@ -9,8 +9,6 @@ BUILT_SOURCES = \
 	../../pdns/bindlexer.l \
 	../../pdns/bindparser.yy
 
-EXTRA_DIST = OBJECTFILES OBJECTLIBS
-
 libbindbackend_la_SOURCES = \
 	bindbackend2.cc bindbackend2.hh \
 	binddnssec.cc

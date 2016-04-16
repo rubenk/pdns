@@ -3,8 +3,6 @@ AM_CPPFLAGS += $(MYSQL_CFLAGS)
 pkglib_LTLIBRARIES = libgmysqlbackend.la
 
 EXTRA_DIST = \
-	OBJECTFILES \
-	OBJECTLIBS \
 	dnssec-3.x_to_3.4.0_schema.mysql.sql \
 	nodnssec-3.x_to_3.4.0_schema.mysql.sql \
 	schema.mysql.sql

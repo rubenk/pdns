@@ -25,7 +25,7 @@ this is an IPv6 address) may be suffixed with a `%` and the name of the network
 interface (e.g. `%eth1`). Keep this in mind when checking the IP addresses.
 
 ## Compiling
-To compile this backend, you need to configure `--with-modules="remote"`.
+To compile this backend, you need to configure `--with-dynmodules="remote"`.
 
 For versions prior to 3.4.0, if you want to use http connector, you need libcurl and use `--enable-remotebackend-http`.
 

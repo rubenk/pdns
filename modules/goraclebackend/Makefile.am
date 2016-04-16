@@ -3,8 +3,6 @@ AM_CPPFLAGS += $(ORACLE_CFLAGS)
 pkglib_LTLIBRARIES = libgoraclebackend.la
 
 EXTRA_DIST = \
-	OBJECTFILES \
-	OBJECTLIBS \
 	drop-schema.goracle.sql \
 	schema.goracle.sql
 

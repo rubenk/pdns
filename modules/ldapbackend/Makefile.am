@@ -1,7 +1,5 @@
 pkglib_LTLIBRARIES = libldapbackend.la
 
-EXTRA_DIST = OBJECTFILES OBJECTLIBS
-
 libldapbackend_la_SOURCES = \
 	ldapbackend.cc ldapbackend.hh \
 	powerldap.cc powerldap.hh \

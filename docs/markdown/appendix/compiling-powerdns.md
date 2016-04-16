@@ -1,18 +1,15 @@
 # Compiling PowerDNS
-PowerDNS can be compiled with modules built in, or with modules designed to be
-loaded at runtime. All that is configured before compiling using the well known
+PowerDNS can be compiled with modules designed to be loaded at runtime.
+All that is configured before compiling using the well known
 autoconf/automake system.
 
 PowerDNS requires 'Boost' to compile, it is available for most operating
 systems. Otherwise, see [the Boost website](http://www.boost.org).
 
-To compile in modules, specify them as `--with-modules='mod1 mod2 mod3'`,
-substituting the desired module names. Each backend has a module name that you
-look up in this [table](../authoritative/index.md#backend-capibilities).
-
 To compile a module for inclusion at runtime, which is great if you are a unix
 vendor, use `--with-dynmodules='mod1 mod2 mod3'`. These modules then end up as
-.so files in the compiled libdir.
+.so files in the compiled libdir. Each backend has a module name that you look
+up in this [table](../authoritative/index.md#backend-capibilities).
 
 ## Getting the sources
 There are 3 ways of getting the source. If you want the bleeding edge, you can

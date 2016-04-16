@@ -128,13 +128,7 @@ PDNS_ENABLE_VERBOSE_LOGGING
 PDNS_ENABLE_PKCS11
 PDNS_ENABLE_GSS_TSIG
 
-modules="bind gmysql random"
-AC_ARG_WITH([modules],
-  [AS_HELP_STRING([--with-modules], [which backends to compile with @<:@default=bind gmysql random@:>@])],
-  [modules="$withval"]
-)
-
-dynmodules="pipe"
+dynmodules="bind gmysql random pipe"
 AC_ARG_WITH([dynmodules],
   [AS_HELP_STRING([--with-dynmodules], [which backends to build for dynamic loading @<:@default=pipe@:>@])],
   [dynmodules="$withval"]
@@ -148,9 +142,6 @@ AC_ARG_WITH([socketdir],
 )
 
 AC_SUBST([moduledirs])
-AC_SUBST([moduleobjects])
-AC_SUBST([modulelibs])
-AC_DEFINE_UNQUOTED([PDNS_MODULES], "$modules", [Built-in modules])
 
 AC_MSG_CHECKING([whether we will be building the server])
 AC_ARG_ENABLE([pdns-server],
@@ -178,7 +169,7 @@ AM_CONDITIONAL([TOOLS], [test "x$enable_tools" != "xno"])
 
 PDNS_WITH_PROTOBUF
 
-for a in $modules $dynmodules; do
+for a in $dynmodules; do
   case "$a" in
     oracle|goracle)
       PDNS_WITH_ORACLE
@@ -234,22 +225,6 @@ AM_CONDITIONAL([LDAP], [test "x$needldap" = "xyes"])
 
 PDNS_CHECK_SQLITE3
 AM_CONDITIONAL([SQLITE3], [test "x$needsqlite3" = "xyes"])
-
-for a in $modules; do
-  AC_MSG_CHECKING([whether we can build module "${a}"])
-  if [[ -d "$srcdir/modules/${a}backend" ]]; then
-    AC_MSG_RESULT([yes])
-    moduledirs="$moduledirs ${a}backend"
-
-    for b in `cat $srcdir/modules/${a}backend/OBJECTFILES`; do
-      moduleobjects="$moduleobjects ../modules/${a}backend/$b"
-    done
-    modulelibs="$modulelibs `cat $srcdir/modules/${a}backend/OBJECTLIBS`"
-  else
-    AC_MSG_RESULT([no])
-    AC_MSG_ERROR([Do not know how to build module "$a", "$srcdir/modules/${a}backend" does not exist! Please review --with-modules parameter for supported values.])
-  fi
-done
 
 for a in $dynmodules; do
   AC_MSG_CHECKING([whether we can build dynamic module "${a}"])
@@ -325,7 +300,6 @@ AC_MSG_NOTICE([=====================])
 AC_MSG_NOTICE([])
 AC_MSG_NOTICE([Configured with:$pdns_configure_args])
 AC_MSG_NOTICE([])
-AC_MSG_NOTICE([Modules: $modules])
 AC_MSG_NOTICE([Dynamic Modules: $dynmodules])
 AC_MSG_NOTICE([])
 AC_MSG_NOTICE([With ZeroMQ connector for remotebackend: $enable_remotebackend_zeromq])

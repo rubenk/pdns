@@ -1,8 +1,6 @@
 pkglib_LTLIBRARIES = libgsqlite3backend.la
 
 EXTRA_DIST = \
-	OBJECTFILES \
-	OBJECTLIBS \
 	dnssec-3.x_to_3.4.0_schema.sqlite3.sql \
 	nodnssec-3.x_to_3.4.0_schema.sqlite3.sql \
 	schema.sqlite3.sql

@@ -1,7 +1,5 @@
 pkglib_LTLIBRARIES = libopendbxbackend.la
 
-EXTRA_DIST = OBJECTFILES OBJECTLIBS
-
 libopendbxbackend_la_SOURCES = \
 	odbxbackend.cc odbxbackend.hh \
 	odbxprivate.cc

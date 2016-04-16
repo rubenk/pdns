@@ -9,8 +9,6 @@ AM_LDFLAGS = $(THREADFLAGS)
 JSON11_LIBS = $(top_srcdir)/ext/json11/libjson11.la
 
 EXTRA_DIST = \
-	OBJECTFILES \
-	OBJECTLIBS \
 	testrunner.sh \
 	unittest_http.rb \
 	unittest_json.rb \

@@ -42,18 +42,18 @@ Autoconf 2.61 or newer and Automake 1.11 or newer are required, too.)
 
 To compile a very clean version, use:
 
-    $ ./configure --with-modules="" --without-lua
+    $ ./configure --with-dynmodules="" --without-lua
     $ make
     # make install
 
-This generates a PowerDNS Authoritative Server binary with no modules built in.
+This generates a PowerDNS Authoritative Server binary with no modules compiled for runtime loading.
 
-When `./configure` is run without `--with-modules`, the bind and gmysql module are
-built-in by default and the pipe-backend is compiled for runtime loading.
+When `./configure` is run without `--with-dynmodules`, the bind, gmysql, random and pipe modules are
+compiled for runtime loading.
 
 To add multiple modules, try:
 
-    $ ./configure --with-modules="bind gmysql gpgsql"
+    $ ./configure --with-dynmodules="bind gmysql gpgsql"
 
 See http://doc.powerdns.com/compiling-powerdns.html for more details.
 

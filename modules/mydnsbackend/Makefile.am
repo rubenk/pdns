@@ -1,10 +1,7 @@
 AM_CPPFLAGS += $(MYSQL_CFLAGS)
 pkglib_LTLIBRARIES = libmydnsbackend.la
 
-EXTRA_DIST = \
-	OBJECTFILES \
-	OBJECTLIBS \
-	schema.mydns.sql
+EXTRA_DIST = schema.mydns.sql
 
 dist_doc_DATA = schema.mydns.sql
 
