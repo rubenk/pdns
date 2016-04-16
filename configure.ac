@@ -289,8 +289,6 @@ AS_IF([test "x$PACKAGEVERSION" != "x"],
   [AC_DEFINE_UNQUOTED([PACKAGEVERSION], "$PACKAGEVERSION", [Set to the package version used for secpoll])]
 )
 
-export moduledirs moduleobjects modulelibs
-
 AC_CONFIG_FILES([
   Makefile
   modules/Makefile
