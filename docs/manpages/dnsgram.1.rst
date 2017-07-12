@@ -1,0 +1,26 @@
+dnsgram manual page
+==================
+
+:prgram:`dnsgram` - A debugging tool for intermittent resolver failures
+
+Synopsis
+--------
+
+**dnsgram** *INFILE*...
+
+Description
+-----------
+
+**dnsgram** takes one or more *INFILE*\ s in PCAP format and generates
+statistics on 5 second segments allowing the study of intermittent
+resolver issues.
+
+Options
+-------
+
+None
+
+See also
+--------
+
+pcap(3PCAP), tcpdump(8)

@@ -1,5 +1,5 @@
-Zones endpoint ``/api/v1/servers/:server_id/zones``
-===================================================
+Zones endpoint
+==============
 .. http:get:: /api/v1/servers/:server_id/zones
 
   Get all zones from the server.
@@ -11,8 +11,6 @@ Zones endpoint ``/api/v1/servers/:server_id/zones``
   Creates a new domain.
 
   :query server_id: The name of the server
-
-  **Authoritative Server only:**
 
   -  ``dnssec``, ``nsec3narrow``, ``presigned``, ``nsec3param``, ``active-keys`` are OPTIONAL.
   -  ``dnssec``, ``nsec3narrow``, ``presigned`` default to ``false``.
@@ -39,10 +37,6 @@ Zones endpoint ``/api/v1/servers/:server_id/zones``
   :query zone_id: The id number of the :json:object:`Zone`
 
 .. http:patch:: /api/v1/servers/:server_id/zones/:zone_id
-
-  .. note::
-
-    Authoritative only.
 
   Modifies present RRsets and comments. Returns ``204 No Content`` on success.
 
@@ -75,10 +69,6 @@ Zones endpoint ``/api/v1/servers/:server_id/zones``
 
 .. http:put:: /api/v1/servers/:server_id/zones/:zone_id
 
-  .. note::
-
-    Authoritative only.
-
   Modifies basic zone data (metadata).
 
   :query server_id: The name of the server
@@ -90,10 +80,6 @@ Zones endpoint ``/api/v1/servers/:server_id/zones``
   Changing ``name`` renames the zone, as expected.
 
 .. http:put:: /api/v1/servers/:server_id/zones/:zone_id/notify
-
-  .. note::
-
-    Authoritative only.
 
   Send a DNS NOTIFY to all slaves.
 
@@ -107,10 +93,6 @@ Zones endpoint ``/api/v1/servers/:server_id/zones``
 
 .. http:put:: /api/v1/servers/:server_id/zones/:zone_id/axfr-retrieve
 
-  .. note::
-
-    Authoritative only.
-
   Retrieves the zone from the master.
 
   :query server_id: The name of the server
@@ -121,20 +103,12 @@ Zones endpoint ``/api/v1/servers/:server_id/zones``
 
 .. http:get:: /api/v1/servers/:server_id/zones/:zone_id/export
 
-  .. note::
-
-    Authoritative only.
-
   Returns the zone in AXFR format.
 
   :query server_id: The name of the server
   :query zone_id: The id number of the :json:object:`Zone`
 
 .. http:get:: /api/v1/servers/:server_id/zones/:zone_id/check
-
-  .. note::
-
-    Not yet implemented
 
   Verify zone contents/configuration.
 

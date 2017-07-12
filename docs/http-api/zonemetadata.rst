@@ -1,10 +1,6 @@
 Zone Metadata
 =============
 
-.. warning::
-
-  Authoritative Server only.
-
 .. versionadded:: 4.1.0.
 
 .. json:object:: Metadata
