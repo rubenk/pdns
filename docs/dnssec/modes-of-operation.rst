@@ -88,10 +88,11 @@ Precisely speaking, the time period used is always from the start of the
 previous Thursday until the Thursday two weeks later. This two-week
 interval jumps with one-week increments every Thursday.
 
-**Note**: Why Thursday? POSIX-based operating systems count the time
-since GMT midnight January 1st of 1970, which was a Thursday. PowerDNS
-inception/expiration times are generated based on an integral number of
-weeks having passed since the start of the 'epoch'.
+.. note::
+  Why Thursday? POSIX-based operating systems count the time
+  since GMT midnight January 1st of 1970, which was a Thursday. PowerDNS
+  inception/expiration times are generated based on an integral number of
+  weeks having passed since the start of the 'epoch'.
 
 PowerDNS also serves the DNSKEY records in live-signing mode. Their TTL
 is derived from the SOA records *minimum* field. When using NSEC3, the
@@ -131,8 +132,7 @@ required for the receiving party to rectify the zone without knowing the
 keys, such as signed NSEC3 records for empty non-terminals. The zone is
 not required to be rectified on the master.
 
-Signatures and Hashing is similar as described
-`above <#online-signing>`__.
+Signatures and Hashing is similar as described :ref:`online-signing`.
 
 BIND-mode operation
 -------------------
@@ -152,11 +152,6 @@ commands on your BIND zones without trouble.
 Hybrid BIND-mode operation
 --------------------------
 
-**Warning**: This mode is only supported in 3.0, 3.0.1 and 3.4.0 and up!
-In 3.1 to 3.3.1, the bindbackend always did its own key storage. In
-3.4.0 and up hybrid bind mode operation is optional and enabled with the
-bindbackend ```hybrid`` <backend-bind.md#bind-hybrid>`__ config option.
-
 PowerDNS can also operate based on 'BIND'-style zone & configuration
 files. This 'bindbackend' has full knowledge of DNSSEC, but has no
 native way of storing keying material.
@@ -168,16 +163,13 @@ In hybrid mode, keying material and zone records are stored in different
 backends. This allows for 'bindbackend' operation in full DNSSEC mode.
 
 To benefit from this mode, include at least one database-based backend
-in the 'launch' statement. The `Generic SQLite backend
-(gsqlite3) <backend-generic-sqlite.md>`__ probably complements BIND mode
+in the 'launch' statement. The :doc:`SQLite 3 backend <../backends/gsqlite3>` probably complements BIND mode
 best, since it does not require a database server process.
 
-**Warning**: For now, it is necessary to execute a manual SQL 'insert'
-into the domains table of the backend hosting the keying material. This
-is needed to generate a zone-id for the relevant domain. Sample SQL
-statement:
+.. warning::
+  For now, it is necessary to execute a manual SQL 'insert'
+  into the domains table of the backend hosting the keying material. This
+  is needed to generate a zone-id for the relevant domain. Sample SQL
+  statement::
 
-::
-
-    insert into domains (name, type) values ('powerdnssec.org', 'NATIVE');
-
+      insert into domains (name, type) values ('powerdnssec.org', 'NATIVE');

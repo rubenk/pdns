@@ -9,10 +9,11 @@ Database servers can require configuration to achieve decent
 performance. It is especially worth noting that several vendors ship
 PostgreSQL with a slow default configuration.
 
-**Warning**: When deploying (large scale) IPv6, please be aware some
-Linux distributions leave IPv6 routing cache tables at very small
-default values. Please check and if necessary raise
-``sysctl net.ipv6.route.max_size``.
+.. warning::
+  When deploying (large scale) IPv6, please be aware some
+  Linux distributions leave IPv6 routing cache tables at very small
+  default values. Please check and if necessary raise
+  ``sysctl net.ipv6.route.max_size``.
 
 Performance related settings
 ----------------------------
@@ -79,7 +80,7 @@ Not all backends may benefit from the packet cache. If your backend is
 memory based and does not lead to context switches, the packet cache may
 actually hurt performance.
 
-.. sinceversion:: 4.1.0
+.. versionchanged:: 4.1.0
   The maximum size of the packet cache is controlled by the
   :ref:`setting-max-packet-cache-entries` entries. Before that both the
   query cache and the packet cache used the :ref:`setting-max-cache-entries` setting.

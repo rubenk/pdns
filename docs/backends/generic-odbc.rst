@@ -18,9 +18,10 @@ backend, similar to the gmysql and gpgsql backends. It uses
 `UnixODBC <http://www.unixodbc.org/>`__ and installed drivers to connect
 to the databases supported by said drivers.
 
-**Warning**: When there is a more specific generic sql backend (like
-goracle or gmysql), it is highly recommended to use that backend
-instead!
+.. warning::
+  When there is a more specific generic sql backend (like
+  goracle or gmysql), it is highly recommended to use that backend
+  instead!
 
 Enabling the backend
 --------------------
@@ -37,6 +38,8 @@ ODBC. For ODBC related configuration, please see UnixODBC
 website/documentation and the documentation for the driver you intend to
 use.
 
+.. _setting-godbc-datasource:
+
 ``godbc-datasource``
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -46,6 +49,8 @@ use.
 The datasource (DSN) to use. This must be configured in the ``odbc.ini``
 file, usually found in ``/etc/``, but this depends your local setup.
 
+.. _setting-godbc-username:
+
 ``godbc-username``
 ^^^^^^^^^^^^^^^^^^
 
@@ -53,6 +58,8 @@ file, usually found in ``/etc/``, but this depends your local setup.
 -  Default: powerdns
 
 The user to connect to the datasource.
+
+.. _setting-godbc-password:
 
 ``godbc-password``
 ^^^^^^^^^^^^^^^^^^
@@ -65,9 +72,10 @@ The password to connect with the datasource.
 Connecting to Microsoft SQL Server
 ----------------------------------
 
-**note**: In order to connect to Microsoft SQL Server, you will need at
-least version 3.2.0 of UnixODBC. FreeDTS has been tested with versions
-0.91 and 0.95.
+.. note::
+  In order to connect to Microsoft SQL Server, you will need at
+  least version 3.2.0 of UnixODBC. FreeDTS has been tested with versions
+  0.91 and 0.95.
 
 Install the `FreeTDS <http://www.freetds.org/>`__ driver for UnixODBC,
 either by compiling or getting it from our distribution's repository and

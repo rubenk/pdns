@@ -49,7 +49,7 @@ These backends have :doc:`features unique <generic-sql>` to the generic SQL back
   generic-odbc
   generic-oracle
   generic-postgresql
-  generic-sqlite
+  generic-sqlite3
   geoip
   ldap
   lua

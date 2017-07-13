@@ -1,9 +1,18 @@
-Security Settings
------------------
+Security of PowerDNS
+====================
 PowerDNS has several options to easily allow it to run more securely.
 Most notable are the :ref:`setting-chroot`, :ref:`setting-setuid` and :ref:`setting-setgid` options.
 
+For Security Advisories, see the :doc:`dedicated page <security-advisories/index>`.
+
+.. _securitypolicy:
+
+.. include:: common/security-policy.rst
+
 For additional information on PowerDNS security, PowerDNS security incidents and PowerDNS security policy, see :ref:`securitypolicy`.
+
+Securing the Process
+--------------------
 
 Running as a less privileged identity
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -20,9 +29,10 @@ The :ref:`setting-chroot` option secures PowerDNS to its own directory so that e
 
 Even though this will hamper hackers a lot, chroot jails have been known to be broken.
 
-**Warning**: When chrooting The PowerDNS, take care that backends will be able to get to their files. Many databases need access to a UNIX domain
-socket which should live within the chroot. It is often possible to
-hardlink such a socket into the chroot dir.
+.. warning::
+  When chrooting The PowerDNS, take care that backends will be able to get to their files. Many databases need access to a UNIX domain
+  socket which should live within the chroot. It is often possible to
+  hardlink such a socket into the chroot dir.
 
 When running with master or slave support, be aware that many operating
 systems need access to specific libraries (often ``/lib/libnss*``) in

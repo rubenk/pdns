@@ -24,6 +24,8 @@ Configuration Parameters
 These are the configuration file parameters that are available for the
 TinyDNS backend. It is recommended to set the ``tinydns-dbfile``.
 
+.. _setting-tinydns-dbfile:
+
 ``tinydns-dbfile``
 ~~~~~~~~~~~~~~~~~~
 
@@ -31,6 +33,8 @@ TinyDNS backend. It is recommended to set the ``tinydns-dbfile``.
 -  Default: data.cdb
 
 Specifies the name of the data file to use.
+
+.. _setting-tinydns-tai-adjust:
 
 ``tinydns-tai-adjust``
 ~~~~~~~~~~~~~~~~~~~~~~
@@ -44,6 +48,8 @@ allow you to adjust for leap seconds. The current default is 11. The
 last update was on `june 30th
 2012 <http://hpiers.obspm.fr/iers/bul/bulc/bulletinc.dat>`__.
 
+.. _setting-tinydns-notify-on-startup:
+
 ``tinydns-notify-on-startup``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -52,6 +58,8 @@ last update was on `june 30th
 
 Tell the TinyDNSBackend to notify all the slave nameservers on startup.
 This might cause broadcast storms.
+
+.. _setting-tinydns-ignore-bogus-records:
 
 ``tinydns-ignore-bogus-records``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -66,6 +74,8 @@ bad RDATA to make PowerDNS operate when bad data is in your CDB file. Be
 aware that the records are then ignored, where tinydns would still send
 out the bogus data. The option is primarily useful in master mode, as
 that reads all the packets in the zone to find all the SOA records.
+
+.. _setting-tinydns-locations:
 
 ``tinydns-locations``
 ~~~~~~~~~~~~~~~~~~~~~
@@ -86,13 +96,13 @@ Both timestamp and location are supported in the backend. Locations
 support can be changed using the
 ```tinydns-locations`` <#tinydns-locations>`__ setting. Timestamp and
 location only work as expected when
-```cache-ttl`` <settings.md#cache-ttl>`__ and
-```query-cache-ttl`` <settings.md#query-cache-ttl>`__ are set to 0
+:ref:`setting-cache-ttl` and
+:ref:`setting-query-cache-ttl` are set to 0
 (which disables these caches). Timestamp can operate with
-```cache-ttl`` <settings.md#cache-ttl>`__ if cache is needed, but the
+:ref:`setting-cache-ttl` if cache is needed, but the
 TTL returned for the timestamped racked will not be totally correct. The
 record will expire once the cache is expired and the backend is queried
-again. Please note that ```cache-ttl`` <settings.md#cache-ttl>`__ is a
+again. Please note that :ref:`setting-cache-ttl` is a
 performance related setting. See `Performance related
 settings <performance.md>`__. Location support only exists for IPv4!
 
@@ -112,8 +122,7 @@ domains or updated serial numbers. The CDB datafile requires us to do a
 full scan of all the records. When running with verbose logging, this
 could lead to a lot of output. The scanning of the CDB file may also
 take a while on systems with large files. The scan happens at an
-interval set by the
-```slave-cycle-interval`` <settings.md#slave-cycle-interval>`__. It
+interval set by the :ref:`setting-slave-cycle-interval`. It
 might be useful to raise this value to limit the amount of scans on the
 CDB file.
 

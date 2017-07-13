@@ -93,8 +93,6 @@ What you will find under the test directory
 
 The following script can be used to test the server:
 
-::
-
 This will yield the following result:
 
 ::
@@ -123,21 +121,29 @@ This will yield the following result:
 Parameters
 ----------
 
+.. _setting-lua-filename:
+
 ``lua-filename``
 ^^^^^^^^^^^^^^^^
 
 Path to your lua script, 'powerdns-luabackend.lua' by default.
+
+.. _setting-lua-logging-query:
 
 ``lua-logging-query``
 ^^^^^^^^^^^^^^^^^^^^^
 
 Log queries. default is 'no'.
 
+.. _setting-lua-f_FUNCTION:
+
 ``lua-f_FUNCTION=NEWFUNCTION``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 You can also override all the default functionsnames for the
 luafunctions if you want. For example:
+
+.. _setting-lua-f_lookup:
 
 ``lua-f_lookup = mynewfunction``
 

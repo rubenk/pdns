@@ -21,7 +21,8 @@ in your pdns.conf.
 To A Generic SQL Backend
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-**Note**: This assumes the schema provided with PowerDNS is in place
+.. note::
+  This assumes the schema provided with PowerDNS is in place
 
 In order to migrate to a Generic SQL backend, add all your domains to
 the 'domains' table with the IP of your current master. On your current
@@ -39,7 +40,7 @@ domain in the database:
 
     UPDATE domains set type='MASTER' where type='SLAVE';
 
-And set ```master`` <settings.md#master>`__ to "yes" in your pdns.conf
+And set :ref:`setting-master` to "yes" in your pdns.conf
 and restart PowerDNS.
 
 Or, if you want to use :ref:`native <native-operation>`:

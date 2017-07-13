@@ -24,15 +24,21 @@ the PowerDNS native configuration.
 Configuration Parameters
 ------------------------
 
+.. _setting-bind-config:
+
 ``bind-config``
 ~~~~~~~~~~~~~~~
 
 Location of the Bind configuration file to parse.
 
+.. _setting-bind-check-interval:
+
 ``bind-check-interval``
 ~~~~~~~~~~~~~~~~~~~~~~~
 
 How often to check for zone changes. See `'Operation' <#operation>`__ section.
+
+.. _setting-bind-dnssec-db:
 
 ``bind-dnssec-db``
 ~~~~~~~~~~~~~~~~~~
@@ -43,11 +49,15 @@ slave DNSSEC-enabled domains (where the RRSIGS are in the AXFR), a
 `PRESIGNED <domainmetadata.md#presigned>`__ domain metadata is set
 during the zonetransfer.
 
+.. _setting-bind-hybrid:
+
 ``bind-hybrid``
 ~~~~~~~~~~~~~~~
 
 Store DNSSEC keys and metadata storage in an other backend. See the
 `hybrid BIND-mode operation <dnssec.md#hybrid-bind-mode-operation>`__
+
+.. _setting-bind-ignore-broken-records:
 
 ``bind-ignore-broken-records``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -83,8 +93,10 @@ pdns\_control commands
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Add zone ``domain`` from ``filename`` to PowerDNS's bind backend. Zone
-will be loaded at first request. **Note**: this does not add the zone to
-the ```bind-config`` <#bind-config>`__ file.
+will be loaded at first request.
+
+.. note::
+  This does not add the zone to the :ref:`setting-bind-config` file.
 
 ``bind-domain-status <domain> [domain]``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -124,8 +136,7 @@ The BindBackend does not benefit from the packet cache as it is fast
 enough on its own. Furthermore, on most systems, there will be no
 benefit in using multiple CPUs for the packetcache, so a noticeable
 speedup can be attained by specifying
-```distributor-threads`` <settings.md#distributor-threads>`__\ ``=1`` in
-``pdns.conf``.
+``distributor-threads=1`` in ``pdns.conf``.
 
 Master/slave/native configuration
 ---------------------------------

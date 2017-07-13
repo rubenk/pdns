@@ -1,5 +1,5 @@
-Running and Operating PowerDNS
-==============================
+Running and Operating
+=====================
 
 PowerDNS is normally controlled via a SysV-style init.d script, often
 located in ``/etc/init.d`` or ``/etc/rc.d/init.d``. For Linux
@@ -9,12 +9,14 @@ package or in the contrib directory of the tarball).
 Furthermore, PowerDNS can be run on the foreground for testing or in
 other init- systems that supervise processes.
 
+.. _running-guardian:
+
 Guardian
 --------
 
 When the init-system of the Operating System does not properly
 supervises processes, like SysV init, it is recommended to run PowerDNS
-with the ```guardian`` <settings.md#guardian>`__ option set to 'yes'.
+with the :ref:`setting-guardian` option set to 'yes'.
 
 When launched with ``guardian=yes``, ``pdns_server`` wraps itself inside
 a 'guardian'. This guardian monitors the performance of the inner
@@ -49,7 +51,7 @@ Control Socket
 The controlsocket is the means to contact a running PowerDNS process.
 Over this socket, instructions can be sent using the ``pdns_control``
 program. The control socket is called ``pdns.controlsocket`` and is
-created inside the ```socket-dir`` <settings.md#socket-dir>`__.
+created inside the :ref:`setting-socket-dir`.
 
 .. _running-pdnscontrol:
 
@@ -102,8 +104,9 @@ commands:
    `monitoring <../common/logging.md#performance-monitoring>`__
    documentation.
 
-**Note**: Packages provided by Operating System vendors might support
-different or less commands.
+ .. note::
+  Packages provided by Operating System vendors might support
+  different or less commands.
 
 Running in the foreground
 -------------------------

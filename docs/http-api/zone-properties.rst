@@ -14,7 +14,7 @@ Switching ``dnssec`` to ``true`` (from ``false``) sets up DNSSEC signing
 based on the other flags, this includes running the equivalent of
 ``secure-zone`` and ``rectify-zone``. This also applies to newly created
 zones. If ``presigned`` is ``true``, no DNSSEC changes will be made to
-the zone or cryptokeys. **Note**: Authoritative only.
+the zone or cryptokeys. .
 
 **TODO**: ``dnssec``, ``nsec3narrow``, ``nsec3param``, ``presigned`` are
 not yet implemented.
@@ -26,28 +26,19 @@ not yet implemented.
    SOA-EDIT-API metadata record is created and set to ``DEFAULT``. (If
    this record is removed from the backend, the default behaviour is to
    not do any SOA editing based on this setting. This is different from
-   setting ``DEFAULT``.) **Note**: Authoritative only.
+   setting ``DEFAULT``).
 
 -  ``account`` MAY be set. Its value is defined by local policy.
-   **Note**: Authoritative only.
 
 -  ``notified_serial``, ``serial`` MUST NOT be sent in client bodies.
-   **Note**: Authoritative only.
 
 -  ``nameservers`` MAY be sent in client bodies during creation, and
    MUST NOT be sent by the server. Simple list of strings of nameserver
    names, including the trailing dot. Note: Before 4.0.0, names were
-   taken without the trailing dot. **Note**: Authoritative only. Not
+   taken without the trailing dot. . Not
    required for slave zones.
 
--  ``servers``: list of forwarded-to servers, including port. **Note**:
-   Recursor only.
-
--  ``recursion_desired``: for ``Forwarded`` zones, if the RD bit should
-   be set. **Note**: Authoritative only.
-
--  ``rrsets``: list of DNS records and comments in the zone. **Note**:
-   Modifications are supported on Authoritative only.
+-  ``rrsets``: list of DNS records and comments in the zone.
 
 Please see the description for ``PATCH`` for details on the fields in
 ``RRset``, ``Record`` and ``Comment``.

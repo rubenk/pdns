@@ -24,75 +24,68 @@ PipeBackend is also very well suited for dynamic resolution of queries.
 Example applications include DNS based load balancing, geo-direction,
 DNS-based failover with low TTLs.
 
-**Note**: The `Remote Backend <backend-remote.md>`__ offers a superset
-of the functionality of the PipeBackend.
+.. note::
+  The :doc:`Remote Backend <remote>` offers a superset of the functionality of the PipeBackend.
 
-**Note**: Please do read the `Backend Writer'
-guide <../appendix/backend-writers-guide.md>`__ carefully. The
-PipeBackend, like all other backends, must not do any DNS thinking, but
-answer all questions (INCLUDING THE ANY QUESTION) faithfully.
-Specifically, the queries that the PipeBackend receives will not
-correspond to the queries that arrived over DNS. So, a query for an AAAA
-record may turn into a backend query for an ANY record. There is nothing
-that can or should be done about this.
+.. note::
+  Please do read the :doc:`Backend Writer's guide <../appendices/backend-writers-guide>` carefully. The
+  PipeBackend, like all other backends, must not do any DNS thinking, but
+  answer all questions (INCLUDING THE ANY QUESTION) faithfully.
+  Specifically, the queries that the PipeBackend receives will not
+  correspond to the queries that arrived over DNS. So, a query for an AAAA
+  record may turn into a backend query for an ANY record. There is nothing
+  that can or should be done about this.
 
 Configuration Parameters
 ------------------------
 
+.. _setting-pipe-abi-version:
+
 ``pipe-abi-version``
 ^^^^^^^^^^^^^^^^^^^^
 
-+=============+===========+
-| Type        | Integer   |
-+-------------+-----------+
-| Default     | 1         |
-+-------------+-----------+
-| Mandatory   | No        |
-+-------------+-----------+
+- Integer
+- Default: 1
 
 This is the version of the question format that is sent to the
-co-process (```pipe-command`` <#pipe-command>`__) for the pipe backend.
+co-process (:ref:`setting-pipe-command`) for the pipe backend.
 
-If not set the default ``pipe-abi-version`` is 1. When set to 2, the
+If not set the default :ref:`setting-pipe-abi-version` is 1. When set to 2, the
 local-ip-address field is added after the remote-ip-address, the
 local-ip-address refers to the IP address the question was received on.
 When set to 3, the real remote IP/subnet is added based on edns-subnet
-support (this also requires enabling
-```edns-subnet-processing`` <settings.md#edns-subnet-processing>`__).
-When set to 4 it sends zone name in AXFR request. See also `PipeBackend
-Protocol <#pipebackend-protocol>`__ below.
+support (this also requires enabling :ref:`setting-edns-subnet-processing`).
+When set to 4 it sends zone name in AXFR request. See also :ref:`PipeBackend Protocol <pipebackend-protocol>` below.
+
+.. _setting-pipe-command:
 
 ``pipe-command``
 ^^^^^^^^^^^^^^^^
 
-+=============+==========+
-| Type        | String   |
-+-------------+----------+
-| Mandatory   | Yes      |
-+-------------+----------+
+- String
+- Mandatory
 
 Command to launch as backend or the path to a unix domain socket file.
 The socket should already be open and listening before PowerDNS starts.
 
+.. _setting-pipe-timeout:
+
 ``pipe-timeout``
 ^^^^^^^^^^^^^^^^
 
-+===========+===========+
-| Type      | Integer   |
-+-----------+-----------+
-| Default   | 2000      |
-+-----------+-----------+
+- Integer
+- Default: 2000
 
 Number of milliseconds to wait for an answer from the backend. If this
 time is ever exceeded, the backend is declared dead and a new process is
 spawned.
 
+.. _setting-pipe-regex:
+
 ``pipe-regex``
 ^^^^^^^^^^^^^^
 
-+========+====================+
-| Type   | String (a regex)   |
-+--------+--------------------+
+- String (a regular expression)
 
 If set, only questions matching this regular expression are even sent to
 the backend. This makes sure that most of PowerDNS does not slow down if
@@ -100,6 +93,8 @@ you deploy a slow backend. A query for 'www.powerdns.com' would be
 presented to the regex as 'www.powerdns.com', a matching regex would be
 ``^www\.powerdns\.com$``. **Note**: to match the root domain, use a dot,
 e.g. ``^\.$``
+
+.. _pipebackend-protocol:
 
 PipeBackend protocol
 --------------------

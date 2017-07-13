@@ -1,3 +1,6 @@
+Upgrade Notes
+=============
+
 Before proceeding, it is advised to check the release notes for your
 PowerDNS version, as specified in the name of the distribution file.
 
@@ -6,10 +9,12 @@ See the `3.X <https://doc.powerdns.com/3/authoritative/upgrading/>`__
 upgrade notes if your version is older than 3.4.2.
 
 4.0.X to 4.1.0
-==============
+--------------
+
+ - Recursion has been removed, see the :doc:`dedicated migration guide <guides/recursion>`.
 
 Changed options
----------------
+^^^^^^^^^^^^^^^
 
 -  ``experimental-lua-policy-script`` option and the feature itself have
    been completely dropped. We invite you to use (PowerDNS
@@ -19,7 +24,7 @@ Changed defaults
 ~~~~~~~~~~~~~~~~
 
 Other changes
--------------
+^^^^^^^^^^^^^
 
 The ``--with-pgsql``, ``--with-pgsql-libs``, ``--with-pgsql-includes``
 and ``--with-pgsql-config`` ``configure`` options have been deprecated.
@@ -29,22 +34,21 @@ and ``--with-pgsql-config`` ``configure`` options have been deprecated.
 you have Postgresql installed in a non-default location.
 
 4.0.X to 4.0.2
-==============
+--------------
 
 Changed options
----------------
+^^^^^^^^^^^^^^^
 
 Changed defaults
 ~~~~~~~~~~~~~~~~
 
--  ```any-to-tcp`` <settings.md#any-to-tcp>`__ changed from ``no`` to
-   ``yes``
+-  :ref:`setting-any-to-tcp` changed from ``no`` to ``yes``
 
 3.4.X to 4.0.0
-==============
+--------------
 
 Database changes
-----------------
+^^^^^^^^^^^^^^^^
 
 No changes have been made to the database schema. However, several
 superfluous queries have been dropped from the SQL backend. Furthermore,
@@ -60,35 +64,30 @@ non-standard SQL schema, please review the new defaults.
    sets the type of zone
 
 Changed options
----------------
+^^^^^^^^^^^^^^^
 
 Several options have been removed or renamed, for the full overview of
-all options, see `settings <settings.md>`__.
+all options, see :doc:`settings`.
 
 Renamed options
 ~~~~~~~~~~~~~~~
 
 The following options have been renamed:
 
--  ``experimental-json-interface`` ==> ```api`` <settings.md#api>`__
--  ``experimental-api-readonly`` ==>
-   ```api-readonly`` <settings.md#api-readonly>`__
--  ``experimental-api-key`` ==> ```api-key`` <settings.md#api-key>`__
--  ``experimental-dname-processing`` ==>
-   ```dname-processing`` <settings.md#dname-processing>`__
--  ``experimental-dnsupdate`` ==>
-   ```dnsupdate`` <settings.md#dnsupdate>`__
--  ``allow-dns-update-from`` ==>
-   ```allow-dnsupdate-from`` <settings.md#allow-dnsupdate-from>`__
--  ``forward-dnsupdates`` ==>
-   ```forward-dnsupdate`` <settings.md#forward-dnsupdate>`__
+-  ``experimental-json-interface`` ==> :ref:`setting-api`
+-  ``experimental-api-readonly`` ==> :ref:`setting-api-readonly`
+-  ``experimental-api-key`` ==> :ref:`setting-api-key`
+-  ``experimental-dname-processing`` ==> :ref:`setting-dname-processing`
+-  ``experimental-dnsupdate`` ==> :ref:`setting-dnsupdate`
+-  ``allow-dns-update-from`` ==> :ref:`setting-allow-dnsupdate-from`
+-  ``forward-dnsupdates`` ==> :ref:`setting-forward-dnsupdate`
 
 Changed defaults
 ~~~~~~~~~~~~~~~~
 
--  ```default-ksk-algorithms`` <settings.md#default-ksk-algorithms>`__
+-  :ref:`setting-default-ksk-algorithms`
    changed from rsasha256 to ecdsa256
--  ```default-zsk-algorithms`` <settings.md#default-zsk-algorithms>`__
+-  :ref:`setting-default-zsk-algorithms`
    changed from rsasha256 to empty
 
 Removed options
@@ -101,7 +100,7 @@ The following options are removed:
 -  ``send-root-referral``
 
 API
----
+^^^
 
 The API path has changed to ``/api/v1``.
 
@@ -112,7 +111,7 @@ of ``DEFAULT``). You must update your existing ``SOA-EDIT-API`` metadata
 ``SOA-EDIT-API`` to ``SOA-EDIT`` to keep the old behaviour).
 
 Resource Record Changes
------------------------
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Since PowerDNS 4.0.0 the CAA resource record (type 257) is supported.
 Before PowerDNS 4.0.0 type 257 was used for a proprietary MBOXFW

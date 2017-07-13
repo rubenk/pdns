@@ -33,12 +33,16 @@ you should use:
 Settings
 --------
 
+.. _setting-goracle-tnsname:
+
 ``goracle-tnsname``
 ^^^^^^^^^^^^^^^^^^^
 
 Which TNSNAME the Generic Oracle Backend should be connecting to. There
 are no ``goracle-dbname``, ``goracle-host`` or ``goracle-port``
 settings, their equivalent is in ``/etc/tnsnames.ora``.
+
+.. _setting-goracle-dnssec:
 
 ``goracle-dnssec``
 ^^^^^^^^^^^^^^^^^^

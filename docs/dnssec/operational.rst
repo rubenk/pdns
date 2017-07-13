@@ -23,9 +23,10 @@ Going insecure
 
     pdnsutil disable-dnssec ZONE
 
-**Warning**: Going insecure with a zone that has a DS record in the
-parent zone will make the zone BOGUS. Make sure the parent zone removes
-the DS record *before* going insecure.
+.. warning::
+  Going insecure with a zone that has a DS record in the
+  parent zone will make the zone BOGUS. Make sure the parent zone removes
+  the DS record *before* going insecure.
 
 Setting the NSEC modes and parameters
 -------------------------------------
@@ -44,15 +45,13 @@ e.g.
     pdnsutil set-nsec3 example.net '1 0 1 ab'
 
 The quoted part is the content of the NSEC3PARAM records, as defined in
-`RFC 5155 <https://tools.ietf.org/html/rfc5155#section-4>`__, in order:
+:rfc:`5155 <5155#section-4>`, in order:
 
 -  Hash algorithm, should always be ``1`` (SHA1)
--  Flags, set to ``1`` for `NSEC3
-   Opt-out <https://tools.ietf.org/html/rfc5155#section-6>`__, this best
+-  Flags, set to ``1`` for :rfc:`NSEC3 Opt-out <5155#section-6>`, this best
    set as ``0``
--  Number of iterations of the hash function, read `RFC 5155, Section
-   10.3 <https://tools.ietf.org/html/rfc5155#section-10.3>`__ for
-   recommendations
+-  Number of iterations of the hash function, read :rfc:`RFC 5155, Section
+   10.3 <5155#section-10.3>` for recommendations
 -  Salt (in hexadecimal) to apply during hashing
 
 To convert a zone from NSEC3 to NSEC operations, run:
@@ -61,9 +60,12 @@ To convert a zone from NSEC3 to NSEC operations, run:
 
     pdnsutil unset-nsec3 ZONE
 
-**Warning**: Don't change from NSEC to NSEC3 (or the other way around)
-for zones with algorithm 5 (RSASHA1), 6 (DSA-NSEC3-SHA1) or 7
-(RSASHA1-NSEC3-SHA1).
+.. warning::
+  Don't change from NSEC to NSEC3 (or the other way around)
+  for zones with algorithm 5 (RSASHA1), 6 (DSA-NSEC3-SHA1) or 7
+  (RSASHA1-NSEC3-SHA1).
+
+.. _soa-edit-ensure-signature-freshness-on-slaves:
 
 SOA-EDIT: ensure signature freshness on slaves
 ----------------------------------------------
@@ -91,11 +93,12 @@ the `SOA-EDIT <domainmetadata.md#soa-edit>`__ metadata for DNSSEC signed
 zones. This value controls how the value of the SOA serial is modified
 by PowerDNS.
 
-**Note**: The SOA serial in the datastore will be untouched, SOA-EDIT is
-applied to DNS answers with the SOA record.
+.. note::
+  The SOA serial in the datastore will be untouched, SOA-EDIT is
+  applied to DNS answers with the SOA record.
 
-The ```default-soa-edit`` <settings.md#default-soa-edit>`__ or
-```default-soa-edit-signed`` <settings.md#default-soa-edit-signed>`__
+The :ref:`setting-default-soa-edit` or
+:ref:`setting-default-soa-edit-signed`
 configuration options can instead be set to ensure SOA-EDIT is set for
 every zone.
 
@@ -150,11 +153,12 @@ INCEPTION (not recommended)
 Sets the SOA serial to the last inception time in YYYYMMDD01 format.
 Uses localtime to find the day for inception time.
 
-**Warning**: The SOA serial will only change on inception day, so
-changes to the zone will get visible on slaves only on the following
-inception day.
+.. warning::
+  The SOA serial will only change on inception day, so
+  changes to the zone will get visible on slaves only on the following
+  inception day.
 
-**Note**: Will be removed in PowerDNS Authoritative Server 4.1.0
+.. deprecated:: 4.1.0
 
 INCEPTION-WEEK (not recommended)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -162,27 +166,29 @@ INCEPTION-WEEK (not recommended)
 Sets the SOA serial to the number of weeks since the epoch, which is the
 last inception time in weeks.
 
-**Warning**: Same problem as INCEPTION.
+.. warning::
+  Same problem as INCEPTION.
 
-**Note**: Will be removed in PowerDNS Authoritative Server 4.1.0
+.. deprecated:: 4.1.0
 
 EPOCH
 ^^^^^
 
 Sets the SOA serial to the number of seconds since the epoch.
 
-**Warning**: Don't combine this with AXFR - the slaves would keep
-refreshing all the time. If you need fast updates, sync the backend
-databases directly with incremental updates (or use the same database
-server on the slaves)
+.. warning::
+  Don't combine this with AXFR - the slaves would keep
+  refreshing all the time. If you need fast updates, sync the backend
+  databases directly with incremental updates (or use the same database
+  server on the slaves)
 
-**Note**: Will be removed in PowerDNS Authoritative Server 4.1.0
+.. deprecated:: 4.1.0
 
 NONE
 ^^^^
 
-Ignore ```default-soa-edit`` <settings.md#default-soa-edit>`__ and/or
-```default-soa-edit-signed`` <settings.md#default-soa-edit-signed>`__
+Ignore :ref:`setting-default-soa-edit` and/or
+:ref:`setting-default-soa-edit-signed`
 settings.
 
 Security

@@ -7,14 +7,19 @@ PowerDNS Authoritative Server
 
     index
     installation
+    upgrading
     modes-of-operation
     migration
     running
+    security
     performance
     dnssec/index
+    domainmetadata
     dnsupdate
+    tsig
     guides/index
     backends/index
     http-api/index
     settings
+    security-advisories/index
     appendices/*

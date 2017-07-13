@@ -1,5 +1,5 @@
-Per zone settings aka Domain Metadata
-=====================================
+Per zone settings: Domain Metadata
+==================================
 
 Each served zone can have "metadata". Such metadata determines how this
 zone behaves in certain circumstances.
@@ -46,6 +46,8 @@ Each ACL has its own row in the database:
 To disallow all IP's, except those explicitly allowed by domainmetadata
 records, add ``allow-axfr-ips=`` to ``pdns.conf``.
 
+.. _metadata-axfr-source:
+
 AXFR-SOURCE
 -----------
 
@@ -55,7 +57,9 @@ requests.
 ALLOW-DNSUPDATE-FROM, TSIG-ALLOW-DNSUPDATE, FORWARD-DNSUPDATE, SOA-EDIT-DNSUPDATE, NOTIFY-DNSUPDATE
 ---------------------------------------------------------------------------------------------------
 
-See the documentation on :doc:`Dynamic DNS update <dnsupdate-metadata>`.
+See the documentation on :ref:`Dynamic DNS update <dnsupdate-metadata>`.
+
+.. _metadata-also-notify:
 
 ALSO-NOTIFY
 -----------

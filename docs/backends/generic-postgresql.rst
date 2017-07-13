@@ -30,6 +30,8 @@ above.
 Settings
 --------
 
+.. _setting-gpgsql-host:
+
 ``gpgsql-host``
 ^^^^^^^^^^^^^^^
 
@@ -38,35 +40,47 @@ it specifies Unix-domain communication rather than TCP/IP communication;
 the value is the name of the directory in which the socket file is
 stored.
 
-**WARNING:** When specified as a hostname a chicken/egg situation might
-arise where the database is needed to resolve the IP address of the
-database. It is best to supply an IP address of the database here.
+.. warning::
+  When specified as a hostname a chicken/egg situation might
+  arise where the database is needed to resolve the IP address of the
+  database. It is best to supply an IP address of the database here.
+
+.. _setting-gpgsql-port:
 
 ``gpgsql-port``
 ^^^^^^^^^^^^^^^
 
-The port to connect to on ```gpgsql-host`` <#gpgsql-host>`__. Default:
-5432
+The port to connect to on :ref:`setting-gpgsql-host`. Default: 5432
+
+.. _setting-gpgsql-dbname:
 
 ``gpgsql-dbname``
 ^^^^^^^^^^^^^^^^^
 
 Name of the database to connect to. Default: "pdns".
 
+.. _setting-gpgsql-user:
+
 ``gpgsql-user``
 ^^^^^^^^^^^^^^^
 
 User to connect as. Default: "powerdns".
 
+.. _setting-gpgsql-password:
+
 ``gpgsql-password``
 ^^^^^^^^^^^^^^^^^^^
 
-The password to for ```gpgsql-user`` <#gpgsql-user>`__.
+The password to for :ref:`setting-gpgsql-user`.
+
+.. _setting-gpgsql-dnssec:
 
 ``gpgsql-dnssec``
 ^^^^^^^^^^^^^^^^^
 
 Enable DNSSEC processing for this backend. Default=no.
+
+.. _setting-gpsql-extra-connection-parameters:
 
 ``gpsql-extra-connection-parameters``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

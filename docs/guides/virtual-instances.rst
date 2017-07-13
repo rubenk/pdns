@@ -17,18 +17,20 @@ Starting virtual instances with Sysv init-scripts
 -------------------------------------------------
 
 Symlink the init.d script ``pdns`` to ``pdns-NAME``, where ``NAME`` is
-the name of your virtual configuration. **Note**: ``NAME`` must not
-contain a '-' as this will confuse the script.
+the name of your virtual configuration.
+
+.. warning::
+  ``NAME`` must not contain a '-' as this will confuse the script.
 
 Internally, the init script calls the binary with the
-```config-name`` <settings.md#config-name>`__ option set to ``name``,
+:ref:`setting-config-name` option set to ``name``,
 setting in motion the loading of separate configuration files.
 
 When you launch a virtual instance of PowerDNS, the pid-file is saved
-inside ```socket-dir`` <settings.md#socket-dir>`__ as ``pdns-name.pid``.
+inside :ref:`setting-socket-dir` as ``pdns-name.pid``.
 
-**Warning**: Be aware however that the init.d ``force-stop`` will kill
-all PowerDNS instances!
+.. warning::
+  Be aware however that the init.d ``force-stop`` will kill all PowerDNS instances!
 
 Starting virtual instances with systemd
 ---------------------------------------

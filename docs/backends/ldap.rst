@@ -17,18 +17,15 @@ Introduction
 As of PowerDNS Authoritative Server 4.0.0, the LDAP backend is fully
 supported.
 
-**Warning**: Grégory Oestreicher has forked the LDAP backend shortly
-before our 3.2 release, after which a lot of development happened in a
-short time. We are working to upstream this work.
-
 The original author for this module is Norbert Sendetzky. This page is
 based on the content from his `LDAPbackend wiki
 section <http://wiki.linuxnetworks.de/index.php/PowerDNS_ldapbackend>`__
 as copied in February 2016, and edited from there.
 
-**Warning**: Host names and the MNAME of a SOA records are NEVER
-terminated with a '.' in PowerDNS storage! If a trailing '.' is present
-it will inevitably cause problems, problems that may be hard to debug.
+.. warning::
+  Host names and the MNAME of a SOA records are NEVER
+  terminated with a '.' in PowerDNS storage! If a trailing '.' is present
+  it will inevitably cause problems, problems that may be hard to debug.
 
 
 Rationale
@@ -72,6 +69,8 @@ To launch the ldap backend:
 
     launch=ldap
 
+.. _setting-ldap-host:
+
 ``ldap-host``
 ^^^^^^^^^^^^^
 
@@ -84,6 +83,8 @@ client library doesn't support LDAP URIs as connection parameter, use
 plain host names or IP addresses instead (both may optionally be
 followed by a colon and the port).
 
+.. _setting-ldap-starttls:
+
 ``ldap-starttls``
 ^^^^^^^^^^^^^^^^^
 
@@ -91,17 +92,23 @@ followed by a colon and the port).
 is only allowed if ldap-host is a ldap:// URI or a host name / IP
 address.
 
+.. _setting-ldap-timeout:
+
 ``ldap-timeout``
 ^^^^^^^^^^^^^^^^
 
 (default: "5") : The number of seconds to wait for LDAP operations to
 complete.
 
+.. _setting-ldap-reconnect-attempts:
+
 ``ldap-reconnect-attempts``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 (default: "5") : The number of attempts to make to re-establish a lost
 connection to the LDAP server.
+
+.. _setting-ldap-authmethod:
 
 ``ldap-authmethod``
 ^^^^^^^^^^^^^^^^^^^
@@ -110,6 +117,8 @@ connection to the LDAP server.
 only two methods are supported: "simple", which uses the classical DN /
 password, or "gssapi", which requires a Kerberos keytab.
 
+.. _setting-ldap-binddn:
+
 ``ldap-binddn``
 ^^^^^^^^^^^^^^^
 
@@ -117,11 +126,15 @@ password, or "gssapi", which requires a Kerberos keytab.
 be used, if the LDAP server doesn't support anonymous binds and with the
 "simple" authmethod.
 
+.. _setting-ldap-secret:
+
 ``ldap-secret``
 ^^^^^^^^^^^^^^^
 
 (default "") : Password for authentication against the object specified
 by ldap-binddn. Only used when "authmethod" is "simple".
+
+.. _setting-ldap-krb5-keytab:
 
 ``ldap-krb5-keytab``
 ^^^^^^^^^^^^^^^^^^^^
@@ -131,6 +144,8 @@ This is only used when "authmethod" is set to "gssapi". The keytab must,
 ideally, contain only one principal (or to put it otherwise, only the
 first principal found in the keytab will be used).
 
+.. _setting-ldap-krb5-ccache:
+
 ``ldap-krb5-ccache``
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -138,6 +153,8 @@ first principal found in the keytab will be used).
 Actually only files are supported, and the "FILE:" prefix must not be
 set. The PowerDNS process must be able to write to this file and it
 *must* be the only one able to read it.
+
+.. _setting-ldap-basedn:
 
 ``ldap-basedn``
 ^^^^^^^^^^^^^^^
@@ -148,6 +165,8 @@ attributes is limited to this subtree. This option must be set to the
 path according to the layout of your LDAP tree, e.g.
 ou=hosts,o=linuxnetworks,c=de is the DN to my objects containing the DNS
 information.
+
+.. _setting-ldap-method:
 
 ``ldap-method``
 ^^^^^^^^^^^^^^^
@@ -165,12 +184,16 @@ information.
    aAAARecords. Using "strict", zone transfers for reverse zones are not
    possible.
 
+.. _setting-ldap-filter-axfr:
+
 ``ldap-filter-axfr``
 ^^^^^^^^^^^^^^^^^^^^
 
 (default "(:target:)" ) : LDAP filter for limiting AXFR results (zone
 transfers), e.g. (&(:target:)(active=yes)) for returning only entries
 whose attribute "active" is set to "yes".
+
+.. _setting-ldap-filter-lookup:
 
 ``ldap-filter-lookup``
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -554,7 +577,7 @@ dNSTTL attribute
 
 Converting the string in the dNSTTL attribute to an integer is a time
 consuming task. If no separate TTL value for each entry is requires, use
-the ```default-ttl`` <settings.md#default-ttl>`__ parameter in
+the :ref:`setting-default-ttl` parameter in
 ``pdns.conf`` instead. This will gain a 7% improvement in performance
 for entries that aren't cached. A dNSTTL attribute can still be added to
 entries that should have a different TTL than the default TTL

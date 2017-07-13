@@ -5,7 +5,7 @@ Zone Metadata
 
 .. json:object:: Metadata
 
-  Represents zone metadata :doc:`domainmetadata`
+  Represents zone metadata :doc:`../domainmetadata`
 
   :property string kind: Name of the metadata
   :property [string] metadata: Array with all values for this metadata kind.

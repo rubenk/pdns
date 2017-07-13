@@ -79,7 +79,7 @@ regardless of IP address, set :ref:`setting-allow-dnsupdate-from` to empty, set
 ``ALLOW-DNSUPDATE-FROM`` to "0.0.0.0/0" and "::/0" and set the
 ``TSIG-ALLOW-DNSUPDATE`` to the proper key name.
 
-Further information can be found `below <#how-it-works>`__.
+Further information can be found :ref:`below <dnsupdate-how-it-works>`.
 
 .. _dnsupdate-metadata:
 
@@ -87,7 +87,7 @@ Per zone settings
 -----------------
 
 For permissions, a number of per zone settings are available via the
-:doc:`domain metadata `<domainmetadata.md>`.
+:doc:`domain metadata `<domainmetadata>`.
 
 ALLOW-DNSUPDATE-FROM
 ~~~~~~~~~~~~~~~~~~~~
@@ -329,14 +329,11 @@ the following to the PowerDNS configuration file (pdns.conf).
 
 This tells PowerDNS to:
 
-1. Enable DNS update
-   support(\ ```dnsupdate`` <settings.md#dnsupdate>`__)
-2. Allow updates from NO ip-address
-   (```allow-dnsupdate-from=`` <settings.md#allow-dnsupdate-from>`__)
+1. Enable DNS update support(:ref:`setting-dnsupdate`)
+2. Allow updates from NO ip-address (":ref:`setting-allow-dnsupdate-from`\ =")
 
 We just told powerdns (via the configuration file) that we accept
-updates from nobody via the
-```allow-dnsupdate-from`` <settings.md#allow-dnsupdate-from>`__
+updates from nobody via the :ref:`setting-allow-dnsupdate-from`
 parameter. That's not very useful, so we're going to give permissions
 per zone (including the appropriate reverse zone), via the
 domainmetadata table.
@@ -372,6 +369,8 @@ This will:
 2. Associate the domains with the given TSIG key
 
 Restart PowerDNS and you should be ready to go!
+
+.. _dnsupdate-how-it-works:
 
 How it works
 ------------
@@ -424,6 +423,8 @@ PowerDNS.
 14. The transaction with the backend is committed. If this fails,
     ServFail is returned.
 15. NoError is returned.
+
+.. _dnsupdate-update-policy:
 
 Update policy
 -------------

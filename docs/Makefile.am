@@ -54,10 +54,10 @@ endif # if !HAVE_MANPAGES
 	virtualenv .venv
 	.venv/bin/pip install -r requirements.txt
 
-html-docs: authoritative/** common/** manpages/** .venv
+html-docs: common/** manpages/** .venv
 	.venv/bin/python -msphinx -b html . html-docs
 
-latex/PowerDNS-Authoritative.pdf: authoritative/** common/** manpages/** .venv
+latex/PowerDNS-Authoritative.pdf: common/** manpages/** .venv
 	.venv/bin/python -msphinx -M latexpdf . .
 
 PowerDNS-Authoritative.pdf: latex/PowerDNS-Recursor.pdf

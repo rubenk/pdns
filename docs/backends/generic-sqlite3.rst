@@ -11,9 +11,10 @@ Generic SQLite 3 backend
 * Module name: gsqlite3
 * Launch name: ``gsqlite3``
 
-**Warning**: When importing large amounts of data, be sure to run
-'analyze;' afterwards as SQLite3 has a tendency to use sub-optimal
-indexes otherwise.
+.. warning::
+  When importing large amounts of data, be sure to run
+  ``analyze;`` afterwards as SQLite3 has a tendency to use sub-optimal
+  indexes otherwise.
 
 This backend retrieves all data from a SQLite database, which is an
 RDBMS that's embedded into the application itself, so you won't need to
@@ -22,8 +23,7 @@ simplifies installation. At `www.sqlite.org <http://www.sqlite.org>`__
 you can find more information about SQLite.
 
 As this is a generic backend, built on top of the gSql framework, you
-can specify all queries as documented in `Generic SQL
-Backends <backend-generic-sql.md#queries>`__.
+can specify all queries as documented in :ref:`Generic SQL Backends <generic-sql-queries>`.
 
 SQLite exists in two incompatible versions, PowerDNS only supports
 version 3. To launch the backend, put ``launch=gsqlite3`` in the
@@ -54,20 +54,28 @@ Configuration Parameters
 These are the configuration file parameters that are available for the
 gsqlite3 backend.
 
+.. _setting-gsqlite3-database:
+
 ``gsqlite3-database``
 ~~~~~~~~~~~~~~~~~~~~~
 
 Path to the SQLite3 database.
+
+.. _setting-gsqlite3-pragma-synchronous:
 
 ``gsqlite3-pragma-synchronous``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Set this to 0 for blazing speed.
 
+.. _setting-gsqlite3-pragma-foreign-keys:
+
 ``gsqlite3-pragma-foreign-keys``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 Enable foreign key constraints.
+
+.. _setting-gsqlite3-dnssec:
 
 ``gsqlite3-dnssec``
 ~~~~~~~~~~~~~~~~~~~

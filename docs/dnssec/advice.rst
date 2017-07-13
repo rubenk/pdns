@@ -8,15 +8,16 @@ It is well possible to configure DNSSEC in such a way that your domain
 will not operate reliably, or even, at all. We advise operators to stick
 to the keying defaults of ``pdnsutil secure-zone``.
 
-**Note**: GOST may be more widely available in Russia, because it might
-be mandatory to implement this regional standard there.
+.. note::
+  GOST may be more widely available in Russia, because it might
+  be mandatory to implement this regional standard there.
 
 It is possible to operate a zone with different keying algorithms
 simultaneously, but it has also been observed that this is not reliable.
 
 Depending on your master/slave setup, you may need to tinker with the
-```SOA-EDIT`` <domainmetadata.md#soa-edit>`__ metadata on your master.
-This is described in the `operational instructions <#soa-edit>`__ below.
+:ref:`SOA-EDIT <metadata-soa-edit>` metadata on your master.
+This is described in the :ref:`soa-edit-ensure-signature-freshness-on-slaves` section.
 
 Packet sizes, fragments, TCP/IP service
 ---------------------------------------

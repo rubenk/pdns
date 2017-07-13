@@ -6,19 +6,21 @@ with easily configurable SQL statements, allowing you to graft PowerDNS
 on any SQL database of your choosing. Because all database schemas will
 be different, a generic backend is needed to cover all needs.
 
-**Warning**: Host names and the MNAME of a SOA records are NEVER
-terminated with a '.' in PowerDNS storage! If a trailing '.' is present
-it will inevitably cause problems, problems that may be hard to debug.
+.. warning::
+  Host names and the MNAME of a SOA records are NEVER
+  terminated with a '.' in PowerDNS storage! If a trailing '.' is present
+  it will inevitably cause problems, problems that may be hard to debug.
 
-**Note**: Since 4.0.0, a root zone or record should have a name of '.'
-(no quotes). This is the only exception to the 'no terminating dot in
-SQL storage' rule.
+.. note::
+  A root zone or record should have a name of '.'
+  (no quotes). This is the only exception to the 'no terminating dot in
+  SQL storage' rule.
 
 Basic functionality
 -------------------
 
 All domains in the generic SQL backends have a 'type' field that
-describes the `mode of operation <modes-of-operation.md>`__.
+describes the :doc:`../modes-of-operation`.
 
 Native operation
 ^^^^^^^^^^^^^^^^
@@ -44,7 +46,7 @@ These backends are fully slave capable. To become a slave of the
 
 And wait a while for PowerDNS to pick up the addition - which happens
 within one minute (this is determined by the
-```slave-cycle-interval`` <settings.md#slave-cycle-interval>`__
+:ref:`setting-slave-cycle-interval`
 setting). There is no need to inform PowerDNS that a new domain was
 added. Typical output is:
 
@@ -63,7 +65,7 @@ will respond accordingly for queries within that zone.
 
 Periodically, PowerDNS schedules checks to see if domains are still
 fresh. The default
-```slave-cycle-interval`` <settings.md#slave-cycle-interval>`__ is 60
+:ref:`setting-slave-cycle-interval` is 60
 seconds, large installations may need to raise this value. Once a domain
 has been checked, it will not be checked before its SOA refresh timer
 has expired. Domains whose status is unknown get checked every 60
@@ -130,6 +132,8 @@ is set to what's provided by ``zone-lastchange-query``. By default, this
 is the highest value of the ``change_date`` field in the "records"
 table).
 
+.. _generic-sql-handling-dnssec-signed-zones:
+
 Handling DNSSEC signed zones
 ----------------------------
 
@@ -182,6 +186,8 @@ entry gives us a place to store the NSEC3 hash of these names.
 If your frontend does not add empty non-terminal names to records, you
 will get DNSSEC replies of 3.1-quality, which has served many people
 well, but might lead to issues in the future.
+
+.. _generic-sql-queries:
 
 Queries
 -------

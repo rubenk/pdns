@@ -20,65 +20,91 @@ database schema.
 Configuration Parameters
 ------------------------
 
+.. _setting-mydns-host:
+
 ``mydns-host``
 ~~~~~~~~~~~~~~
 
 Database host to connect to.
+
+.. _setting-mydns-port:
 
 ``mydns-port``
 ~~~~~~~~~~~~~~
 
 Port on the database server to connect to.
 
+.. _setting-mydns-dbname:
+
 ``mydns-dbname``
 ~~~~~~~~~~~~~~~~
 
 Name of the database to connect to, "mydns" by default.
+
+.. _setting-mydns-user:
 
 ``mydns-user``
 ~~~~~~~~~~~~~~
 
 User for the database, "powerdns" by default.
 
+.. _setting-mydns-password:
+
 ``mydns-password``
 ~~~~~~~~~~~~~~~~~~
 
 The user password.
+
+.. _setting-mydns-socket:
 
 ``mydns-socket``
 ~~~~~~~~~~~~~~~~
 
 Unix socket to connect to the database.
 
+.. _setting-mydns-rr-table:
+
 ``mydns-rr-table``
 ~~~~~~~~~~~~~~~~~~
 
 Name of the resource record table in the database, "rr" by default.
+
+.. _setting-mydns-soa-table:
 
 ``mydns-soa-table``
 ~~~~~~~~~~~~~~~~~~~
 
 Name of the SOA table in the database, "soa" by default.
 
+.. _setting-mydns-soa-where:
+
 ``mydns-soa-where``
 ~~~~~~~~~~~~~~~~~~~
 
 Additional WHERE clause for SOA, default is "1 = 1".
+
+.. _setting-mydns-rr-where:
 
 ``mydns-rr-where``
 ~~~~~~~~~~~~~~~~~~
 
 Additional WHERE clause for resource records, default is "1 = 1".
 
+.. _setting-mydns-soa-active:
+
 ``mydns-soa-active``
 ~~~~~~~~~~~~~~~~~~~~
 
 Use the active column in the SOA table, "yes" by default.
 
+.. _setting-mydns-rr-active:
+
 ``mydns-rr-active``
 ~~~~~~~~~~~~~~~~~~~
 
 Use the active column in the resource record table, "yes" by default.
+
+.. _setting-mydns-use-minimal-ttl:
 
 ``mydns-use-minimal-ttl``
 ~~~~~~~~~~~~~~~~~~~~~~~~~

@@ -1,9 +1,8 @@
 KSK Rollover
 ============
 
-Before attempting a KSK rollover, please read `RFC 6581 "DNSSEC
-Operational Practices, Version 2", section
-4 <https://tools.ietf.org/html/rfc6781#section-4>`__ carefully to
+Before attempting a KSK rollover, please read :rfc:`RFC 6581 "DNSSEC
+Operational Practices, Version 2", section 4 <6781#section-4>` carefully to
 understand the terminology, actions and timelines (TTL and RRSIG expiry)
 involved in rolling a KSK.
 
@@ -34,8 +33,9 @@ for the DS records has passed. The rollover is now in the "DS Change"
 state and can continue to the "DNSKEY Removal" stage by actually
 deleting the old KSK.
 
-**Note**: The key-id for the old KSK is shown in the output of
-``pdnsutil show-zone example.net``.
+.. note::
+  The key-id for the old KSK is shown in the output of
+  ``pdnsutil show-zone example.net``.
 
 ::
 

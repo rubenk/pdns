@@ -30,45 +30,59 @@ set to "A", the domain is considered active and is actually served.
 Settings
 --------
 
-opendbx-backend
-^^^^^^^^^^^^^^^
+.. _setting-opendbx-backend:
+
+``opendbx-backend``
+^^^^^^^^^^^^^^^^^^^
 
 Name of the backend used to connect to the database server. Currently
 mysql, pgsql, sqlite, sqlite3 and sybase are available. Default=mysql.
 
-opendbx-host-read
-^^^^^^^^^^^^^^^^^
+.. _setting-opendbx-host-read:
+
+``opendbx-host-read``
+^^^^^^^^^^^^^^^^^^^^^
 
 One or more host names or IP addresses of the database servers. These
 hosts will be used for retrieving the records via SELECT queries.
 Default=127.0.0.1
 
-opendbx-host-write
-^^^^^^^^^^^^^^^^^^
+.. _setting-opendbx-host-write:
+
+``opendbx-host-write``
+^^^^^^^^^^^^^^^^^^^^^^
 
 One or more host names or IP addresses of the database servers. These
 hosts will be used for INSERT/UPDATE statements (mostly used by
 zonetransfers). Default=127.0.0.1
 
-opendbx-port
-^^^^^^^^^^^^
+.. _setting-opendbx-port:
+
+``opendbx-port``
+^^^^^^^^^^^^^^^^
 
 TCP/IP port number where the database server is listening to. Most
 databases will use their default port if you leave this empty.
 
-opendbx-database
-^^^^^^^^^^^^^^^^
+.. _setting-opendbx-database:
+
+``opendbx-database``
+^^^^^^^^^^^^^^^^^^^^
 
 The database name where all domain and record entries are stored.
 Default=powerdns
 
-opendbx-username
-^^^^^^^^^^^^^^^^
+.. _setting-opendbx-username:
+
+``opendbx-username``
+^^^^^^^^^^^^^^^^^^^^
 
 Name of the user send to the DBMS for authentication. Default=powerdns.
 
-opendbx-password
-^^^^^^^^^^^^^^^^
+.. _setting-opendbx-password:
+
+``opendbx-password``
+^^^^^^^^^^^^^^^^^^^^
 
 Clear text password for authentication in combination with the username.
 

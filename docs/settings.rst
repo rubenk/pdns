@@ -9,7 +9,7 @@ commandline when invoking the ``pdns`` binary.
 You can use ``+=`` syntax to set some variables incrementally, but this
 requires you to have at least one non-incremental setting for the
 variable to act as base setting. This is mostly useful for
-```include-dir`` <#include-dir>`__ directive.
+:ref:`setting-include-dir` directive.
 
 For boolean settings, specifying the name of the setting without a value
 means ``yes``.
@@ -104,7 +104,7 @@ Example: ``allow-recursion=198.51.100.0/24, 10.0.0.0/8, 192.0.2.4``.
 When notifying a domain, also notify these nameservers. Example:
 ``also-notify=192.0.2.1, 203.0.113.167``. The IP addresses listed in
 ``also-notify`` always receive a notification. Even if they do not match
-the list in ```only-notify`` <#also-notify>`__.
+the list in :ref:`setting-only-notify`.
 
 .. _setting-any-to-tcp:
 
@@ -227,7 +227,7 @@ Make sure that ``/dev/log`` is available from within the chroot. Logging
 will silently fail over time otherwise (on logrotate).
 
 When setting ``chroot``, all other paths in the config (except for
-```config-dir`` <#config-dir>`__ and ```module-dir`` <#module-dir>`__)
+:ref:`setting-config-dir` and ```module-dir`` <#module-dir>`__)
 set in the configuration are relative to the new root.
 
 When running on a system where systemd manages services, ``chroot`` does
@@ -319,7 +319,7 @@ Name to insert in the SOA record if none set in the backend.
 -  Available since: 3.4.7
 
 Use this soa-edit value for all zones if no
-```SOA-EDIT`` <domainmetadata.md#SOA-EDIT>`__ metadata value is set.
+:ref:`metadata-soa-edit` metadata value is set.
 
 .. _setting-default-soa-edit-signed:
 
@@ -331,8 +331,8 @@ Use this soa-edit value for all zones if no
 -  Available since: 3.4.7
 
 Use this soa-edit value for all signed zones if no
-```SOA-EDIT`` <domainmetadata.md#SOA-EDIT>`__ metadata value is set.
-Overrides ```default-soa-edit`` <#default-soa-edit>`__
+:ref:`metadata-soa-edit` metadata value is set.
+Overrides :ref:`setting-default-soa-edit`
 
 .. _setting-default-soa-mail:
 
@@ -419,9 +419,11 @@ regression testing.
 -  Default: no
 
 Do not log to syslog, only to stdout. Use this setting when running
-inside a supervisor that handles logging (like systemd). **Note**: do
-not use this setting in combination with ```daemon`` <#daemon>`__ as all
-logging will disappear.
+inside a supervisor that handles logging (like systemd).
+
+..warning::
+  Do not use this setting in combination with :ref:`setting-daemon` as all
+  logging will disappear.
 
 .. _setting-disable-tcp:
 
@@ -533,7 +535,7 @@ A/AAAA).
 If this is disabled (the default), ALIAS records will not expanded and
 the server will will return NODATA for A/AAAA queries for such names.
 
-**note**: ```resolver`` <#resolver>`__ must also be set for ALIAS
+**note**: :ref:`setting-resolver` must also be set for ALIAS
 expansion to work!
 
 **note**: In PowerDNS Authoritative Server 4.0.x, this setting did not
@@ -559,9 +561,10 @@ Forward DNS updates sent to a slave to the master.
 IP addresses to forward received notifications to regardless of master
 or slave settings.
 
-Note: The intended use is in anycast environments where it might be
-necessary for a proxy server to perform the AXFR. The usual checks are
-performed before any received notification is forwarded.
+.. note::
+  The intended use is in anycast environments where it might be
+  necessary for a proxy server to perform the AXFR. The usual checks are
+  performed before any received notification is forwarded.
 
 .. _setting-guardian:
 
@@ -571,7 +574,7 @@ performed before any received notification is forwarded.
 -  Boolean
 -  Default: no
 
-Run within a guardian process. See `"Guardian" <running.md#guardian>`__.
+Run within a guardian process. See :ref:`running-guardian`.
 
 .. _setting-include-dir:
 
@@ -696,7 +699,7 @@ big problems if you have multiple IP addresses.
 -  Boolean
 -  Default: no
 
-Fail to start if one or more of the ```local-ipv6`` <#local-ipv6>`__
+Fail to start if one or more of the :ref:`setting-local-ipv6`
 addresses do not exist on this server.
 
 .. _setting-local-port:
@@ -748,7 +751,7 @@ Amount of logging. Higher is more. Do not set below 3
 -  Default: no
 
 Tell PowerDNS to log all incoming DNS queries. This will lead to a lot
-of logging! Only enable for debugging! Set ```loglevel`` <#loglevel>`__
+of logging! Only enable for debugging! Set :ref:`setting-loglevel`
 to at least 5 to see the logs.
 
 .. _setting-lua-prequery-script:
@@ -992,18 +995,19 @@ the NS records. By specifying networks/mask as whitelist, the targets
 can be limited. The default is to notify the world. To completely
 disable these NOTIFYs set ``only-notify`` to an empty value. Independent
 of this setting, the IP addresses or netmasks configured with
-```also-notify`` <#also-notify>`__ and ``ALSO-NOTIFY`` domain metadata
+:ref:`setting-also-notify` and ``ALSO-NOTIFY`` domain metadata
 always receive AXFR NOTIFYs.
 
-Note: Even if NOTIFYs are limited by a netmask, PowerDNS first has to
-resolve all the hostnames to check their IP addresses against the
-specified whitelist. The resolving may take considerable time,
-especially if those hostnames are slow to resolve. If you do not need to
-NOTIFY the slaves defined in the NS records (e.g. you are using another
-method to distribute the zone data to the slaves), then set
-``only-notify`` to an empty value and specify the notification targets
-explicitly using ```also-notify`` <#also-notify>`__ and/or
-``ALSO-NOTIFY`` domain metadata to avoid this potential bottleneck.
+.. note::
+  Even if NOTIFYs are limited by a netmask, PowerDNS first has to
+  resolve all the hostnames to check their IP addresses against the
+  specified whitelist. The resolving may take considerable time,
+  especially if those hostnames are slow to resolve. If you do not need to
+  NOTIFY the slaves defined in the NS records (e.g. you are using another
+  method to distribute the zone data to the slaves), then set
+  :ref:`setting-only-notify` to an empty value and specify the notification targets
+  explicitly using :ref:`setting-also-notify` and/or
+  :ref:`metadata-also-notify` domain metadata to avoid this potential bottleneck.
 
 .. _setting-out-of-zone-additional-processing:
 
@@ -1281,9 +1285,8 @@ Where the controlsocket will live. The default depends on
 ``/run``). See `"Controlsocket" <running.md#controlsocket>`__.
 
 This path will also contain the pidfile for this instance of PowerDNS
-called ``pdns.pid`` by default. See ```config-name`` <#config-name>`__
-and `Virtual Hosting <running.md#virtual-hosting>`__ how this can
-differ.
+called ``pdns.pid`` by default. See :ref:`setting-config-name`
+and :doc:`Virtual Hosting <guides/virtual-instances>` how this can differ.
 
 .. _setting-tcp-control-address:
 

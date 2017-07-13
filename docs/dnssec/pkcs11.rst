@@ -1,9 +1,11 @@
 PKCS#11 support
 ===============
 
-**Note**: This feature is experimental, and not ready for production.
-Use at your own risk! **Note**: As of version 4.0, slot IDs are
-deprecated, and you are expected to use slot label instead
+.. note::
+  This feature is experimental, use at your own risk!
+
+.. versiondeprecated:: 4.0.0
+  slot IDs are deprecated, and you are expected to use slot label instead
 
 To enable it, compile PowerDNS Authoritative Server using
 ``--enable-experimental-pkcs11`` flag on configure. This requires you to

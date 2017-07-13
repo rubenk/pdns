@@ -5,6 +5,8 @@ Guides and How Tos
   :maxdepth: 1
 
   basic-database
+  recursion
+  virtual-instances
   alias
   kskroll
   kskrollcdnskey

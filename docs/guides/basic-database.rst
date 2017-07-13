@@ -14,12 +14,13 @@ not want to use the 'root' user):
     gmysql-dbname=pdns
     gmysql-password=mysecretpassword
 
-Remove any earlier ```launch`` <settings.md#launch>`__ statements and
+Remove any earlier :ref:`setting-launch` statements and
 other configuration statements for backends.
 
-**Warning**: Make sure that you can actually resolve the hostname of
-your database without accessing the database! It is advised to supply an
-IP address here to prevent chicken/egg problems!
+.. warning::
+  Make sure that you can actually resolve the hostname of
+  your database without accessing the database! It is advised to supply an
+  IP address here to prevent chicken/egg problems!
 
 Now start PowerDNS in the foreground:
 
@@ -41,15 +42,13 @@ unable to connect to it. Fix these before proceeding.
 General MySQL knowledge is assumed in this chapter, please do not
 interpret these commands as DBA advice!
 
- Example: configuring MySQL
----------------------------
+Example: configuring MySQL
+--------------------------
 
 Connect to MySQL as a user with sufficient privileges and issue the
 following commands:
 
-::
-
-    !!include=../modules/gmysqlbackend/schema.mysql.sql
+.. literalinclude:: include=../../modules/gmysqlbackend/schema.mysql.sql
 
 Now we have a database and an empty table. PowerDNS should now be able
 to launch in monitor mode and display no errors:
@@ -72,8 +71,9 @@ return quickly without data:
     $ dig +short www.example.com @127.0.0.1
     $
 
-**Warning**: When debugging DNS problems, don't use ``host``. Please use
-``dig`` or ``drill``.
+.. warning::
+  When debugging DNS problems, don't use ``host``. Please use
+  ``dig`` or ``drill``.
 
 And indeed, the output in the first terminal now shows:
 
@@ -102,10 +102,11 @@ Now we need to add some records to our database (in a separate shell):
     INSERT INTO records (domain_id, name, content, type,ttl,prio)
     VALUES (1,'example.com','mail.example.com','MX',120,25);
 
-**Warning**: Host names and the MNAME of a `SOA <../types.md#soa>`__
-records are NEVER terminated with a '.' in PowerDNS storage! If a
-trailing '.' is present it will inevitably cause problems, problems that
-may be hard to debug.
+.. warning::
+  Host names and the MNAME of a :ref:`types-soa`
+  records are NEVER terminated with a '.' in PowerDNS storage! If a
+  trailing '.' is present it will inevitably cause problems, problems that
+  may be hard to debug.
 
 If we now requery our database, ``www.example.com`` should be present:
 
@@ -167,8 +168,7 @@ On systemd systems:
     timedout-packets=0,udp-answers=7,udp-queries=7,
 
 You now have a working database driven nameserver! To convert other
-zones already present, use the ```zone2sql`` <migration.md#zone2sql>`__
-tool.
+zones already present, see the :doc:`migration guide <../migration>`.
 
 Common problems
 ---------------
@@ -182,8 +182,7 @@ Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
 Your MySQL installation is probably defaulting to another location for
 its socket. Can be resolved by figuring out this location (often
 ``/var/run/mysqld.sock``), and specifying it in the configuration file
-with the ```gmysql-socket`` <backend-generic-mysql.md#gmysql-socket>`__
-parameter.
+with the :ref:`setting-gmysql-socket` parameter.
 
 Another solution is to not connect to the socket, but to 127.0.0.1,
 which can be achieved by specifying
@@ -208,7 +207,7 @@ This means that another nameserver is listening on port 53 already. You
 can resolve this problem by determining if it is safe to shutdown the
 nameserver already present, and doing so. If uncertain, it is also
 possible to run PowerDNS on another port. To do so, add
-```local-port=5300`` <settings.md#local-port>`__ to ``pdns.conf``, and
+:ref:`setting-local-port`\ =5300 to ``pdns.conf``, and
 try again. This however implies that you can only test your nameserver
 as clients expect the nameserver to live on port 53.
 
@@ -217,7 +216,7 @@ binding to UDP socket: Permission denied
 
 You must be superuser in order to be able to bind to port 53. If this is
 not a possibility, it is also possible to run PowerDNS on another port.
-To do so, add ```local-port=5300`` <settings.md#local-port>`__ to
+To do so, add :ref:`setting-local-port`\ =5300 to
 ``pdns.conf``, and try again. This however implies that you can only
 test your nameserver as clients expect the nameserver to live on port
 53.
@@ -232,8 +231,7 @@ Multiple IP addresses on your server, PowerDNS sending out answers on the wrong 
 
 If you have multiple IP addresses on the internet on one machine, UNIX
 often sends out answers over another interface than which the packet
-came in on. In such cases, use
-```local-address`` <settings.md#local-address>`__ to bind to specific IP
+came in on. In such cases, use :ref:`setting-local-address` to bind to specific IP
 addresses, which can be comma separated. The second error comes from
 remotes disregarding answers to questions it didn't ask to that IP
 address and sending back ICMP errors.

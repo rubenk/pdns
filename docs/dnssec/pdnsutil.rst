@@ -7,8 +7,9 @@ scenes, ``pdnsutil`` manipulates a PowerDNS backend database, which also
 means that for many databases, ``pdnsutil`` can be run remotely, and can
 configure key material on different servers.
 
-For a list of available commands, see the
-`manpage <../manpages/pdnsutil.1.md>`__.
+For a list of available commands, see the :doc:`manpage <../manpages/pdnsutil.1>`.
+
+.. _dnssec-pdnsutil-dnssec-defaults:
 
 DNSSEC Defaults
 ---------------
@@ -21,4 +22,5 @@ sense to have this split-key setup.
 
 The default negative answer strategy is NSEC.
 
-**Note**: not all registrars support algorithm 13.
+.. note::
+  Not all registrars support algorithm 13.

@@ -41,23 +41,16 @@ These are the configuration file parameters that are available for the
 GeoIP backend. geoip-zones-files is the only thing you must set, if the
 defaults suite you.
 
-``geoip-database-file``
-~~~~~~~~~~~~~~~~~~~~~~~
-
-Before 4.0.0. Specifies the full path of the data file for IPv4 to use.
-
-``geoip-database-file6``
-~~~~~~~~~~~~~~~~~~~~~~~~
-
-Before 4.0.0. Specifies the full path of the data file for IPv6 to use.
+.. _setting-geoip-database-files:
 
 ``geoip-database-files``
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-After 4.0.0. Comma, tab or space separated list of files to open. You
-can use
+Comma, tab or space separated list of files to open. You can use
 `geoip-cvs-to-dat <https://github.com/dankamongmen/sprezzos-world/blob/master/packaging/geoip/debian/src/geoip-csv-to-dat.cpp>`__
 to generate your own.
+
+.. _setting-geoip-database-cache:
 
 ``geoip-database-cache``
 ~~~~~~~~~~~~~~~~~~~~~~~~
@@ -67,10 +60,14 @@ of "standard", "memory", "index" or "mmap". These options map to the
 caching options described
 `here <https://github.com/maxmind/geoip-api-c/blob/master/README.md#memory-caching-and-other-options>`__
 
+.. _setting-geoip-zones-file:
+
 ``geoip-zones-file``
 ~~~~~~~~~~~~~~~~~~~~
 
 Specifies the full path of the zone configuration file to use.
+
+.. _setting-geoip-dnssec-keydir:
 
 ``geoip-dnssec-keydir``
 ~~~~~~~~~~~~~~~~~~~~~~~
@@ -170,9 +167,10 @@ then caching will not happen for any records of something.example.com.
 If you need to use TXT for debugging, make sure you use dedicated name
 for it.
 
-**WARNING**: If your services match wildcard records in your zone file
-then these will be returned as CNAMEs. This will only be an issue if you
-are trying to use a service record at the apex of your domain where you
-need other record types to be present (such as NS and SOA records.) Per
-RFC2181, CNAME records cannot appear in the same label as NS or SOA
-records.
+.. warning::
+  If your services match wildcard records in your zone file
+  then these will be returned as CNAMEs. This will only be an issue if you
+  are trying to use a service record at the apex of your domain where you
+  need other record types to be present (such as NS and SOA records.) Per
+  :rfc:`2181`, CNAME records cannot appear in the same label as NS or SOA
+  records.

@@ -13,12 +13,13 @@ Generic MySQL backend
 * Module name: gmysql
 * Launch name: ``gmysql``
 
-**warning**: If using MySQL with 'slave' support enabled in PowerDNS you
-**must** run MySQL with a table engine that supports transactions. In
-practice, great results are achieved with the 'InnoDB' tables. PowerDNS
-will silently function with non-transaction aware MySQLs but at one
-point this is going to harm your database, for example when an incoming
-zone transfer fails.
+.. warning::
+  If using MySQL with 'slave' support enabled in PowerDNS you
+  **must** run MySQL with a table engine that supports transactions. In
+  practice, great results are achieved with the 'InnoDB' tables. PowerDNS
+  will silently function with non-transaction aware MySQLs but at one
+  point this is going to harm your database, for example when an incoming
+  zone transfer fails.
 
 The default schema is included at the bottom of this page.
 ```zone2sql`` <migration.md#zone2sql>`__ with the ``--gmysql`` flag also
@@ -46,57 +47,75 @@ for more information.
 Settings
 --------
 
+.. _setting-gmysql-host:
+
 ``gmysql-host``
 ^^^^^^^^^^^^^^^
 
-Host (ip address) to connect to. Mutually exclusive with
-``gmysql-socket``.
+Host (ip address) to connect to. Mutually exclusive with :ref:`setting-gmysql-socket`.
 
-**WARNING:** When specified as a hostname a chicken/egg situation might
-arise where the database is needed to resolve the IP address of the
-database. It is best to supply an IP address of the database here.
+.. warning::
+  When specified as a hostname a chicken/egg situation might
+  arise where the database is needed to resolve the IP address of the
+  database. It is best to supply an IP address of the database here.
+
+.. _setting-gmysql-port:
 
 ``gmysql-port``
 ^^^^^^^^^^^^^^^
 
-The port to connect to on ``gmysql-host``. Default:
-3306
+The port to connect to on :ref:`setting-gmysql-host`. Default: 3306
+
+.. _setting-gmysql-socket:
 
 ``gmysql-socket``
 ^^^^^^^^^^^^^^^^^
 
-Connect to the UNIX socket at this path. Mutually exclusive with
-``gmysql-host``.
+Connect to the UNIX socket at this path. Mutually exclusive with :ref:`setting-gmysql-host`.
+
+.. _setting-gmysql-dbname:
 
 ``gmysql-dbname``
 ^^^^^^^^^^^^^^^^^
 
 Name of the database to connect to. Default: "pdns".
 
+.. _setting-gmysql-user:
+
 ``gmysql-user``
 ^^^^^^^^^^^^^^^
 
 User to connect as. Default: "powerdns".
+
+.. _setting-gmysql-group:
 
 ``gmysql-group``
 ^^^^^^^^^^^^^^^^
 
 Group to connect as. Default: "client".
 
+.. _setting-gmysql-password:
+
 ``gmysql-password``
 ^^^^^^^^^^^^^^^^^^^
 
-The password to for ```gmysql-user``.
+The password to for :ref:`setting-gmysql-user`.
+
+.. _setting-gmysql-dnssec:
 
 ``gmysql-dnssec``
 ^^^^^^^^^^^^^^^^^
 
 Enable DNSSEC processing for this backend. Default=no.
 
+.. _setting-gmysql-innodb-read-committed:
+
 ``gmysql-innodb-read-committed``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Use the InnoDB READ-COMMITTED transaction isolation level. Default=yes.
+
+.. _setting-gmysql-timeout:
 
 ``gmysql-timeout``
 ^^^^^^^^^^^^^^^^^^

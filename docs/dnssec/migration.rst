@@ -17,14 +17,13 @@ If you run an older version of PowerDNS, please upgrade to 3.4 and apply
 all the changes in database schemas as shown in the `upgrade
 documentation <upgrading.md>`__.
 
-**Warning**: Once the relevant ``backend-dnssec`` switch has been set,
-stricter rules apply for filling out the database! The short version is:
-run ``pdnsutil rectify-all-zones``, even those not secured with DNSSEC!
-For more information, see the `DNSSEC documentation for Generic SQL
-backends <backend-generic-sql.md#handling-dnssec-signed-zones>`__.
+.. warning::
+  Once the relevant ``backend-dnssec`` switch has been set,
+  stricter rules apply for filling out the database! The short version is:
+  run ``pdnsutil rectify-all-zones``, even those not secured with DNSSEC!
+  For more information, see the :ref:`generic-sql-handling-dnssec-signed-zones`.
 
-To deliver a correctly signed zone with the `DNSSEC
-defaults <#dnssec-defaults>`__, invoke:
+To deliver a correctly signed zone with the :ref:`dnssec-pdnsutil-dnssec-defaults`, invoke:
 
 ::
 

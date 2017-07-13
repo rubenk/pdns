@@ -1,5 +1,5 @@
-TSIG: shared secret authorization and authentication
-====================================================
+TSIG
+====
 
 TSIG, as defined in `RFC 2845 <http://tools.ietf.org/html/rfc2845>`__,
 is a method for signing DNS messages using shared secrets. Each TSIG
@@ -13,13 +13,14 @@ the algorithm name will typically be 'hmac-md5'. Other supported
 algorithms are 'hmac-sha1', 'hmac-shaX' where X is 224, 256, 384 or 512.
 The content is a Base64-encoded secret.
 
-**Note**: Most backends require DNSSEC support enabled to support TSIG.
-For the Generic SQL Backend make sure to use the DNSSEC enabled schema
-and to turn on the relevant '-dnssec' flag (for example,
-``gmysql-dnssec``)!
+.. note::
+  Most backends require DNSSEC support enabled to support TSIG.
+  For the Generic SQL Backend make sure to use the DNSSEC enabled schema
+  and to turn on the relevant '-dnssec' flag (for example,
+  ``gmysql-dnssec``)!
 
- Provisioning outbound AXFR access
-----------------------------------
+Provisioning outbound AXFR access
+---------------------------------
 
 To actually provision a named secret permission to AXFR a zone, set a
 metadata item in the 'domainmetadata' table called ``TSIG-ALLOW-AXFR``
@@ -62,8 +63,8 @@ A packet authorized and authenticated by a TSIG signature will gain
 access to a zone even if the remote IP address is not otherwise allowed
 to AXFR a zone.
 
- Provisioning signed notification and AXFR requests
----------------------------------------------------
+Provisioning signed notification and AXFR requests
+--------------------------------------------------
 
 To configure PowerDNS to send out TSIG signed AXFR requests for a zone
 to its master(s), set the ``AXFR-MASTER-TSIG`` metadata item for the
@@ -117,16 +118,16 @@ Except that in this case, TSIG will be used for all communications with
 the master, not just those about AXFR requests.
 
 GSS-TSIG support
-================
+----------------
 
 GSS-TSIG allows authentication and authorization of DNS updates or AXFR
 using Kerberos with TSIG signatures.
 
-**Note**: this feature is experimental and subject to change on future
-releases.
+.. note::
+  This feature is experimental and subject to change in future releases.
 
 Prerequisites
--------------
+~~~~~~~~~~~~~
 
 -  Working Kerberos environment. Please refer to your Kerberos vendor
    documentation on how to setup it.
@@ -138,7 +139,7 @@ your kerberos environment is ok before filing an issue. Most common
 problems are time synchronization or changes done to the principal.
 
 Setting up
-----------
+~~~~~~~~~~
 
 To allow AXFR / DNS update to work, you need to configure
 ``GSS-ACCEPTOR-PRINCIPAL`` in

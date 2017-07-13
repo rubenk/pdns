@@ -41,6 +41,8 @@ use either master or slave mode.
 Configuration Parameters
 ------------------------
 
+.. _setting-oracle-pool:
+
 ``oracle-pool-database``, ``oracle-pool-username``, ``oracle-pool-password``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -50,11 +52,15 @@ permissions. If your connection requires environment variables to be
 set, e.g. ``ORACLE_HOME``, ``NLS_LANG``, or ``LD_LIBRARY_PATH``, make
 sure these are set when PowerDNS runs. ``/etc/default/pdns`` might help.
 
+.. _setting-oracle-master:
+
 ``oracle-master-database``, ``oracle-master-username``, ``oracle-master-password``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The database to use for write access. These are normal connections, not
 a session pool. The backend may open more than one at a time.
+
+.. _setting-oracle-session:
 
 ``oracle-session-min``, ``oracle-session-max``, ``oracle-session-inc``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -63,6 +69,8 @@ Parameters for the connection pool underlying the session pool. OCI will
 open ``session-min`` connections at startup, and open more connections
 as needed, ``session-inc`` at a time, until ``session-max`` connections
 are open.
+
+.. _setting-oracle-nameserver-name:
 
 ``oracle-nameserver-name``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -88,12 +96,13 @@ statements still work out, you can store your DNS data any way you like.
 You should read this while having ``schema.sql`` to hand. Columns will
 not be specifically explained where their meaning is obvious.
 
-**Note**: All FQDNs should be specified in lower case and without a
-trailing dot. Where things are lexicographically compared or sorted,
-make sure a sane ordering is used.
-``'NLS_LANG=AMERICAN_AMERICA.AL32UTF8'`` should generally work well
-enough; when in doubt, enforce a plain ordering with
-``"NLSSORT(value, 'NLS_SORT = BINARY')"``.
+.. note::
+  All FQDNs should be specified in lower case and without a
+  trailing dot. Where things are lexicographically compared or sorted,
+  make sure a sane ordering is used.
+  ``'NLS_LANG=AMERICAN_AMERICA.AL32UTF8'`` should generally work well
+  enough; when in doubt, enforce a plain ordering with
+  ``"NLSSORT(value, 'NLS_SORT = BINARY')"``.
 
 Zones Table
 ~~~~~~~~~~~
