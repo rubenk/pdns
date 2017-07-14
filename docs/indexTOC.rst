@@ -22,4 +22,5 @@ PowerDNS Authoritative Server
     http-api/index
     settings
     security-advisories/index
+    changelog/index
     appendices/*

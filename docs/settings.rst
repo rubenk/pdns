@@ -685,7 +685,7 @@ Fail to start if one or more of the
 --------------
 
 -  IPv6 Addresses, separated by commas or whitespace
--  Default: ::
+-  Default: '::'
 
 Local IPv6 address to which we bind. It is highly advised to bind to
 specific interfaces and not use the default 'bind to any'. This causes
@@ -1084,7 +1084,7 @@ operating system uses by default for outgoing packets.
 ------------------------
 
 -  IPv6 Address
--  Default: ::
+-  Default: '::'
 
 Source IP address for sending IPv6 queries.
 

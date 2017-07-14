@@ -58,6 +58,8 @@ first, so those permissions apply before the ``forward-dnsupdate`` is
 used. It will try all masters that you have configured until one is
 successful.
 
+.. _dnsupdate-lua-dnsupdate-policy-script:
+
 ``lua-dnsupdate-policy-script``
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 

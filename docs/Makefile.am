@@ -60,7 +60,7 @@ html-docs: common/** manpages/** .venv
 latex/PowerDNS-Authoritative.pdf: common/** manpages/** .venv
 	.venv/bin/python -msphinx -M latexpdf . .
 
-PowerDNS-Authoritative.pdf: latex/PowerDNS-Recursor.pdf
+PowerDNS-Authoritative.pdf: latex/PowerDNS-Authoritative.pdf
 	mv $< $@
 
 html-docs.tar.bz2: html-docs
@@ -71,7 +71,7 @@ all-docs: PowerDNS-Authoritative.pdf html-docs html-docs.tar.bz2
 upload-docs: all-docs
 	rsync -crv --delete --no-p --chmod=g=rwX --exclude '*~' ./html-docs/ web1.powerdns.com:/srv/www/doc.powerdns.com/authoritative/
 	rsync -crv --no-p --chmod=g=rwX --exclude '*~' ./html-docs.tar.bz2 web1.powerdns.com:/srv/www/doc.powerdns.com/authoritative/
-	rsync -crv --no-p --chmod=g=rwX --exclude '*~' ./PowerDNS-Recursor.pdf web1.powerdns.com:/srv/www/doc.powerdns.com/authoritative/
+	rsync -crv --no-p --chmod=g=rwX --exclude '*~' ./PowerDNS-Authoritative.pdf web1.powerdns.com:/srv/www/doc.powerdns.com/authoritative/
 
 else # if HAVE_VIRTUALENV
 $(dist_MANS):

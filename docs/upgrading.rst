@@ -12,6 +12,7 @@ upgrade notes if your version is older than 3.4.2.
 --------------
 
  - Recursion has been removed, see the :doc:`dedicated migration guide <guides/recursion>`.
+ - ALIAS record expension is disabled by default, use :ref:`setting-expand-alias` to enable.
 
 Changed options
 ^^^^^^^^^^^^^^^

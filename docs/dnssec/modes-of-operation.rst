@@ -12,6 +12,8 @@ handbooks. This mode is easier however.
 For relevant tradeoffs, please see `Security <#security>`__ and
 `Performance <#performance.html>`__.
 
+.. _dnssec-online-signing:
+
 Online Signing
 --------------
 
@@ -132,17 +134,16 @@ required for the receiving party to rectify the zone without knowing the
 keys, such as signed NSEC3 records for empty non-terminals. The zone is
 not required to be rectified on the master.
 
-Signatures and Hashing is similar as described :ref:`online-signing`.
+Signatures and Hashing is similar as described in :ref:`dnssec-online-signing`.
 
 BIND-mode operation
 -------------------
 
-Starting with PowerDNS 3.1, the bindbackend can manage keys in an
+The :doc:`bindbackend <../backends/bind>` can manage keys in an
 SQLite3 database without launching a separate gsqlite3 backend.
 
 To use this mode, add
-```bind-dnssec-db=/var/db/bind-dnssec-db.sqlite3`` <backend-bind.md#bind-dnssec-db>`__
-to pdns.conf, and run
+``bind-dnssec-db=/var/db/bind-dnssec-db.sqlite3`` to pdns.conf, and run
 ``pdnsutil create-bind-db /var/db/bind-dnssec-db.sqlite3``. Then,
 restart PowerDNS.
 
@@ -163,7 +164,7 @@ In hybrid mode, keying material and zone records are stored in different
 backends. This allows for 'bindbackend' operation in full DNSSEC mode.
 
 To benefit from this mode, include at least one database-based backend
-in the 'launch' statement. The :doc:`SQLite 3 backend <../backends/gsqlite3>` probably complements BIND mode
+in the 'launch' statement. The :doc:`SQLite 3 backend <../backends/generic-sqlite3>` probably complements BIND mode
 best, since it does not require a database server process.
 
 .. warning::

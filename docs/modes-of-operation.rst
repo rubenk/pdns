@@ -43,7 +43,7 @@ enabled.
 
 .. warning::
   If you have DNSSEC-signed zones and non-PowerDNS slaves,
-  please check your :ref:`SOAEDIT`
+  please check your :ref:`metadata-soa-edit`
   settings.
 
 .. warning::
@@ -126,7 +126,7 @@ transaction semantics by renaming files if and only if they have been
 retrieved completely and parsed correctly.
 
 Slave operation can also be programmed using several
-:ref:`running-pdnscontrol`` commands. The ``retrieve``
+:ref:`running-pdnscontrol` commands. The ``retrieve``
 command is especially useful as it triggers an immediate retrieval of
 the zone from the configured master.
 

@@ -14,3 +14,5 @@
 /html-docs
 /*.pdf
 /latex
+/doctrees
+html-docs.tar.bz2
