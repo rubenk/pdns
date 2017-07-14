@@ -52,20 +52,21 @@ aware that if any TTL in the answer is shorter than this setting, the
 packet cache will respect the answer's shortest TTL.
 
 Some PowerDNS operators set cache-ttl to many hours or even days, and
-use :ref:`running-pdns_control>`\ ``purge`` to
+use :ref:`pdns_control purge <running-pdns_control>`  to
 selectively or globally notify PowerDNS of changes made in the backend.
-Also look at the `Query Cache <#query-cache>`__ described in this
+Also look at the :ref:`query-cache` described in this
 chapter. It may materially improve your performance.
 
 To determine if PowerDNS is unable to keep up with packets, determine
-the value of the ```qsize-q`` <../common/logging.md#counters>`__
-variable. This represents the number of packets waiting for database
-attention. During normal operations the queue should be small.
+the value of the :ref:`stat-qsize-q` variable. This represents the number of
+packets waiting for database attention. During normal operations the
+queue should be small.
 
 Logging truly kills performance as answering a question from the cache
 is an order of magnitude less work than logging a line about it. Busy
-sites will prefer to turn
-:ref:`setting-log-dns-details` off.
+sites will prefer to turn :ref:`setting-log-dns-details` off.
+
+.. _packet-cache:
 
 Packet Cache
 ------------
@@ -84,6 +85,8 @@ actually hurt performance.
   The maximum size of the packet cache is controlled by the
   :ref:`setting-max-packet-cache-entries` entries. Before that both the
   query cache and the packet cache used the :ref:`setting-max-cache-entries` setting.
+
+.. _query-cache:
 
 Query Cache
 -----------
@@ -123,98 +126,350 @@ Performance Monitoring
 A number of counters and variables are set during PowerDNS Authoritative
 Server operation.
 
+.. _counters:
+
 Counters
 ~~~~~~~~
 
-All counters that show the "number of X" count since the last startup of
-the daemon.
+All counters that show the "number of X" count since the last startup of the daemon.
 
--  ``corrupt-packets``: Number of corrupt packets received
--  ``deferred-cache-inserts``: Number of cache inserts that were
-   deferred because of maintenance
--  ``deferred-cache-lookup``: Number of cache lookups that were deferred
+.. _stat-corrupt-packets:
+
+corrupt-packets
+^^^^^^^^^^^^^^^
+Number of corrupt packets received
+
+.. _stat-deferred-cache-inserts:
+
+deferred-cache-inserts
+^^^^^^^^^^^^^^^^^^^^^^
+Number of cache inserts that were deferred because of maintenance
+
+.. _stat-deferred-cache-lookup:
+
+deferred-cache-lookup
+^^^^^^^^^^^^^^^^^^^^^
+Number of cache lookups that were deferred
    because of maintenance
--  ``deferred-packetcache-inserts``: Number of packet cache inserts that
-   were deferred because of maintenance
--  ``deferred-packetcache-lookup``: Number of packet cache lookups that
-   were deferred because of maintenance
--  ``dnsupdate-answers``: Number of DNS update packets successfully
-   answered
--  ``dnsupdate-changes``: Total number of changes to records from DNS
-   update
--  ``dnsupdate-queries``: Number of DNS update packets received
--  ``dnsupdate-refused``: Number of DNS update packets that were refused
--  ``incoming-notifications``: Number of NOTIFY packets that were
-   received
--  ``key-cache-size``: Number of entries in the key cache
--  ``latency``: Average number of microseconds a packet spends within
-   PowerDNS
--  ``meta-cache-size``: Number of entries in the metadata cache
--  ``overload-drops``: Number of questions dropped because backends
-   overloaded
--  ``packetcache-hit``: Number of packets which were answered out of the
-   cache
--  ``packetcache-miss``: Number of times a packet could not be answered
-   out of the cache
--  ``packetcache-size``: Amount of packets in the packetcache
--  ``qsize-q``: Number of packets waiting for database attention
--  ``query-cache-hit``: Number of hits on the `query
-   cache <performance.md#query-cache>`__
--  ``query-cache-miss``: Number of misses on the `query
-   cache <performance.md#query-cache>`__
--  ``query-cache-size``: Number of entries in the query cache
--  ``rd-queries``: Number of packets sent by clients requesting
-   recursion (regardless of if we'll be providing them with recursion).
-   Since 3.4.0.
--  ``recursing-answers``: Number of packets we supplied an answer to
-   after recursive processing
--  ``recursing-questions``: Number of packets we performed recursive
-   processing for
--  ``recursion-unanswered``: Number of packets we sent to our recursor,
-   but did not get a timely answer for. Since 3.4.0.
--  ``security-status``: Security status based on `security
-   polling <../common/security.md#implementation>`__
--  ``servfail-packets``: Amount of packets that could not be answered
-   due to database problems
--  ``signature-cache-size``: Number of entries in the signature cache
--  ``signatures``: Number of DNSSEC signatures created
--  ``sys-msec``: Number of CPU milliseconds sent in system time
--  ``tcp-answers-bytes``: Total number of answer bytes sent over TCP
-   (since 4.0.0)
--  ``tcp-answers``: Number of answers sent out over TCP
--  ``tcp-queries``: Number of questions received over TCP
--  ``tcp4-answers-bytes``: Total number of answer bytes sent over TCPv4
-   (since 4.0.0)
--  ``tcp4-answers``: Number of answers sent out over TCPv4
--  ``tcp4-queries``: Number of questions received over TCPv4
--  ``tcp6-answers-bytes``: Total number of answer bytes sent over TCPv6
-   (since 4.0.0)
--  ``tcp6-answers``: Number of answers sent out over TCPv6
--  ``tcp6-queries``: Number of questions received over TCPv6
--  ``timedout-packets``: Amount of packets that were dropped because
-   they had to wait too long internally
--  ``udp-answers-bytes``: Total number of answer bytes sent over UDP
--  ``udp-answers``: Number of answers sent out over UDP
--  ``udp-do-queries``: Number of queries received with the DO (DNSSEC
-   OK) bit set
--  ``udp-in-errors``: Number of packets, received faster than the OS
-   could process them
--  ``udp-noport-errors``: Number of UDP packets where an ICMP response
-   was received that the remote port was not listening
--  ``udp-queries``: Number of questions received over UDP
--  ``udp-recvbuf-errors``: Number of errors caused in the UDP receive
+
+.. _stat-deferred-packetcache-inserts:
+
+deferred-packetcache-inserts
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Number of packet cache inserts that were deferred because of maintenance
+
+.. _stat-deferred-packetcache-lookup:
+
+deferred-packetcache-lookup
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Number of packet cache lookups that were deferred because of maintenance
+
+.. _stat-dnsupdate-answers:
+
+dnsupdate-answers
+^^^^^^^^^^^^^^^^^
+Number of DNS update packets successfully answered
+
+.. _stat-dnsupdate-changes:
+
+dnsupdate-changes
+^^^^^^^^^^^^^^^^^
+Total number of changes to records from DNS update
+
+.. _stat-dnsupdate-queries:
+
+dnsupdate-queries
+^^^^^^^^^^^^^^^^^
+Number of DNS update packets received
+
+.. _stat-dnsupdate-refused:
+
+dnsupdate-refused
+^^^^^^^^^^^^^^^^^
+Number of DNS update packets that were refused
+
+.. _stat-incoming-notifications:
+
+incoming-notifications
+^^^^^^^^^^^^^^^^^^^^^^
+Number of NOTIFY packets that were received
+
+.. _stat-key-cache-size:
+
+key-cache-size
+^^^^^^^^^^^^^^
+Number of entries in the key cache
+
+.. _stat-latency:
+
+latency
+^^^^^^^
+Average number of microseconds a packet spends within PowerDNS
+
+.. _stat-meta-cache-size:
+
+meta-cache-size
+^^^^^^^^^^^^^^^
+Number of entries in the metadata cache
+
+.. _stat-overload-drops:
+
+overload-drops
+^^^^^^^^^^^^^^
+Number of questions dropped because backends overloaded
+
+.. _stat-packetcache-hit:
+
+packetcache-hit
+^^^^^^^^^^^^^^^
+Number of packets which were answered out of the cache
+
+.. _stat-packetcache-miss:
+
+packetcache-miss
+^^^^^^^^^^^^^^^^
+Number of times a packet could not be answered out of the cache
+
+.. _stat-packetcache-size:
+
+packetcache-size
+^^^^^^^^^^^^^^^^
+Amount of packets in the packetcache
+
+.. _stat-qsize-q:
+
+qsize-q
+^^^^^^^
+Number of packets waiting for database attention
+
+.. _stat-query-cache-hit:
+
+query-cache-hit
+^^^^^^^^^^^^^^^
+Number of hits on the :ref:`query-cache`
+
+.. _stat-query-cache-miss:
+
+query-cache-miss
+^^^^^^^^^^^^^^^^
+Number of misses on the :ref:`query-cache`
+
+.. _stat-query-cache-size:
+
+query-cache-size
+^^^^^^^^^^^^^^^^
+Number of entries in the query cache
+
+.. _stat-rd-queries:
+
+rd-queries
+^^^^^^^^^^
+Number of packets sent by clients requesting recursion (regardless of if we'll be providing them with recursion).
+
+.. _stat-recursing-answers:
+
+recursing-answers
+^^^^^^^^^^^^^^^^^
+Number of packets we supplied an answer to after recursive processing
+
+.. _stat-recursing-questions:
+
+recursing-questions
+^^^^^^^^^^^^^^^^^^^
+Number of packets we performed recursive processing for.
+
+.. _stat-recursion-unanswered:
+
+recursion-unanswered
+^^^^^^^^^^^^^^^^^^^^
+Number of packets we sent to our recursor, but did not get a timely answer for.
+
+.. _stat-security-status:
+
+security-status
+^^^^^^^^^^^^^^^
+Security status based on :ref:`secpoll`.
+
+.. _stat-servfail-packets:
+
+servfail-packets
+^^^^^^^^^^^^^^^^
+Amount of packets that could not be answered due to database problems
+
+.. _stat-signature-cache-size:
+
+signature-cache-size
+^^^^^^^^^^^^^^^^^^^^
+Number of entries in the signature cache
+
+.. _stat-signatures:
+
+signatures
+^^^^^^^^^^
+Number of DNSSEC signatures created
+
+.. _stat-sys-msec:
+
+sys-msec
+^^^^^^^^
+Number of CPU milliseconds sent in system time
+
+.. _stat-tcp-answers-bytes:
+
+tcp-answers-bytes
+^^^^^^^^^^^^^^^^^
+Total number of answer bytes sent over TCP
+
+.. _stat-tcp-answers:
+
+tcp-answers
+^^^^^^^^^^^
+Number of answers sent out over TCP
+
+.. _stat-tcp-queries:
+
+tcp-queries
+^^^^^^^^^^^
+Number of questions received over TCP
+
+.. _stat-tcp4-answers-bytes:
+
+tcp4-answers-bytes
+^^^^^^^^^^^^^^^^^^
+Total number of answer bytes sent over TCPv4
+
+.. _stat-tcp4-answers:
+
+tcp4-answers
+^^^^^^^^^^^^^^^^
+Number of answers sent out over TCPv4
+
+.. _stat-tcp4-queries:
+
+tcp4-queries
+^^^^^^^^^^^^
+Number of questions received over TCPv4
+
+.. _stat-tcp6-answers-bytes:
+
+tcp6-answers-bytes
+^^^^^^^^^^^^^^^^^^
+Total number of answer bytes sent over TCPv6
+
+.. _stat-tcp6-answers:
+
+tcp6-answers
+^^^^^^^^^^^^
+Number of answers sent out over TCPv6
+
+.. _stat-tcp6-queries:
+
+tcp6-queries
+^^^^^^^^^^^^
+Number of questions received over TCPv6
+
+.. _stat-timedout-packets:
+
+timedout-packets
+^^^^^^^^^^^^^^^^
+Amount of packets that were dropped because they had to wait too long internally
+
+.. _stat-udp-answers-bytes:
+
+udp-answers-bytes
+^^^^^^^^^^^^^^^^^
+Total number of answer bytes sent over UDP
+
+.. _stat-udp-answers:
+
+udp-answers
+^^^^^^^^^^^
+Number of answers sent out over UDP
+
+.. _stat-udp-do-queries:
+
+udp-do-queries
+^^^^^^^^^^^^^^
+Number of queries received with the DO (DNSSEC OK) bit set
+
+.. _stat-udp-in-errors:
+
+udp-in-errors
+^^^^^^^^^^^^^
+Number of packets, received faster than the OS could process them
+
+.. _stat-udp-noport-errors:
+
+udp-noport-errors
+^^^^^^^^^^^^^^^^^
+Number of UDP packets where an ICMP response was received that the remote port was not listening
+
+.. _stat-udp-queries:
+
+udp-queries
+^^^^^^^^^^^
+Number of questions received over UDP
+
+.. _stat-udp-recvbuf-errors:
+
+udp-recvbuf-errors
+^^^^^^^^^^^^^^^^^^
+Number of errors caused in the UDP receive
    buffer
--  ``udp-sndbuf-errors``: Number of errors caused in the UDP send buffer
--  ``udp4-answers-bytes``: Total number of answer bytes sent over UDPv4
-   (Since 4.0.0)
--  ``udp4-answers``: Number of answers sent out over UDPv4
--  ``udp4-queries``: Number of questions received over UDPv4
--  ``udp6-answers-bytes``: Total number of answer bytes sent over UDPv6
-   (Since 4.0.0)
--  ``udp6-answers``: Number of answers sent out over UDPv6
--  ``udp6-queries``: Number of questions received over UDPv6
--  ``uptime``: Uptime in seconds of the daemon
--  ``user-msec``: Number of milliseconds spend in CPU 'user' time
+
+.. _stat-udp-sndbuf-errors:
+
+udp-sndbuf-errors
+^^^^^^^^^^^^^^^^^
+Number of errors caused in the UDP send buffer
+
+.. _stat-udp4-answers-bytes:
+
+udp4-answers-bytes
+^^^^^^^^^^^^^^^^^^
+Total number of answer bytes sent over UDPv4
+
+.. _stat-udp4-answers:
+
+udp4-answers
+^^^^^^^^^^^^
+Number of answers sent out over UDPv4
+
+.. _stat-udp4-queries:
+
+udp4-queries
+^^^^^^^^^^^^
+Number of questions received over UDPv4
+
+.. _stat-udp6-answers-bytes:
+
+udp6-answers-bytes
+^^^^^^^^^^^^^^^^^^
+Total number of answer bytes sent over UDPv6
+
+.. _stat-udp6-answers:
+
+udp6-answers
+^^^^^^^^^^^
+Number of answers sent out over UDPv6
+
+.. _stat-udp6-queries:
+
+udp6-queries
+^^^^^^^^^^^^
+Number of questions received over UDPv6
+
+.. _stat-uptime:
+
+uptime
+^^^^^^
+Uptime in seconds of the daemon
+
+.. _stat-user-msec:
+
+user-msec
+^^^^^^^^^
+Number of milliseconds spend in CPU 'user' time
 
 Ring buffers
 ~~~~~~~~~~~~
@@ -267,3 +522,25 @@ The following ringbuffers are available:
    is not made aware of this fact, questions come in for which no answer
    is available, nor is the authority. Use this ringbuffer to spot such
    queries.
+
+.. _metricscarbon:
+
+Sending metrics to Graphite/Metronome over Carbon
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+For carbon/graphite/metronome, we use the following namespace.
+Everything starts with 'pdns.', which is then followed by the local hostname.
+Thirdly, we add 'auth' to signify the daemon generating the metrics.
+This is then rounded off with the actual name of the metric. As an example: 'pdns.ns1.auth.questions'.
+
+Care has been taken to make the sending of statistics as unobtrusive as possible, the daemons will not be hindered by an unreachable carbon server, timeouts or connection refused situations.
+
+To benefit from our carbon/graphite support, either install Graphite, or use our own lightweight statistics daemon, Metronome, currently available on `GitHub <https://github.com/ahupowerdns/metronome/>`_.
+
+To enable sending metrics, set :ref:`setting-carbon-server`, possibly :ref:`setting-carbon-interval` and possibly :ref:`setting-carbon-ourname` in the configuration.
+
+.. warning::
+
+  If your hostname includes dots, they will be replaced by underscores so as not to confuse the namespace.
+
+  If you include dots in :ref:`setting-carbon-ourname`, they will **not** be replaced by underscores.
+  As PowerDNS assumes you know what you are doing if you override your hostname.

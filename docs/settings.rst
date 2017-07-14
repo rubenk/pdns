@@ -21,7 +21,8 @@ means ``yes``.
 
 -  Allow 8 bit dns queries
 -  Default: no
--  Available since: 4.0.0
+
+.. versionadded:: 4.0.0
 
 Allow 8 bit DNS queries.
 
@@ -52,7 +53,6 @@ Allow DNS updates from these IP ranges.
 
 -  IP ranges, separated by commas
 -  Default: 0.0.0.0/0,::/0
--  Available since: 3.5.0
 
 Allow AXFR NOTIFY from these IP ranges. Setting this to an empty string
 will drop all incoming notifies.
@@ -64,7 +64,8 @@ will drop all incoming notifies.
 
 -  Boolean
 -  Default: yes
--  Available since: 4.0
+
+.. versionadded:: 4.0.0
 
 Turning this off requires all notifications that are received to be
 signed by valid TSIG signature for the zone.
@@ -76,7 +77,8 @@ signed by valid TSIG signature for the zone.
 
 -  Boolean
 -  Default: yes
--  Available since: 4.0
+
+.. versionadded:: 4.0.0
 
 Turning this off requires all supermaster notifications to be signed by
 valid TSIG signature. It will accept any existing key on slave.
@@ -112,8 +114,9 @@ the list in :ref:`setting-only-notify`.
 --------------
 
 -  Boolean
--  Default: yes (no, in <= 4.0.1)
--  Available since: 3.3
+-  Default: yes
+
+.. versionchanged:: 4.0.1, was 'no' before.
 
 Answer questions for the ANY on UDP with a truncated packet that refers
 the remote server to TCP. Useful for mitigating reflection attacks.
@@ -125,9 +128,8 @@ the remote server to TCP. Useful for mitigating reflection attacks.
 
 -  Boolean
 -  Default: no
--  Available since: 4.0
 
-Enable/disable the `REST API <../httpapi/README.md>`__.
+Enable/disable the :doc:`httpapi/index`.
 
 .. _setting-api-key:
 
@@ -135,7 +137,8 @@ Enable/disable the `REST API <../httpapi/README.md>`__.
 -----------
 
 -  String
--  Available since: 4.0
+
+.. versionadded:: 4.0.0
 
 Static pre-shared authentication key for access to the REST API.
 
@@ -146,7 +149,8 @@ Static pre-shared authentication key for access to the REST API.
 
 -  Boolean
 -  Default: no
--  Available since: 4.0
+
+.. versionadded:: 4.0.0
 
 Disallow data modification through the REST API when set.
 
@@ -157,7 +161,8 @@ Disallow data modification through the REST API when set.
 
 -  Boolean
 -  Default: no
--  Available since: 4.0.4
+
+.. versionadded:: 4.0.4
 
 Also AXFR a zone from a master with a lower serial.
 
@@ -169,8 +174,7 @@ Also AXFR a zone from a master with a lower serial.
 -  Integer
 -  Default: 20
 
-Seconds to store packets in the PacketCache. See `"Packet
-Cache" <performance.md#packet-cache>`__.
+Seconds to store packets in the :ref:`packet-cache`.
 
 .. _setting-carbon-ourname:
 
@@ -179,12 +183,10 @@ Cache" <performance.md#packet-cache>`__.
 
 -  String
 -  Default: the hostname of the server
--  Available since: 3.3.1
 
 If sending carbon updates, if set, this will override our hostname. Be
 careful not to include any dots in this setting, unless you know what
-you are doing. See `"PowerDNS
-Metrics" <../common/logging.md#sending-to-carbongraphitemetronome>`__.
+you are doing. See :ref:`metricscarbon`
 
 .. _setting-carbon-server:
 
@@ -192,13 +194,11 @@ Metrics" <../common/logging.md#sending-to-carbongraphitemetronome>`__.
 -----------------
 
 -  IP Address
--  Available since: 3.3.1
 
 Send all available metrics to this server via the carbon protocol, which
 is used by graphite and metronome. It has to be an address (no
 hostnames). You may specify an alternate port by appending :port, ex:
-127.0.0.1:2004. See `"PowerDNS
-Metrics" <../common/logging.md#sending-to-carbongraphitemetronome>`__.
+127.0.0.1:2004. See :ref:`metricscarbon`.
 
 .. _setting-carbon-interval:
 
@@ -207,11 +207,9 @@ Metrics" <../common/logging.md#sending-to-carbongraphitemetronome>`__.
 
 -  Integer
 -  Default: 30
--  Available since: 3.3.1
 
 If sending carbon updates, this is the interval between them in seconds.
-See `"PowerDNS
-Metrics" <../common/logging.md#sending-to-carbongraphitemetronome>`__.
+See :ref:`metricscarbon`.
 
 .. _setting-chroot:
 
@@ -220,8 +218,7 @@ Metrics" <../common/logging.md#sending-to-carbongraphitemetronome>`__.
 
 -  Path
 
-If set, chroot to this directory for more security. See `"Security
-settings & considerations" <../common/security.md>`__.
+If set, chroot to this directory for more security. See :doc:`security`.
 
 Make sure that ``/dev/log`` is available from within the chroot. Logging
 will silently fail over time otherwise (on logrotate).
@@ -255,7 +252,7 @@ compile-time.
 -  String
 
 Name of this virtual configuration - will rename the binary image. See
-`"Virtual hosting" <running.md#virtual-hosting>`__.
+:doc:`guides/virtual-instances>`.
 
 .. _setting-control-console:
 
@@ -283,10 +280,20 @@ Operate as a daemon.
 -  Default: ecdsa256
 
 The algorithm that should be used for the KSK when running
-```pdnsutil secure-zone`` <../manpages/pdnsutil.1.md>`__. Must be one
-of: \* rsamd5 \* dh \* dsa \* ecc \* rsasha1 \* rsasha256 \* rsasha512
-\* ecc-gost \* ecdsa256 (ECDSA P-256 with SHA256) \* ecdsa384 (ECDSA
-P-384 with SHA384) \* ed25519
+:doc:`pdnsutil secure-zone <manpages/pdnsutil.1>`. Must be one
+of: 
+
+* rsamd5 
+* dh 
+* dsa 
+* ecc 
+* rsasha1 
+* rsasha256 
+* rsasha512
+* ecc-gost 
+* ecdsa256 (ECDSA P-256 with SHA256) 
+* ecdsa384 (ECDSA P-384 with SHA384) 
+* ed25519
 
 .. _setting-default-ksk-size:
 
@@ -296,8 +303,7 @@ P-384 with SHA384) \* ed25519
 -  Integer
 -  Default: whichever is default for ``default-ksk-algorithms``
 
-The default keysize for the KSK generated with
-```pdnsutil secure-zone`` <../manpages/pdnsutil.1.md>`__.
+The default keysize for the KSK generated with :doc:`pdnsutil secure-zone <dnssec/pdnsutil>`.
 
 .. _setting-default-soa-name:
 
@@ -316,7 +322,6 @@ Name to insert in the SOA record if none set in the backend.
 
 -  String
 -  Default: empty
--  Available since: 3.4.7
 
 Use this soa-edit value for all zones if no
 :ref:`metadata-soa-edit` metadata value is set.
@@ -328,7 +333,6 @@ Use this soa-edit value for all zones if no
 
 -  String
 -  Default: empty
--  Available since: 3.4.7
 
 Use this soa-edit value for all signed zones if no
 :ref:`metadata-soa-edit` metadata value is set.
@@ -362,10 +366,20 @@ TTL to use when none is provided.
 -  Default: (empty)
 
 The algorithm that should be used for the ZSK when running
-```pdnsutil secure-zone`` <../manpages/pdnsutil.1.md>`__. Must be one
-of: \* rsamd5 \* dh \* dsa \* ecc \* rsasha1 \* rsasha256 \* rsasha512
-\* ecc-gost \* ecdsa256 (ECDSA P-256 with SHA256) \* ecdsa384 (ECDSA
-P-384 with SHA384) \* ed25519
+:doc:`pdnsutil secure-zone <manpages/pdnsutil.1>`. Must be one
+of: 
+
+* rsamd5 
+* dh 
+* dsa 
+* ecc 
+* rsasha1 
+* rsasha256 
+* rsasha512
+* ecc-gost 
+* ecdsa256 (ECDSA P-256 with SHA256) 
+* ecdsa384 (ECDSA P-384 with SHA384) 
+* ed25519
 
 .. _setting-default-zsk-size:
 
@@ -375,8 +389,7 @@ P-384 with SHA384) \* ed25519
 -  Integer
 -  Default: whichever is default for ``default-zsk-algorithms``
 
-The default keysize for the ZSK generated with
-```pdnsutil secure-zone`` <../manpages/pdnsutil.1.md>`__.
+The default keysize for the ZSK generated with :doc:`pdnsutil secure-zone <dnssec/pdnsutil>`.
 
 .. _setting-direct-dnskey:
 
@@ -444,7 +457,7 @@ Do not listen to TCP queries. Breaks RFC compliance.
 -  Default: 3
 
 Number of Distributor (backend) threads to start per receiver thread.
-See `"Authoritative Server Performance" <performance.md>`__.
+See :doc:`performance`.
 
 .. _setting-dname-processing:
 
@@ -662,11 +675,10 @@ this reason it is disabled by default.
 
 -  String
 -  Default: empty
--  Available since: 4.0.4
 
-Script to be used to edit incoming AXFRs, see `Modifying a slave zone
-using a
-script <modes-of-operation.md#modifying-a-slave-zone-using-a-script>`__.
+.. versionadded:: 4.1.0
+
+Script to be used to edit incoming AXFRs, see :ref:_modes-of-operation-axfrfilter`
 
 .. _setting-local-address-nonexist-fail:
 
@@ -721,16 +733,15 @@ The port on which we listen. Only one port possible.
 -  Default: no
 
 If set to 'no', informative-only DNS details will not even be sent to
-syslog, improving performance. Available from 2.5 and onwards.
+syslog, improving performance.
 
 .. _setting-logging-facility:
 
 ``logging-facility``
 --------------------
 
-If set to a digit, logging is performed under this LOCAL facility. See
-`"Operational logging using syslog" <../common/logging.md#logging>`__.
-Available from 1.99.9 and onwards. Do not pass names like 'local0'!
+If set to a digit, logging is performed under this LOCAL facility. See :ref:`logging-to-syslog`.
+Do not pass names like 'local0'!
 
 .. _setting-loglevel:
 
@@ -773,8 +784,7 @@ guaranteed to be stable, and is in fact likely to change.
 -  Boolean
 -  Default: no
 
-Turn on master support. See `"Modes of
-operation" <modes-of-operation.md#master-operation>`__.
+Turn on master support. See :ref:`master-operation`.
 
 .. _setting-max-cache-entries:
 
@@ -907,8 +917,7 @@ compile-time.
 -  Integer
 -  Default: 60
 
-Seconds to store queries with no answer in the Query Cache. See `"Query
-Cache" <performance.md#query-cache>`__.
+Seconds to store queries with no answer in the Query Cache. See ref:`query-cache`.
 
 .. _setting-no-config:
 
@@ -966,7 +975,6 @@ it is disabled by default.
 
 -  String
 -  Default: secpoll.powerdns.com.
--  Available since: 3.4.1
 
 Domain name from which to query security update notifications. Setting
 this to an empty string disables secpoll.
@@ -1048,7 +1056,6 @@ they will return NODATA for A/AAAA queries for such names.
 
 -  Boolean
 -  Default: yes
--  Available since: 3.3
 
 PowerDNS Authoritative Server attempts to not send out notifications to
 itself in master mode. In very complicated situations we could guess
@@ -1063,8 +1070,7 @@ prevent-self-notification to "no".
 -  Integer
 -  Default: 20
 
-Seconds to store queries with an answer in the Query Cache. See `"Query
-Cache" <performance.md#query-cache>`__.
+Seconds to store queries with an answer in the Query Cache. See :ref:`query-cache`.
 
 .. _setting-query-local-address:
 
@@ -1107,8 +1113,7 @@ of queries it performs. Can be set at runtime.
 -  Integer
 -  Default: 1500
 
-Maximum number of milliseconds to queue a query. See `"Authoritative
-Server Performance" <performance.md>`__.
+Maximum number of milliseconds to queue a query. See :doc:`performance`.
 
 .. _setting-receiver-threads:
 
@@ -1118,8 +1123,7 @@ Server Performance" <performance.md>`__.
 -  Integer
 -  Default: 1
 
-Number of receiver (listening) threads to start. See `"Authoritative
-Server Performance" <performance.md>`__ for tuning details.
+Number of receiver (listening) threads to start. See :doc:`performance`.
 
 .. _setting-recursive-cache-ttl:
 
@@ -1130,8 +1134,7 @@ Server Performance" <performance.md>`__ for tuning details.
 -  Default: 10
 -  Removed in: 4.1.0
 
-Seconds to store recursive packets in the PacketCache. See `"Packet
-Cache" <performance.md#packet-cache>`__.
+Seconds to store recursive packets in the :ref:`packet-cache`.
 
 .. _setting-recursor:
 
@@ -1139,10 +1142,10 @@ Cache" <performance.md#packet-cache>`__.
 ------------
 
 -  IP Address
--  Removed in: 4.1.0
+
+.. deprecated:: 4.1.0
 
 If set, recursive queries will be handed to the recursor specified here.
-See `"Recursion" <recursion.md>`__.
 
 .. _setting-resolver:
 
@@ -1173,8 +1176,7 @@ Number of AXFR slave threads to start.
 
 -  String
 
-If set, change group id to this gid for more security. See `"Security
-settings & considerations" <../common/security.md>`__.
+If set, change group id to this gid for more security. See :doc:`security`.
 
 .. _setting-setuid:
 
@@ -1183,8 +1185,7 @@ settings & considerations" <../common/security.md>`__.
 
 -  String
 
-If set, change user id to this uid for more security. See `"Security
-settings & considerations <../common/security.md>`__.
+If set, change user id to this uid for more security. See :doc:`security`.
 
 .. _setting-slave:
 
@@ -1194,8 +1195,7 @@ settings & considerations <../common/security.md>`__.
 -  Boolean
 -  Default: no
 
-Turn on slave support. See `"Modes of
-operation" <modes-of-operation.md#slave-operation>`__.
+Turn on slave support. See :ref:`slave-operation`.
 
 .. _setting-slave-cycle-interval:
 
@@ -1241,7 +1241,7 @@ signing speed by changing this number.
 -  Integer
 -  Default: 604800
 
-Default `SOA <../types.md#soa>`__ expire.
+Default :ref:`types-soa` expire.
 
 .. _setting-soa-minimum-ttl:
 
@@ -1251,7 +1251,7 @@ Default `SOA <../types.md#soa>`__ expire.
 -  Integer
 -  Default: 3600
 
-Default `SOA <../types.md#soa>`__ minimum ttl.
+Default :ref:`types-soa` minimum ttl.
 
 .. _setting-soa-refresh-default:
 
@@ -1261,7 +1261,7 @@ Default `SOA <../types.md#soa>`__ minimum ttl.
 -  Integer
 -  Default: 10800
 
-Default `SOA <../types.md#soa>`__ refresh.
+Default :ref:`types-soa` refresh.
 
 .. _setting-soa-retry-default:
 
@@ -1271,7 +1271,7 @@ Default `SOA <../types.md#soa>`__ refresh.
 -  Integer
 -  Default: 3600
 
-Default `SOA <../types.md#soa>`__ retry.
+Default :ref:`types-soa` retry.
 
 .. _setting-socket-dir:
 
@@ -1282,7 +1282,7 @@ Default `SOA <../types.md#soa>`__ retry.
 
 Where the controlsocket will live. The default depends on
 ``LOCALSTATEDIR`` during compile-time (usually ``/var/run`` or
-``/run``). See `"Controlsocket" <running.md#controlsocket>`__.
+``/run``). See :ref:`control-socket`.
 
 This path will also contain the pidfile for this instance of PowerDNS
 called ``pdns.pid`` by default. See :ref:`setting-config-name`
@@ -1332,7 +1332,8 @@ Password for TCP control.
 
 -  Integer
 -  Default: 0 (Disabled)
--  Available since: 4.1
+
+.. versionadded:: 4.1.0
 
 Enable TCP Fast Open support, if available, on the listening sockets.
 The numerical value supplied is used as the queue size, 0 meaning
@@ -1410,10 +1411,10 @@ can set this response to a custom value as well.
 -  Boolean
 -  Default: no
 
-Start a webserver for monitoring. See `"Performance
-Monitoring" <../common/logging.md#performance-monitoring>`__. Before
-4.1.0, it was necessary to enable the webserver to use the REST API,
-this is no longer the case.
+Start a webserver for monitoring. See :doc:`performance`".
+
+.. versionchanged:: 4.1.0
+  It was necessary to enable the webserver to use the REST API, this is no longer the case.
 
 .. _setting-webserver-address:
 
@@ -1423,8 +1424,7 @@ this is no longer the case.
 -  IP Address
 -  Default: 127.0.0.1
 
-IP Address for webserver/API to listen on. See `"Performance
-Monitoring" <../common/logging.md#performance-monitoring>`__.
+IP Address for webserver/API to listen on.
 
 .. _setting-webserver-allow-from:
 
@@ -1443,9 +1443,7 @@ Webserver/API access is only allowed from these subnets.
 
 -  String
 
-The plaintext password required for accessing the webserver. See
-`"Performance
-Monitoring" <../common/logging.md#performance-monitoring>`__.
+The plaintext password required for accessing the webserver.
 
 .. _setting-webserver-port:
 
@@ -1455,8 +1453,7 @@ Monitoring" <../common/logging.md#performance-monitoring>`__.
 -  Integer
 -  Default: 8001
 
-The port where webserver/API will listen on. See `"Performance
-Monitoring" <../common/logging.md#performance-monitoring>`__.
+The port where webserver/API will listen on.
 
 .. _setting-webserver-print-arguments:
 
@@ -1466,8 +1463,7 @@ Monitoring" <../common/logging.md#performance-monitoring>`__.
 -  Boolean
 -  Default: no
 
-If the webserver should print arguments. See `"Performance
-Monitoring" <../common/logging.md#performance-monitoring>`__.
+If the webserver should print arguments. 
 
 .. _setting-write-pid:
 
@@ -1477,7 +1473,7 @@ Monitoring" <../common/logging.md#performance-monitoring>`__.
 -  Boolean
 -  Default: yes
 
-If a PID file should be written. Available since 4.0.
+If a PID file should be written.
 
 .. _setting-xfr-max-received-mbytes:
 

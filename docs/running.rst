@@ -38,12 +38,48 @@ the output from the process itself.
 Removing the ``--disable-syslog`` option from the ``ExecStart`` line
 using ``systemctl edit --full pdns`` enables logging to syslog.
 
+.. _logging-to-syslog:
+
+Logging to syslog
+-----------------
+This chapter assumes familiarity with syslog, the unix logging device.
+PowerDNS logs messages with different levels.
+The more urgent the message, the lower the 'priority'.
+
+By default, PowerDNS will only log messages with an urgency of 3 or lower, but this can be changed using the :ref:`setting-loglevel` setting in the configuration file.
+Setting it to 0 will eliminate all logging, 9 will log everything.
+
+By default, logging is performed under the 'DAEMON' facility which is shared with lots of other programs.
+If you regard nameserving as important, you may want to have it under a dedicated facility so PowerDNS can log to its own files, and not clutter generic files.
+
+For this purpose, syslog knows about 'local' facilities, numbered from LOCAL0 to LOCAL7.
+To move PowerDNS logging to LOCAL0, add :ref:`logging-facility=0 <setting-logging-facility>` to your configuration.
+
+Furthermore, you may want to have separate files for the differing priorities - preventing lower priority messages from obscuring important ones.
+A sample ``syslog.conf`` might be::
+
+  local0.info                       -/var/log/pdns.info
+  local0.warn                       -/var/log/pdns.warn
+  local0.err                        /var/log/pdns.err
+
+Where local0.err would store the really important messages.
+For performance and disk space reasons, it is advised to audit your ``syslog.conf`` for statements also logging PowerDNS activities.
+Many ``syslog.conf``\ s have a ``*.*`` statement to ``/var/log/syslog``, which you may want to remove.
+
+For performance reasons, be especially certain that no large amounts of synchronous logging take place.
+Under Linux, this is indicated by file names not starting with a ``-`` - indicating a synchronous log, which hurts performance.
+
+Be aware that syslog by default logs messages at the configured priority and higher!
+To log only info messages, use ``local0.=info``
+
 Controlling A Running PowerDNS Server
 -------------------------------------
 
 As a DNS server is critical infrastructure, downtimes should be avoided
 as much as possible. Even though PowerDNS (re)starts very fast, it
 offers a way to control it while running.
+
+.. _control-socket:
 
 Control Socket
 ~~~~~~~~~~~~~~
@@ -62,11 +98,10 @@ To communicate with PowerDNS Authoritative Server over the
 controlsocket, the ``pdns_control`` command is used. The syntax is
 simple: ``pdns_control command arguments``. Currently this is most
 useful for telling backends to rediscover domains or to force the
-transmission of notifications. See `Master
-Operation <../authoritative/modes-of-operation.md#master-operation>`__.
+transmission of notifications. See :ref:`mater-operation`.
 
-For all supported ``pdns_control`` commands and options, see `the
-manpage <../manpages/pdns_control.1>`__ and the output of
+For all supported ``pdns_control`` commands and options, see :ref:`the
+manpage <../manpages/pdns_control.1>` and the output of
 ``pdns_control --help`` on your system.
 
 The SysV init script
@@ -101,8 +136,7 @@ commands:
 -  ``show variable``: Show a single statistic, as present in the output
    of the ``dump``.
 -  ``mrtg``: Dump statistics in mrtg format. See the performance
-   `monitoring <../common/logging.md#performance-monitoring>`__
-   documentation.
+   :ref:`counters` documentation.
 
  .. note::
   Packages provided by Operating System vendors might support
