@@ -1,12 +1,12 @@
-dnsreplay manual page
-=====================
+dnsreplay
+=========
 
 :program:`dnsreplay` - A PowerDNS nameserver debugging tool
 
 Synopsis
 --------
 
-**dnsreplay** [*OPTION*]... *FILENAME* *ADDRESS* [*PORT*]
+:program:`dnsreplay` [*OPTION*]... *FILENAME* *ADDRESS* [*PORT*]
 
 Description
 -----------
@@ -23,12 +23,12 @@ By default it only replay queries with recursion-desired flag set.
 Options
 -------
 
-**FILENAME**
+FILENAME
     is expected to be an PCAP file. The queries are send to the DNS
     server specified as *ADDRESS* and *PORT*.
-**ADDRESS**
+ADDRESS
     IPv4 or IPv6 address of the nameserver to replay *FILENAME* to.
-**PORT**
+PORT
     if omitted, 53 will be used.
 
 --help, -h               Show summary of options.

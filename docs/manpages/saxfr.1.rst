@@ -1,22 +1,22 @@
-NAME
-====
+saxfr
+=====
 
-**saxfr** - Perform AXFRs and show information about it
+:program:`saxfr` - Perform AXFRs and show information about it
 
-SYNOPSIS
-========
+Synopsis
+--------
 
-**saxfr** *IPADDRESS* *PORT* *ZONE* [*OPTIONS*]
+:program:`saxfr` *IPADDRESS* *PORT* *ZONE* [*Options*]
 
-DESCRIPTION
-===========
+Description
+-----------
 
-**saxfr** does a zone-transfer (AXFR) of *ZONE* from the nameserver at
+:program:`saxfr` does a zone-transfer (AXFR) of *ZONE* from the nameserver at
 *IPADDRESS* on port *PORT* and displays the transferred zone with NSEC3
 information truncated. See below how to show this information.
 
-OPTIONS
-=======
+Options
+-------
 
 showdetails
     Show all the data in the NSEC3 and DNSKEY RDATA.

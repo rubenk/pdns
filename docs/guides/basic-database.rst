@@ -48,7 +48,7 @@ Example: configuring MySQL
 Connect to MySQL as a user with sufficient privileges and issue the
 following commands:
 
-.. literalinclude:: include=../../modules/gmysqlbackend/schema.mysql.sql
+.. literalinclude:: ../../modules/gmysqlbackend/schema.mysql.sql
 
 Now we have a database and an empty table. PowerDNS should now be able
 to launch in monitor mode and display no errors:

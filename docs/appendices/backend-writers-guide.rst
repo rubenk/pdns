@@ -474,6 +474,9 @@ available. The exact definitions:
         bbd.d_loaded=false;
       }
 
+
+.. _rw-slave:
+
 Read/write slave-capable backends
 ---------------------------------
 
@@ -549,13 +552,17 @@ The mentioned DomainInfo struct looks like this:
 
   Last time this zone was checked over at the master for changes
 
-.. cpp:member:: enum DomainInfo::{Master,Slave,Native} kind
+.. cpp:member:: enum DomainKind DomainInfo::kind
 
   Type of zone
 
-.. cpp:member:: *DNSBackend DomainInfo::backend
+.. cpp:member:: DNSBackend* DomainInfo::backend
 
   Pointer to the backend that feels authoritative for a domain and can act as a slave
+
+.. cpp:enum:: DomainKind
+
+  The kind of domain, one of {Master,Slave,Native}.
 
 These functions all have a default implementation that returns false -
 which explains that these methods can be omitted in simple backends.
@@ -782,34 +789,29 @@ other update/remove functionality at a later stage.
       virtual bool commitTransaction();
       virtual bool abortTransaction();
       virtual bool feedRecord(const DNSResourceRecord &rr, string *ordername);
-      virtual bool replaceRRSet(uint32_t domain_id, const string& qname, const QType& qt, const vector<DNSResourceRecord>& rrset)
+      virtual bool replaceRRSet(uint32_t domain_id, const string& qname, const QType& qt, const vector<DNSResourceRecord>& rrset);
       virtual bool listSubZone(const string &zone, int domain_id);
       /* ... */
     }
 
-.. cpp:function:: virtual bool DNSBackend::startTransaction(const string &qname, int id);
+.. cpp:function:: virtual bool DNSBackend::startTransaction(const string &qname, int id)
 
-  See `Read/write slave-capable
-  backends <#read-write-slave-capable-backends>`__. Please note that this
+  See :ref:`rw-slave`. Please note that this
   function now receives a negative number (-1), which indicates that the
   current zone data should NOT be deleted.
 
-.. cpp:function:: virtual bool DNSBackend::commitTransaction();
+.. cpp:function:: virtual bool DNSBackend::commitTransaction()
 
-  See `Read/write slave-capable
-  backends <#read-write-slave-capable-backends>`__.
+  See :ref:`rw-slave`.
 
-.. cpp:function:: virtual bool DNSBackend::abortTransaction();
+.. cpp:function:: virtual bool DNSBackend::abortTransaction()
 
-  See `Read/write slave-capable
-  backends <#read-write-slave-capable-backends>`__. Method is called when
-  an exception is received.
+  See :ref:`rw-slave`. Method is called when an exception is received.
 
-.. cpp:function:: virtual bool DNSBackend::feedRecord(const DNSResourceRecord &rr, string *ordername);
+.. cpp:function:: virtual bool DNSBackend::feedRecord(const DNSResourceRecord &rr, string *ordername)
 
-  See `Read/write slave-capable
-  backends <#read-write-slave-capable-backends>`__. Please keep in mind
-  that the zone is not empty because ``startTransaction()`` was called
+  See :ref:`rw-slave`. Please keep in mind
+  that the zone is not empty because :func:`DNSBackend::startTransaction` was called
   different.
 
 .. cpp:function:: virtual bool DNSBackend::listSubZone(const string &name, int domain_id)

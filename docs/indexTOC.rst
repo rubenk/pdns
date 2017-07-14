@@ -20,6 +20,7 @@ PowerDNS Authoritative Server
     guides/index
     backends/index
     http-api/index
+    manpages/index
     settings
     security-advisories/index
     changelog/index

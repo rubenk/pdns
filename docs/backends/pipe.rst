@@ -102,7 +102,7 @@ PipeBackend protocol
 Questions come in over a file descriptor, by default standard input.
 Answers are sent out over another file descriptor, standard output by
 default. Questions and answers are terminated by single newline (``\n``)
-characters. Fields in lines must be separated by tab (':raw-latex:`\t`')
+characters. Fields in lines must be separated by tab (``\t``)
 characters.
 
 Handshake
@@ -116,8 +116,9 @@ successfully. If it does not support the indicated version, it should
 respond with ``FAIL``, but not exit. Suggested behaviour is to try and
 read a further line, and wait to be terminated.
 
-**Note**: fields are separated by a tab (':raw-latex:`\t`') character,
-even though they are displayed with spaces in this document.
+.. note::
+  Fields are separated by a tab (``\t``) character,
+  even though they are displayed with spaces in this document.
 
 ``Q``: Regular queries for data
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

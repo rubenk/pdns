@@ -1,15 +1,15 @@
-NAME
-====
+dnswasher
+=========
 
-**dnswasher** - A PowerDNS nameserver debugging tool
+:program:`dnswasher` - A PowerDNS nameserver debugging tool
 
-SYNOPSIS
-========
+Synopsis
+--------
 
-**dnswasher** *INFILE* [*INFILE*] *OUTFILE*
+:program:`dnswasher` *INFILE* [*INFILE*] *OUTFILE*
 
-DESCRIPTION
-===========
+Description
+-----------
 
 dnswasher takes one or more *INFILE*\ s in PCAP format and writes out
 *OUTFILE* also in PCAP format, while obfuscating end-user IP addresses.
@@ -19,17 +19,17 @@ protect the privacy of your users.
 
 The INFILEs must be of identical PCAP type.
 
-Please check the output of **dnswasher** to make sure no customer IP
+Please check the output of :program:`dnswasher` to make sure no customer IP
 addresses remain. Also realize that sufficient data could allow
 individuals to be re-identified based on the domain names they care
 about.
 
-OPTIONS
-=======
+Options
+-------
 
 None
 
-SEE ALSO
-========
+See also
+--------
 
 pcap(3PCAP), tcpdump(8)

@@ -4,7 +4,7 @@ PKCS#11 support
 .. note::
   This feature is experimental, use at your own risk!
 
-.. versiondeprecated:: 4.0.0
+.. deprecated:: 4.0.0
   slot IDs are deprecated, and you are expected to use slot label instead
 
 To enable it, compile PowerDNS Authoritative Server using

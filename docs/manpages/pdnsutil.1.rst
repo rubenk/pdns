@@ -1,38 +1,33 @@
-NAME
-====
+pdnsutil
+========
 
 pdnsutil - PowerDNS dnssec command and control
 
-SYNOPSIS
-========
+Synopsis
+--------
 
 pdnsutil [OPTION]... *COMMAND*
 
-DESCRIPTION
-===========
+Description
+-----------
 
-**pdnsutil** (formerly pdnssec) is a powerful command that is the
+:program:`pdnsutil` (formerly pdnssec) is a powerful command that is the
 operator-friendly gateway into DNSSEC and zone management for PowerDNS.
-Behind the scenes, **pdnsutil** manipulates a PowerDNS backend database,
-which also means that for many databases, **pdnsutil** can be run
+Behind the scenes, :program:`pdnsutil` manipulates a PowerDNS backend database,
+which also means that for many databases, :program:`pdnsutil` can be run
 remotely, and can configure key material on different servers.
 
-OPTIONS
-=======
+Options
+-------
 
--h \| -help
-    Show summary of options
--v \| --verbose
-    Be more verbose.
---force
-    force an action
---config-name *NAME*
-    Virtual configuration name
---config-dir *DIR*
-    Location of pdns.conf. Default is /etc/powerdns.
+-h, --help              Show summary of options
+-v, --verbose           Be more verbose.
+--force                 Force an action
+--config-name <NAME>    Virtual configuration name
+--config-dir <DIR>      Location of pdns.conf. Default is /etc/powerdns.
 
 COMMANDS
-========
+--------
 
 There are many available commands, this section splits them up into
 their respective uses
@@ -53,8 +48,7 @@ algorithms are supported:
 
 activate-zone-key *ZONE* *KEY-ID*
     Activate a key with id *KEY-ID* within a zone called *ZONE*.
-add-zone-key *ZONE* {**KSK**,\ **ZSK**} [**active**,\ **inactive**]
-*KEYBITS* *ALGORITHM*
+add-zone-key *ZONE* {**KSK**,\ **ZSK**} [**active**,\ **inactive**] *KEYBITS* *ALGORITHM*
     Create a new key for zone *ZONE*, and make it a KSK or a ZSK, with
     the specified algorithm. The key is inactive by default, set it to
     **active** to immediately use it to sign *ZONE*. Prints the id of
@@ -85,8 +79,7 @@ import-zone-key *ZONE* *FILE* {**KSK**,\ **ZSK**}
     the added key.
 remove-zone-key *ZONE* *KEY-ID*
     Remove a key with id *KEY-ID* from a zone called *ZONE*.
-set-nsec3 *ZONE* '*HASH-ALGORITHM* *FLAGS* *ITERATIONS* *SALT*'
-[**narrow**]
+set-nsec3 *ZONE* '*HASH-ALGORITHM* *FLAGS* *ITERATIONS* *SALT*' [**narrow**]
     Sets NSEC3 parameters for this zone. The quoted parameters are 4
     values that are used for the the NSEC3PARAM record and decide how
     NSEC3 records are created. The NSEC3 parameters must be quoted on
@@ -219,7 +212,7 @@ backend-cmd *BACKEND* *CMD* [*CMD..*]
     take SQL commands, other backends may take different things. Be
     careful!
 
-SEE ALSO
-========
+See also
+--------
 
 pdns\_server (1), pdns\_control (1)

@@ -1,28 +1,28 @@
-NAME
-====
+dumresp
+=======
 
-**dumresp** - A dumb DNS responder
+:program:`dumresp` - A dumb DNS responder
 
-SYNOPSIS
-========
+Synopsis
+--------
 
 **dumresp** *LOCAL-ADDRESS* *LOCAL-PORT* *NUMBER-OF-PROCESSES*
 
-DESCRIPTION
-===========
+Description
+-----------
 
-**dumresp** accepts DNS packets on *LOCAL-ADDRESS*:*LOCAL-PORT* and
+:program:`dumresp` accepts DNS packets on *LOCAL-ADDRESS*:*LOCAL-PORT* and
 simply replies with the same query, with the QR bit set. When
-*NUMBER-OF-PROCESSES* is set to anything but 1, **dumresp** will spawn
+*NUMBER-OF-PROCESSES* is set to anything but 1, :program:`dumresp` will spawn
 *NUMBER-OF-PROCESSES* forks and use the SO\_REUSEPORT option to bind to
 the port.
 
-OPTIONS
-=======
+Options
+-------
 
 None
 
-SEE ALSO
-========
+See also
+--------
 
 socket(7)

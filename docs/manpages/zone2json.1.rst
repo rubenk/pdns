@@ -1,49 +1,40 @@
-NAME
-====
+zone2json
+=========
 
-**zone2json** - convert BIND zones to JSON
+:program:`zone2json` - convert BIND zones to JSON
 
-SYNOPSIS
-========
+Synopsis
+--------
 
-**zone2json** {**--named-conf=**\ *PATH*,\ **--zone-file=**\ *PATH*
-[**--zone-name=**\ *NAME*]} [*OPTIONS*]
+:program:`zone2json` {**--named-conf=**\ *PATH*, **--zone-file=**\ *PATH* [**--zone-name=**\ *NAME*]} [*OPTION*]
 
-DESCRIPTION
-===========
+Description
+-----------
 
-**zone2json** parses Bind named.conf files and zonefiles and outputs
+:program:`zone2json` parses Bind named.conf files and zonefiles and outputs
 JSON on standard out, which can then be fed to the PowerDNS API.
 
-**zone2json** understands the Bind master file extension ``$GENERATE``
+:program:`zone2json` understands the Bind master file extension ``$GENERATE``
 and will also honour ``$ORIGIN`` and ``$TTL``.
 
-OPTIONS
-=======
+Options
+-------
 
-INPUT OPTIONS
+INPUT Options
 -------------
 
---named-conf=*PATH*
-    Read *PATH* to get the bind configuration
---zone=*PATH*
-    Parse only the zone file at *PATH* Conflicts with **--named-conf**
-    parameter.
---zone-name=*NAME*
-    When parsing a single zone without $ORIGIN statement, set *ZONE* as
-    the zone name.
+--named-conf=<PATH>        Read *PATH* to get the bind configuration
+--zone=<PATH>              Parse only the zone file at *PATH* Conflicts with ``--named-conf`` parameter.
+--zone-name=<NAME>         When parsing a single zone without $ORIGIN statement, set *ZONE* as the zone name.
 
-OTHER OPTIONS
+OTHER Options
 -------------
 
---help
-    List all options
---on-error-resume-next
-    Ignore missing zone files during parsing. Dangerous.
---verbose
-    Be verbose during conversion.
+--help                           List all options
+--on-error-resume-next           Ignore missing zone files during parsing. Dangerous.
+--verbose                        Be verbose during conversion.
 
-SEE ALSO
-========
+See also
+--------
 
-pdns\_server(1)
+pdns_server(1)

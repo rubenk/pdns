@@ -1,5 +1,5 @@
-dnspcap2protobuf manual page
-============================
+dnspcap2protobuf
+================
 
 :program:`dnspcap2protobuf` - A tool to convert PCAPs of DNS traffic to
 PowerDNS Protobuf
@@ -7,7 +7,7 @@ PowerDNS Protobuf
 Synopsis
 --------
 
-**dnspcap2protobuf** *PCAPFILE* *OUTFILE*
+:program:`dnspcap2protobuf` *PCAPFILE* *OUTFILE*
 
 Description
 -----------

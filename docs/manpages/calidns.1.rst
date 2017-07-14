@@ -1,12 +1,12 @@
-calidns manual page
-===================
+calidns
+=======
 
-**calidns** - A DNS recursor testing tool
+:program:`calidns` - A DNS recursor testing tool
 
 Synopsis
 --------
 
-**calidns** [*OPTIONS*] *QUERY\_FILE* *DESTINATION* *INITIAL_QPS* *HITRATE*
+:program:`calidns` [*OPTIONS*] *QUERY\_FILE* *DESTINATION* *INITIAL_QPS* *HITRATE*
 
 Description
 -----------

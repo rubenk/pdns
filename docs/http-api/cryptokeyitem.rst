@@ -6,28 +6,12 @@ CryptoKey
 
 .. json:object:: CryptoKey
 
+  Represents a DNSSEC crypto key
+
   :param string type: "Cryptokey"
-
-      "id": <int>,
-      "active": <bool>,
-      "keytype": <keytype>,
-      "dnskey": <string>,
-      "privatekey": <string>,
-      "ds": [ <ds>,
-              <ds>,
-              .... ]
-    }
-
-Parameters:
-'''''''''''
-
-``id``: read-only.
-
-``keytype``: ``<keytype>`` is one of the following: ``ksk``, ``zsk``,
-``csk``.
-
-``dnskey``: the DNSKEY for this key
-
-``ds``: an array with all DSes for this key
-
-``privatekey``: private key data (in ISC format).
+  :param int id: The internal identifier, read only
+  :param string keytype: One of the following: ``ksk``, ``zsk``, ``csk``
+  :param bool active: Whether or not the key is in active use
+  :param string dnskey: The DNSKEY record for this key
+  :param [string] ds: An array of DS records for this key
+  :param string privatekey: The private key in ISC format

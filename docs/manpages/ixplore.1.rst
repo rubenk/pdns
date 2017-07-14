@@ -1,34 +1,34 @@
-NAME
-====
+ixplore
+=======
 
-**ixplore** - A tool that provides insights into IXFRs
+:program:`ixplore` - A tool that provides insights into IXFRs
 
-SYNOPSIS
-========
+Synopsis
+--------
 
-**ixplore** *COMMAND* *COMMAND\_OPT*...
+:program:`ixplore` *COMMAND* *COMMAND_OPT*...
 
-**ixplore** diff *ZONE* *BEFORE* *AFTER*
+:program:`ixplore` diff *ZONE* *BEFORE* *AFTER*
 
-**ixplore** track *IP ADDRESS* *PORT* *ZONE* *DIRECTORY*
+:program:`ixplore` track *IP ADDRESS* *PORT* *ZONE* *DIRECTORY*
 
-DESCRIPTION
-===========
+Description
+-----------
 
-**ixplore** is a tool to work with IXFR (incremental zonetransfers) in
+:program:`ixplore` is a tool to work with IXFR (incremental zonetransfers) in
 two modes (specified by *COMMAND*): diff or track.
 
 In the 'diff' mode, it will show a diff(1)-like output between *BEFORE*
 and *AFTER*.
 
-In the 'track' mode, **ixplore** consumes IXFRs from *IP ADDRESS* and
+In the 'track' mode, :program:`ixplore` consumes IXFRs from *IP ADDRESS* and
 writes the resulting zonefiles out to *DIRECTORY*/*ZONE*-serial. If no
-initial zonefiles exist, an initial AXFR will be done first. **ixplore**
+initial zonefiles exist, an initial AXFR will be done first. :program:`ixplore`
 will then check the SOA serial on *IP ADDRESS* for *ZONE* every SOA
 Refresh seconds and perform an IXFR if the serial has increased.
 
-OPTIONS
-=======
+Options
+-------
 
 diff-mode
 ---------
@@ -52,7 +52,7 @@ ZONE
 DIRECTORY
     Directory where the zonefiles will be stored.
 
-SEE ALSO
-========
+See also
+--------
 
 diff(1)

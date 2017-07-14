@@ -1,21 +1,21 @@
-NAME
+sdig
 ====
 
-**sdig** - Perform a DNS query and show the results
+:program:`sdig` - Perform a DNS query and show the results
 
-SYNOPSIS
-========
+Synopsis
+--------
 
-**sdig** *IPADDRESS* *PORT* *QNAME* *QTYPE* [*OPTIONS*]
+:program:`sdig` *IPADDRESS* *PORT* *QNAME* *QTYPE* [*OPTION*]
 
-DESCRIPTION
-===========
+Description
+-----------
 
-**sdig** sends a DNS query to *IPADDRESS* on port *PORT* and displays
+:program:`sdig` sends a DNS query to *IPADDRESS* on port *PORT* and displays
 the answer in a formatted way.
 
-OPTIONS
-=======
+Options
+-------
 
 These options can be added to the commandline in any order. dnssec : Set
 the DO bit to request DNSSEC information.

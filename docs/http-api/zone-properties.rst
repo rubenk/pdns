@@ -43,9 +43,6 @@ not yet implemented.
 Please see the description for ``PATCH`` for details on the fields in
 ``RRset``, ``Record`` and ``Comment``.
 
-Notes:
-''''''
-
 Turning on DNSSEC with custom keys: just create the zone with ``dnssec``
 set to ``false``, and add keys using the cryptokeys REST interface. Have
 at least one of them ``active`` set to ``true``. **TODO**: not yet

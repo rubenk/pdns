@@ -1,23 +1,24 @@
-dnsscope manual page
-====================
+dnsscope
+========
 
 :program:`dnsscope` - A PowerDNS nameserver debugging tool
 
-SYNOPSIS
-========
+Synopsis
+--------
 
-**dnsscope** [*OPTION*]... *INFILE*
+:program:`dnsscope` [*OPTION*]... *INFILE*
 
-DESCRIPTION
-===========
+Description
+-----------
 
-**dnsscope** takes an *INFILE* in PCAP format. It generates some simple
+:program:`dnsscope` takes an *INFILE* in PCAP format. It generates some simple
 statistics outputs these to STDOUT.
 
-OPTIONS
-=======
+Options
+-------
 
-**INFILE**            Path to a PCAP file.
+INFILE
+    Path to a PCAP file.
 
 -h, --help                             Show the help.
 --rd                                   Only process packets in *INFILE* with the RD (Recursion Desired)
@@ -29,7 +30,7 @@ OPTIONS
 -w <file>, --write-failures <file>     Write weird packets to a PCAP file at *FILENAME*.
 -v, --verbose                          Be more verbose.
 
-SEE ALSO
-========
+See also
+--------
 
 pcap(3PCAP), tcpdump(8)

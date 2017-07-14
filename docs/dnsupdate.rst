@@ -70,7 +70,7 @@ yourself. See :ref:`dnsupdate-update-policy` for details and
 examples.
 
 The semantics are that first a dynamic update has to be allowed either
-by the global :res:`setting-allow-dnsupdate-from` setting, or by a per-zone
+by the global :ref:`setting-allow-dnsupdate-from` setting, or by a per-zone
 ``ALLOW-DNSUPDATE-FROM`` metadata setting.
 
 Secondly, if a zone has a ``TSIG-ALLOW-DNSUPDATE`` metadata setting, that
@@ -431,7 +431,7 @@ PowerDNS.
 Update policy
 -------------
 
-.. sinceversion:: 4.1.0
+.. versionadded:: 4.1.0
 
 You can define a Lua script to handle DNS UPDATE message
 authorization. The Lua script is to contain at least function called

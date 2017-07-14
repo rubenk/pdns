@@ -1,12 +1,12 @@
-dnsscan manual page
-===================
+dnsscan
+=======
 
 :program:`dnsscan` - List the amount of queries per qtype in a pcap
 
 Synopsis
 --------
 
-**dnsscan** *INFILE*...
+:program:`dnsscan` *INFILE*...
 
 Description
 -----------

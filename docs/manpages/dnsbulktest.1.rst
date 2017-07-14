@@ -1,12 +1,12 @@
-dnsbulktest manual page
-=======================
+dnsbulktest
+===========
 
 :program:`dnsbulktest` - A debugging tool for intermittent resolver failures
 
 Synopsis
 --------
 
-**dnsbulktest** [*OPTION*]... *IPADDRESS* *PORT* [*LIMIT*]
+:program:`dnsbulktest` [*OPTION*]... *IPADDRESS* *PORT* [*LIMIT*]
 
 Description
 -----------
