@@ -52,7 +52,7 @@ aware that if any TTL in the answer is shorter than this setting, the
 packet cache will respect the answer's shortest TTL.
 
 Some PowerDNS operators set cache-ttl to many hours or even days, and
-use ```pdns_control`` <running.md#pdns_control>`__\ ``purge`` to
+use :ref:`running-pdns_control>`\ ``purge`` to
 selectively or globally notify PowerDNS of changes made in the backend.
 Also look at the `Query Cache <#query-cache>`__ described in this
 chapter. It may materially improve your performance.

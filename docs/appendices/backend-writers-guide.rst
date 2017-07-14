@@ -228,8 +228,7 @@ execution of the binary or when loading the dynamic module.
 
 Please note that a RandomBackend is actually in most PowerDNS releases.
 By default it lives on random.example.com, but you can change that by
-setting
-```random-hostname`` <../authoritative/backend-random.md#random-hostname>`__.
+setting :ref:`setting-random-hostname`.
 
 .. note::
   This simple backend neglects to handle case properly!

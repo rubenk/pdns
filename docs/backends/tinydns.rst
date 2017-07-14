@@ -103,8 +103,7 @@ location only work as expected when
 TTL returned for the timestamped racked will not be totally correct. The
 record will expire once the cache is expired and the backend is queried
 again. Please note that :ref:`setting-cache-ttl` is a
-performance related setting. See `Performance related
-settings <performance.md>`__. Location support only exists for IPv4!
+performance related setting. See :doc:`../performance`. Location support only exists for IPv4!
 
 Master mode
 -----------

@@ -123,9 +123,8 @@ Loading records into the database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Loading records is the same as with any SQL backend, just add them using
-SQL-queries. Should you want to use
-```zone2sql`` <migration.md#zone2sql>`__, use the ``--sqlite`` option
-for correctly formatted SQL.
+SQL-queries. Should you want to use :ref:`zone2sql <migration-zone2sql>`,
+use the ``--sqlite`` option for correctly formatted SQL.
 
 Configuring PowerDNS
 ^^^^^^^^^^^^^^^^^^^^

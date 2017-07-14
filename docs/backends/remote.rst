@@ -456,7 +456,7 @@ Retrieves any keys of kind. The id, flags are unsigned integers, and
 active is boolean. Content must be valid key record in format that
 PowerDNS understands. You are encouraged to implement `the section
 called "addDomainKey" <#adddomainkey>`__, as you can use
-```pdnsutil`` <../manpages/pdnsutil.1.md>`__ to provision keys.
+:doc:`../manpages/pdnsutil.1` to provision keys.
 
 -  Mandatory: for DNSSEC
 -  Parameters: name, kind
@@ -1367,7 +1367,7 @@ Response:
 ~~~~~~~~~~~~~~~~~~~~
 
 Can be used to send arbitrary commands to your backend using
-(backend-cmd)(dnssec.md#pdnsutil).
+:doc:`../dnssec/pdnsutil`.
 
 -  Mandatory: no
 -  Parameters: query

@@ -60,7 +60,7 @@ and port 5300 change the following in ``pdns.conf``:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is most likely an ``apt-get`` or ``yum install`` away, see the
-`Recursor documentation <../recursor/index.md>`__ for more information.
+`Recursor documentation <https://doc.powerdns.com/recursor/getting-started.html#installation>`__ for more information.
 
 It might be possible that the Recursor can not start as the listen
 address is in use by the Authoritative Server, this is fine for now.
@@ -83,7 +83,7 @@ migrated:
 
 Now configure the recursor to forward the private domains to the
 Authoritative Server. This is done using the
-```forward-zones`` <../recursor/settings.md#forward-zones>`__ setting in
+`forward-zones <https://doc.powerdns.com/recursor/settings.html#forward-zones>`__ setting in
 ``recursor.conf``. The domains should be forwarded to 127.0.0.1:5300
 (the new address and port of the Authoritative Server):
 
@@ -143,7 +143,7 @@ and port 5300 change the following in ``pdns.conf``:
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This is most likely an ``apt-get`` or ``yum install`` away, see the
-`Recursor's Install Guide <../recursor/install.md>`__ for more
+`Recursor's Install Guide <https://doc.powerdns.com/recursor/getting-started.html#installation>`__ for more
 information.
 
 It might be possible that the Recursor can not start as the listen
@@ -160,7 +160,7 @@ different port than the Authoritative Server. Set the following in
 
 Now configure the recursor to forward the private domains to the
 Authoritative Server. This is done using the
-```forward-zones`` <../recursor/settings.md#forward-zones>`__ setting in
+`forward-zones <https://doc.powerdns.com/recursor/settings.html#forward-zones>`__ setting in
 ``recursor.conf``. The domains should be forwarded to 127.0.0.1:5300
 (the new address and port of the Authoritative Server):
 

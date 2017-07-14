@@ -8,12 +8,10 @@ grouped.
 **Warning**: Host names and the MNAME of a SOA records are NEVER
 terminated with a '.' in PowerDNS storage! If a trailing '.' is present
 it will inevitably cause problems, problems that may be hard to debug.
-Use ```pdnsutil check-zone`` <authoritative/dnssec.md#pdnsutil>`__ to
-validate your zone data.
+Use ``pdnsutil check-zone`` to validate your zone data.
 
 **Note**: Whenever the storage format is mentioned, this relates only to
-the way the record should be stored in one of the `generic
-SQL <authoritative/backend-generic-sql.md>`__ backends. The other
+the way the record should be stored in one of the :doc:`../backends-generic-sql>` backends. The other
 backends should use their *native* format.
 
 The PowerDNS Recursor can serve and store all record types, regardless
@@ -48,9 +46,9 @@ A specialised record type for the 'Andrew Filesystem'. Stored as:
 ALIAS
 -----
 
-Since 4.0.0, the ALIAS pseudo-record type is supported to provide
-CNAME-like mechanisms on a zone's apex. See the
-`howto <authoritative/howtos.md#using-alias-records>`__ for information
+.. versionadded:: 4.0.0
+The ALIAS pseudo-record type is supported to provide
+CNAME-like mechanisms on a zone's apex. See the :doc:`howto <../guides/alias>` for information
 on how to configure PowerDNS to serve records synthesized from ALIAS
 records.
 
@@ -59,8 +57,10 @@ records.
 CAA
 ---
 
-Since 4.0.0. The "Certification Authority Authorization" record,
-specified in `RFC 6844 <https://tools.ietf.org/html/rfc6844>`__, is used
+.. versionadded:: 4.0.0
+
+The "Certification Authority Authorization" record,
+specified in :rfc:`6844`, is used
 to specify Certificate Authorities that may issue certificates for a
 domain.
 
@@ -69,26 +69,25 @@ domain.
 CERT
 ----
 
-Specialised record type for storing certificates, defined in `RFC
-2538 <http://tools.ietf.org/html/rfc2538>`__.
+Specialised record type for storing certificates, defined in :rfc:`2538`.
 
 .. _types-cdnskey:
 
 CDNSKEY
 -------
 
-Since 4.0.0. The CDNSKEY (`Child
-DNSKEY <https://tools.ietf.org/html/rfc7344#section-3.2>`__) type is
-supported.
+.. versionadded:: 4.0.0
+
+The CDNSKEY (:rfc:`Child DNSKEY <7344#section-3.2>`) type is supported.
 
 .. _types-cds:
 
 CDS
 ---
 
-Since 4.0.0. The CDS (`Child
-DS <https://tools.ietf.org/html/rfc7344#section-3.1>`__) type is
-supported.
+.. versionadded:: 4.0.0
+
+The CDS (:rfc:`Child DS <7344#section-3.1>`) type is supported.
 
 .. _types-cname:
 
@@ -104,30 +103,24 @@ might be 'webserver-01.yourcompany.com'.
 DNSKEY
 ------
 
-The DNSKEY DNSSEC record type is fully supported, as described in `RFC
-4034 <https://tools.ietf.org/html/rfc4034>`__. Enabling DNSSEC for
-domains can be done with
-```pdnsutil`` <authoritative/dnssec.md#pdnsutil>`__.
+The DNSKEY DNSSEC record type is fully supported, as described in :rfc:`4034`.
+Enabling DNSSEC for domains can be done with :doc:`pdnsutil <../dnssec/pdnsutil>`.
 
 .. _types-dname:
 
 DNAME
 -----
 
-The DNAME record, as specified in `RFC
-6672 <http://tools.ietf.org/html/rfc6672>`__ is supported. However,
-```dname-processing`` <authoritative/settings.md#dname-processing>`__
-has to be set to ``yes`` for PowerDNS to process these records.
+The DNAME record, as specified in :rfc:`6672` is supported. However,
+:ref:`setting-dname-processing` has to be set to ``yes`` for PowerDNS to process these records.
 
 .. _types-ds:
 
 DS
 --
 
-The DS DNSSEC record type is fully supported, as described in `RFC
-4034 <https://tools.ietf.org/html/rfc4034>`__. Enabling DNSSEC for
-domains can be done with
-```pdnsutil`` <authoritative/dnssec.md#pdnsutil>`__.
+The DS DNSSEC record type is fully supported, as described in :rfc:`4034`.
+Enabling DNSSEC for domains can be done with :doc:`pdnsutil <../dnssec/pdnsutil>`.
 
 .. _types-hinfo:
 
@@ -142,17 +135,15 @@ with a single space separating these two, example: 'i386 Linux'.
 KEY
 ---
 
-The KEY record is fully supported. For its syntax, see `RFC
-2535 <http://tools.ietf.org/html/rfc2535>`__.
+The KEY record is fully supported. For its syntax, see :rfc:`2535`.
 
 .. _types-loc:
 
 LOC
 ---
 
-The LOC record is fully supported. For its syntax, see `RFC
-1876 <http://tools.ietf.org/html/rfc1876>`__. A sample content would be:
-``51 56 0.123 N 5 54 0.000 E 4.00m 1.00m 10000.00m 10.00m``
+The LOC record is fully supported. For its syntax, see :rfc:`1876`.
+A sample content would be: ``51 56 0.123 N 5 54 0.000 E 4.00m 1.00m 10000.00m 10.00m``
 
 .. _types-mx:
 
@@ -169,8 +160,7 @@ in the 'priority field'.
 NAPTR
 -----
 
-Naming Authority Pointer, `RFC
-2915 <http://tools.ietf.org/html/rfc2915>`__. Stored as follows:
+Naming Authority Pointer, :rfc:`2915`. Stored as follows:
 
 ::
 
@@ -178,9 +168,8 @@ Naming Authority Pointer, `RFC
 
 The fields are: order, preference, flags, service, regex, replacement.
 Note that the replacement is not enclosed in quotes, and should not be.
-The replacement may be omitted, in which case it is empty. See also `RFC
-2916 <http://tools.ietf.org/html/rfc2916>`__ for how to use NAPTR for
-ENUM (E.164) purposes.
+The replacement may be omitted, in which case it is empty. See also :rfc:`2916`
+for how to use NAPTR for ENUM (E.164) purposes.
 
 .. _types-ns:
 
@@ -194,16 +183,15 @@ NSEC, NSEC3, NSEC3PARAM
 -----------------------
 
 The NSEC, NSEC3 and NSEC3PARAM DNSSEC record type are fully supported,
-as described in `RFC 4034 <http://tools.ietf.org/html/rfc4034>`__. To
-enable DNSSEC, use ```pdnsutil`` <authoritative/dnssec.md#pdnsutil>`__.
+as described in :rfc:`4034`.
+Enabling DNSSEC for domains can be done with :doc:`pdnsutil <../dnssec/pdnsutil>`.
 
 .. _types-openpgpkey:
 
 OPENPGPKEY
 ----------
 
-Since 3.4.7. The OPENPGPKEY records, specified in `RFC
-TBD <https://tools.ietf.org/html/draft-ietf-dane-openpgpkey-06>`__, are
+The OPENPGPKEY records, specified in :rfc:`7929`, are
 used to bind OpenPGP certificates to email addresses.
 
 .. _types-ptr:
@@ -220,8 +208,7 @@ no terminating dot.
 RP
 --
 
-Responsible Person record, as described in `RFC
-1183 <http://tools.ietf.org/html/rfc1183>`__. Stored with a single space
+Responsible Person record, as described in :rfc:`1183`. Stored with a single space
 between the mailbox name and the more-information pointer. Example:
 ``peter.powerdns.com peter.people.powerdns.com``, to indicate that
 ``peter@powerdns.com`` is responsible and that more information about
@@ -233,9 +220,7 @@ peter.people.powerdns.com.
 RRSIG
 -----
 
-The RRSIG DNSSEC record type is fully supported, as described in `RFC
-4034 <http://tools.ietf.org/html/rfc4034>`__. To enable DNSSEC
-processing, use `pdnsutil <authoritative/dnssec.md#pdnsutil>`__.
+The RRSIG DNSSEC record type is fully supported, as described in :rfc:`4034`.
 
 .. _types-soa:
 
@@ -258,22 +243,21 @@ The stored format is:
 Besides the primary and the hostmaster, all fields are numerical.
 PowerDNS has a set of default values:
 
--  primary:
-   ```default-soa-name`` <authoritative/settings.md#default-soa-name>`__
+-  primary: :ref:`setting-default-soa-name`
    configuration option
 -  hostmaster: ``hostmaster@domain-name``
 -  serial: 0
 -  refresh: 10800 (3 hours)
 -  retry: 3600 (1 hour)
 -  expire: 604800 (1 week)
--  default\_ttl: 3600 (1 hour)
+-  default_ttl: 3600 (1 hour)
 
 The fields have complicated and sometimes controversial meanings. The
 'serial' field is special. If left at 0, the default, PowerDNS will
-perform an internal list of the domain to determine highest change\_date
+perform an internal list of the domain to determine highest change_date
 field of all records within the zone, and use that as the zone serial
 number. This means that the serial number is always raised when changes
-are made to the zone, as long as the change\_date field is being set.
+are made to the zone, as long as the change_date field is being set.
 Make sure to check whether your backend of choice supports Autoserial.
 
 .. _types-spf:
@@ -281,8 +265,7 @@ Make sure to check whether your backend of choice supports Autoserial.
 SPF
 ---
 
-SPF records can be used to store Sender Policy Framework details (`RFC
-4408 <http://tools.ietf.org/html/rfc4408>`__).
+SPF records can be used to store Sender Policy Framework details (:rfc:`4408`).
 
 .. _types-sshfp:
 
@@ -290,9 +273,9 @@ SSHFP
 -----
 
 The SSHFP record type, used for storing Secure Shell (SSH) fingerprints,
-is fully supported. A sample from `RFC
-4255 <http://tools.ietf.org/html/rfc4255>`__ is:
-``2 1 123456789abcdef67890123456789abcdef67890``.
+is fully supported. A sample from :rfc:`4255` is::
+
+  2 1 123456789abcdef67890123456789abcdef67890
 
 .. _types-srv:
 
@@ -309,20 +292,16 @@ be encoded with ``0`` in the priority field and
 TKEY, TSIG
 ----------
 
-The TKEY (`RFC 2930 <http://tools.ietf.org/html/rfc2930>`__) and TSIG
-records (`RFC 2845 <http://tools.ietf.org/html/rfc2845>`__, used for
-key-exchange and authenticated AXFRs, are supported. See the `Modes of
-operation <authoritative/modes-of-operation.md#tsig-shared-secret-authorization-and-authentication>`__
-and `DNS update <authoritative/dnsupdate.md>`__ documentation for more
-information.
+The TKEY (:rfc:`2930`) and TSIG records (:rfc:`2845`), used for
+key-exchange and authenticated AXFRs, are supported. See the :doc:`../tsig`
+and `DNS update <../dnsupdate>` documentation for more information.
 
 .. _types-tlsa:
 
 TLSA
 ----
 
-Since 3.0. The TLSA records, specified in `RFC
-6698 <http://tools.ietf.org/html/rfc6698>`__, are used to bind SSL/TLS
+Since 3.0. The TLSA records, specified in :rfc:`6698`, are used to bind SSL/TLS
 certificate to named hosts and ports.
 
 .. _types-smimea:
@@ -330,8 +309,7 @@ certificate to named hosts and ports.
 SMIMEA
 ------
 
-Since 4.1. The SMIMEA record type, specified in `RFC
-8162 <http://tools.ietf.org/html/rfc8162>`__, is used to bind S/MIME
+Since 4.1. The SMIMEA record type, specified in :rfc:`8162`, is used to bind S/MIME
 certificates to domains.
 
 .. _types-txt:
@@ -367,8 +345,7 @@ character/byte chunks for transmission to the client.
 URI
 ---
 
-The URI record, specified in `RFC
-7553 <http://tools.ietf.org/html/rfc7553>`__, is used to publish
+The URI record, specified in :rfc:`7553`, is used to publish
 mappings from hostnames to URIs.
 
 Other types
@@ -376,18 +353,17 @@ Other types
 
 The following, rarely used or obsolete record types, are also supported:
 
--  A6 (`RFC 2874 <http://tools.ietf.org/html/rfc2874>`__, obsolete)
--  DHCID (`RFC 4701 <http://tools.ietf.org/html/rfc4701>`__)
--  DLV (`RFC 4431 <http://tools.ietf.org/html/rfc4431>`__)
--  EUI48/EUI64 (`RFC 7043 <http://tools.ietf.org/html/rfc7043>`__)
--  IPSECKEY (`RFC 4025 <http://tools.ietf.org/html/rfc4024>`__)
--  KEY (`RFC 2535 <http://tools.ietf.org/html/rfc2535>`__, obsolete)
--  KX (`RFC 2230 <http://tools.ietf.org/html/rfc2230>`__)
--  MAILA (`RFC 1035 <http://tools.ietf.org/html/rfc1035>`__)
--  MAILB (`RFC 1035 <http://tools.ietf.org/html/rfc1035>`__)
--  MINFO (`RFC 1035 <http://tools.ietf.org/html/rfc1035>`__)
--  MR (`RFC 1035 <http://tools.ietf.org/html/rfc1035>`__)
--  RKEY
-   (`draft-reid-dnsext-rkey-00.txt <https://tools.ietf.org/html/draft-reid-dnsext-rkey-00>`__)
--  SIG (`RFC 2535 <http://tools.ietf.org/html/rfc2535>`__, obsolete)
--  WKS (`RFC 1035 <http://tools.ietf.org/html/rfc1035>`__)
+-  A6 (:rfc:`2874`, obsolete)
+-  DHCID (:rfc:`4701`)
+-  DLV (:rfc:`4431`)
+-  EUI48/EUI64 (:rfc:`7043`)
+-  IPSECKEY (:rfc:`4025`)
+-  KEY (:rfc:`2535`, obsolete)
+-  KX (:rfc:`2230`)
+-  MAILA (:rfc:`1035`)
+-  MAILB (:rfc:`1035`)
+-  MINFO (:rfc:`1035`)
+-  MR (:rfc:`1035`)
+-  RKEY (`draft-reid-dnsext-rkey-00.txt <https://tools.ietf.org/html/draft-reid-dnsext-rkey-00>`__)
+-  SIG (:rfc:`2535`, obsolete)
+-  WKS (:rfc:`1035`)

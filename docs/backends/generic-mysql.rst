@@ -22,9 +22,9 @@ Generic MySQL backend
   zone transfer fails.
 
 The default schema is included at the bottom of this page.
-```zone2sql`` <migration.md#zone2sql>`__ with the ``--gmysql`` flag also
+:ref:`migration-zone2sql` with the ``--gmysql`` flag also
 assumes this layout is in place. For full migration notes, please see
-`Migration <migration.md>`__. This schema contains all elements needed
+:doc:`../migration`. This schema contains all elements needed
 for master, slave and superslave operation.
 
 When using the InnoDB storage engine, we suggest adding foreign key

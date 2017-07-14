@@ -83,22 +83,20 @@ Or in SQL:
 AXFR-MASTER-TSIG
 ----------------
 
-Use this named TSIG key to retrieve this zone from its master, see
-`Provisioning signed notification and AXFR
-requests <tsig.md#provisioning-signed-notification-and-axfr-requests>`__.
+Use this named TSIG key to retrieve this zone from its master, see :ref:`tsig-provision-signed-notify-axfr`.
 
 GSS-ALLOW-AXFR-PRINCIPAL
 ------------------------
 
 Allow this GSS principal to perform AXFR retrieval. Most commonly it is
 ``host/something@REALM``, ``DNS/something@REALM`` or ``user@REALM``.
-(See `GSS-TSIG support <tsig.md#gss-tsig-support>`__).
+(See :ref:`tsig-gss-tsig`).
 
 GSS-ACCEPTOR-PRINCIPAL
 ----------------------
 
-Use this principal for accepting GSS context. (See `GSS-TSIG
-support <tsig.md#gss-tsig-support>`__).
+Use this principal for accepting GSS context.
+(See :ref:`tsig-gss-tsig`).
 
 IXFR
 ----
@@ -109,26 +107,25 @@ is not attempted.
 LUA-AXFR-SCRIPT
 ---------------
 
-Script to be used to edit incoming AXFRs, see `Modifying a slave zone
-using a
-script <modes-of-operation.md#modifying-a-slave-zone-using-a-script>`__.
-This value will override the
-```lua-axfr-script`` <settings.md#lua-axfr-scriptmaster>`__ setting. Use
+Script to be used to edit incoming AXFRs, see :ref:`modes-of-operation-axfrfilter`.
+This value will override the :ref:`setting-lua-axfr-script` setting. Use
 'NONE' to remove a global script.
 
 NSEC3NARROW
 -----------
 
 Set to "1" to tell PowerDNS this zone operates in NSEC3 'narrow' mode.
-See ``set-nsec3`` for ```pdnsutil`` <dnssec.md#pdnsutil>`__.
+See ``set-nsec3`` for :doc:`pdnsutil <dnssec/pdnsutil>`.
 
 NSEC3PARAM
 ----------
 
 NSEC3 parameters of a DNSSEC zone. Will be used to synthesize the
 NSEC3PARAM record. If present, NSEC3 is used, if not present, zones
-default to NSEC. See ``set-nsec3`` in
-```pdnsutil`` <dnssec.md#pdnsutil>`__. Example content: "1 0 1 ab".
+default to NSEC. See ``set-nsec3`` in :doc:`pdnsutil <dnssec/pdnsutil>`.
+Example content: "1 0 1 ab".
+
+.. _metadata-presigned:
 
 PRESIGNED
 ---------
@@ -139,7 +136,7 @@ detects DNSSEC records in the zone. However, if you import a presigned
 zone using ``zone2sql`` or ``pdnsutil load-zone`` you must explicitly
 set the zone to be ``PRESIGNED``. Note that PowerDNS will not be able to
 correctly serve the zone if the imported data is bogus or incomplete.
-Also see ``set-presigned`` in ```pdnsutil`` <dnssec.md#pdnsutil>`__.
+Also see ``set-presigned`` in :doc:`pdnsutil <dnssec/pdnsutil>`.
 
 If a zone is presigned, the content of the metadata must be "1" (without
 the quotes). Any other value will not signal presignedness.
@@ -147,8 +144,7 @@ the quotes). Any other value will not signal presignedness.
 PUBLISH-CDNSKEY, PUBLISH-CDS
 ----------------------------
 
-Whether to publish CDNSKEY and/or CDS recording defined in `RFC
-7344 <https://tools.ietf.org/html/rfc7344>`__.
+Whether to publish CDNSKEY and/or CDS recording defined in :rfc:`7344`.
 
 To publish CDNSKEY records of the KSKs for the zone, set
 ``PUBLISH-CDNSKEY`` to ``1``.
@@ -158,9 +154,9 @@ a comma- separated list of `signature algorithm
 numbers <http://www.iana.org/assignments/ds-rr-types/ds-rr-types.xhtml#ds-rr-types-1>`__.
 
 This metadata can also be set using the
-```pdnsutil`` <dnssec.md#pdnsutil>`__ options ``set-publish-cdnskey``
-and ``set-publish-cds``. For an example for an RFC 7344 key rollover,
-see the `CDS and CDNSKEY howto <howtos.md#cds-dnskey-key-rollover>`__.
+:doc:`pdnsutil <dnssec/pdnsutil>` commands ``set-publish-cdnskey``
+and ``set-publish-cds``. For an example for an :rfc:`7344` key rollover,
+see the :doc:`guides/kskrollcdnskey.rst`.
 
 .. _metadata-soa-edit:
 
@@ -170,27 +166,24 @@ SOA-EDIT
 When serving this zone, modify the SOA serial number in one of several
 ways. Mostly useful to get slaves to re-transfer a zone regularly to get
 fresh RRSIGs. See the `DNSSEC
-documentation <dnssec.md#soa-edit-ensure-signature-freshness-on-slaves>`__
+documentation <soa-edit-ensure-signature-freshness-on-slaves>`
 for more information.
 
 TSIG-ALLOW-AXFR
 ---------------
 
-Allow these named TSIG keys to AXFR this zone, see `Provisioning
-outbound AXFR access <tsig.md#provisioning-outbound-axfr-access>`__.
+Allow these named TSIG keys to AXFR this zone, see :ref:`tsig-provision-signed-notify-axfr`.
 
 TSIG-ALLOW-DNSUPDATE
 --------------------
 
-This setting allows you to set the TSIG key required to do an `DNS
-update <dnsupdate.md>`__. If `GSS-TSIG <tsig.md#gss-tsig>`__ is enabled,
-you can put kerberos principals here as well.
+This setting allows you to set the TSIG key required to do an :doc:`dnsupdate`.
+If :ref:`GSS-TSIG <tsig-gss-tsig>` is enabled, you can put kerberos principals here as well.
 
 Extra metadata
 --------------
 
-Through the API and on the
-```pdnsutil set-meta`` <dnssec.md#pdnsutil>`__ commandline, metadata
+Through the API and on the ``pdnsutil set-meta`` commandline, metadata
 unused by PowerDNS can be added. It is mandatory to prefix this extra
 metadata with "X-" and the name of the external application; the API
 will only allow this metadata if it starts with "X-".

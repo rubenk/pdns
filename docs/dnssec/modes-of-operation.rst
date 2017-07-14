@@ -150,6 +150,8 @@ restart PowerDNS.
 After this, you can use ``pdnsutil secure-zone`` and all other pdnsutil
 commands on your BIND zones without trouble.
 
+.. _dnssec-modes-hybrid-bind:
+
 Hybrid BIND-mode operation
 --------------------------
 

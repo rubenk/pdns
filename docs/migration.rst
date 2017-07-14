@@ -97,6 +97,8 @@ To a Generic SQL backend
 
 There are several methods to migrate to a :doc:`Generic SQL <backends/generic-sql>` backend.
 
+.. _migration-zone2sql:
+
 Using ``zone2sql``
 ^^^^^^^^^^^^^^^^^^
 

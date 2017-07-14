@@ -36,7 +36,7 @@ Location of the Bind configuration file to parse.
 ``bind-check-interval``
 ~~~~~~~~~~~~~~~~~~~~~~~
 
-How often to check for zone changes. See `'Operation' <#operation>`__ section.
+How often to check for zone changes. See :ref:`bind-operation` section.
 
 .. _setting-bind-dnssec-db:
 
@@ -46,7 +46,7 @@ How often to check for zone changes. See `'Operation' <#operation>`__ section.
 Filename to store and access our DNSSEC metadatabase, empty for none. To
 slave DNSSEC-enabled domains (where the RRSIGS are in the AXFR), a
 ``bind-dnssec-db`` is required. This is because the
-`PRESIGNED <domainmetadata.md#presigned>`__ domain metadata is set
+:ref:`metadata-presigned` domain metadata is set
 during the zonetransfer.
 
 .. _setting-bind-hybrid:
@@ -55,7 +55,7 @@ during the zonetransfer.
 ~~~~~~~~~~~~~~~
 
 Store DNSSEC keys and metadata storage in an other backend. See the
-`hybrid BIND-mode operation <dnssec.md#hybrid-bind-mode-operation>`__
+:ref:`dnssec-modes-hybrid-bind` documentation.
 
 .. _setting-bind-ignore-broken-records:
 
@@ -64,6 +64,8 @@ Store DNSSEC keys and metadata storage in an other backend. See the
 
 Setting this option to ``yes`` makes PowerDNS ignore out of zone records
 when loading zone files.
+
+.. _bind-operation:
 
 Operation
 ---------

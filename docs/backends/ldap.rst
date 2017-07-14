@@ -443,7 +443,7 @@ BIND zone files
 ^^^^^^^^^^^^^^^
 
 There is a small utility in the PowerDNS distribution available called
-```zone2ldap`` <../manpages/zone2ldap.1.md>`__, which can convert zone
+:doc:`../manpages/zone2ldap.1>`, which can convert zone
 files used by BIND to the ldif format. Ldif is a text file format
 containing information about LDAP objects and can be read by every
 standard compliant LDAP server. ``zone2ldap`` needs the BIND
@@ -468,7 +468,7 @@ instead all zones:
        --zone-name=NAME_OF_ZONE \
        --resume > zone.ldif
 
-See `its manpage <../manpages/zone2ldap.1.md>`__ for a complete list of
+See :doc:`its manpage <../manpages/zone2ldap.1>` for a complete list of
 options.
 
 Bind LDAP backend

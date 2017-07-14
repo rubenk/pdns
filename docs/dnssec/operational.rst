@@ -78,10 +78,10 @@ serving the new zone on the master.
 With PowerDNS in Live-signing mode, the SOA serial is not increased by
 default when the RRSIG dates are rolled.
 
-For zones that use `native <modes-of-operation.md#native-operation>`__
+For zones that use :ref:`native-operation`
 replication PowerDNS will serve valid RRSIGs on all servers.
 
-For `master <modes-of-operation.md#master-operation>`__ zones (where
+For :ref:`master <master-operation>` zones (where
 replication happens by means of AXFR), PowerDNS slaves will
 automatically re-transfer the zone when it notices the RRSIGs have
 changed, even when the SOA serial is not increased. This ensures the
@@ -89,7 +89,7 @@ zone never serves old signatures.
 
 If your DNS setup uses non-PowerDNS slaves, the slaves need to know when
 the signatures have been updated. This can be accomplished by setting
-the `SOA-EDIT <domainmetadata.md#soa-edit>`__ metadata for DNSSEC signed
+the :ref:`metadata-soa-edit>` metadata for DNSSEC signed
 zones. This value controls how the value of the SOA serial is modified
 by PowerDNS.
 

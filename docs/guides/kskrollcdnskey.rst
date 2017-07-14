@@ -2,7 +2,7 @@ KSK Rollover using CDS & CDNSKEY Key Rollover
 =============================================
 
 If the upstream registry supports :rfc:`7344` key rollovers you can use
-several ```pdnsutil`` <dnssec.md#pdnsutil>`__ commands to do this
+several :doc:`pdnsutil <../dnssec/pdnsutil>` commands to do this
 rollover. This HowTo follows the rollover example from the RFCs
 :rfc:`Appendix B <7344#appendix-B>`.
 
@@ -35,5 +35,3 @@ sending out the CDS responses:
 ``pdnsutil unset-publish-cds example.com``.
 
 Done!
-
-

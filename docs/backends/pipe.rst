@@ -209,7 +209,7 @@ without anything else. The answer format (for abi-version 1 and 2):
 
 Again, all fields are tab-separated.
 
-``content`` is as specified in `Types <../types.md>`__. For MX and SRV,
+``content`` is as specified in :doc:`../appendices/types>`. For MX and SRV,
 content consists of the priority, followed by a tab, followed by the
 actual content.
 
@@ -280,7 +280,7 @@ values. The default value for scopebits is 0. The default for auth is 1
 Direct backend commands
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-With abi-version 5 you can use `backend-cmd <dnssec.md#pdnsutil>`__ for
+With abi-version 5 you can use :doc:`backend-cmd <../dnssec/pdnsutil>` for
 executing commands on your backend. PowerDNS will use the following
 query/answer format:
 

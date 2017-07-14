@@ -14,8 +14,7 @@ To migrate an existing database-backed PowerDNS installation, ensure you
 are running at least PowerDNS 3.3.3 and preferably 3.4 or newer.
 
 If you run an older version of PowerDNS, please upgrade to 3.4 and apply
-all the changes in database schemas as shown in the `upgrade
-documentation <upgrading.md>`__.
+all the changes in database schemas as shown in the :doc:`upgrade documentation <../upgrade>`.
 
 .. warning::
   Once the relevant ``backend-dnssec`` switch has been set,
@@ -69,7 +68,7 @@ configure, run ``pdnsutil set-presigned ZONE``.
 If you import presigned zones into your database, please do not import
 the NSEC or NSEC3 records. PowerDNS will synthesize these itself.
 Putting them in the database might cause duplicate records in responses.
-```zone2sql`` <migration.md#zone2sql>`__ filters NSEC and NSEC3
+:ref:`zone2sql <migration-zone2sql>` filters NSEC and NSEC3
 automatically.
 
 .. warning::

@@ -31,7 +31,7 @@ To add a domain, issue the following:
 
     INSERT INTO domains (name, type) VALUES ('powerdns.com', 'NATIVE');
 
-The records table can now be filled by with the domain\_id set to the id
+The records table can now be filled by with the domain_id set to the id
 of the domains table row just inserted.
 
 Slave operation
@@ -90,8 +90,7 @@ installation as 'autoslave.example.com', issue the following:
 
 From now on, valid notifies from 203.0.113.53 that list a NS record
 containing 'autoslave.example.com' will lead to the provisioning of a
-slave domain under the account 'internal'. See
-`Supermaster <modes-of-operation.md#supermaster-automatic-provisioning-of-slaves>`__
+slave domain under the account 'internal'. See :ref:`supermaster-operation`
 for details.
 
 Master operation
@@ -107,7 +106,7 @@ master operation instead of the default native replication, issue:
     INSERT INTO domains (name, type) VALUES ('powerdns.com', 'MASTER');
 
 Make sure that the assigned id in the domains table matches the
-domain\_id field in the records table!
+domain_id field in the records table!
 
 Disabled data
 ^^^^^^^^^^^^^
@@ -122,6 +121,8 @@ clients. The REST API will still see the record (or domain). Even if a
 domain is disabled, slaving still works. Slaving considers a disabled
 domain to have a serial of 0; this implies that a slaved domain will not
 stay disabled.
+
+.. _autoserial:
 
 Autoserial
 ^^^^^^^^^^
@@ -139,6 +140,8 @@ Handling DNSSEC signed zones
 
 To enable DNSSEC processing, the ``backend-dnssec`` option must be set
 to 'yes'.
+
+.. _rules-for-filling-out-dnssec-fields:
 
 Rules for filling out DNSSEC fields
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -216,7 +219,7 @@ queries must return the following fields in order:
    are 'A', 'MX', 'SOA', 'AAAA'. Make sure that this field returns an
    exact answer - PowerDNS won't recognise 'A ' as 'A'. This can be
    achieved by using a VARCHAR instead of a CHAR.
--  domain\_id: Unique identifier for this domain. This id must be unique
+-  domain_id: Unique identifier for this domain. This id must be unique
    across all backends. Must be a positive integer.
 -  name: Actual name of a record. Must not end in a '.' and be fully
    qualified - it is not relative to the name of the domain!
@@ -245,8 +248,7 @@ DNSSEC queries
 ^^^^^^^^^^^^^^
 
 These queries are used by e.g. ``pdnsutil rectify-zone``. Make sure to
-read `Rules for filling out fields in database
-backends <dnssec.md#rules-for-filling-out-fields-in-database-backends>`__
+read :ref:`rules-for-filling-out-dnssec-fields`
 if you wish to calculate ordername and auth without using pdns-rectify.
 
 -  ``insert-empty-non-terminal-order--query``: Insert empty non-terminal
@@ -294,12 +296,12 @@ Domain and zone manipulation
 -  ``delete-names-query``: Called to delete all records of a certain
    name.
 -  ``delete-rrset-query``: Called to delete an RRset based on
-   domain\_id, name and type.
+   domain_id, name and type.
 
 -  ``get-all-domain-metadata-query``: Get all
-   ```domain metadata`` <domainmetadata.md>`__ for a domain.
+   :doc:`domain metadata <../domainmetadata>` for a domain.
 -  ``get-domain-metadata-query``: Get a single piece of
-   ```domain metadata`` <domainmetadata.md>`__.
+   :doc:`domain metadata <../domainmetadata>`.
 -  ``clear-domain-metadata-query``: Delete a single entry of domain
    metadata.
 -  ``clear-domain-all-metadata-query``: Remove all domain metadata for a
@@ -367,16 +369,16 @@ Comment queries
 For listing/modifying comments.
 
 -  ``list-comments-query``: Called to get all comments in a zone.
-   Returns fields: domain\_id, name, type, modified\_at, account,
+   Returns fields: domain_id, name, type, modified_at, account,
    comment.
 -  ``insert-comment-query`` Called to create a single comment for a
-   specific RRSet. Given fields: domain\_id, name, type, modified\_at,
+   specific RRSet. Given fields: domain_id, name, type, modified_at,
    account, comment
 -  ``delete-comment-rrset-query``: Called to delete all comments for a
-   specific RRset. Given fields: domain\_id, name, type
+   specific RRset. Given fields: domain_id, name, type
 -  ``delete-comments-query``: Called to delete all comments for a zone.
    Usually called before deleting the entire zone. Given fields:
-   domain\_id
+   domain_id
 -  ``search-comments-query``: Called to search for comment by name or
    content.
 

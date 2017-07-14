@@ -13,15 +13,14 @@ Generic PostgreSQL backend
 * Module name: gpgsql
 * Launch name: ``gpgsql``
 
-This PostgreSQL backend is based on the `generic SQL
-backend <backend-generic-sql.md>`__. The default setup conforms to the
+This PostgreSQL backend is based on the :doc:`generic-sql`. The default setup conforms to the
 schema at the bottom of this page, note that
-```zone2sql`` <migration.md#zone2sql>`__ with the ``--gpgsql`` flag also
+:ref:`zone2sql <migration-zone2sql>` with the ``--gpgsql`` flag also
 assumes this layout is in place.
 
 This schema contains all elements needed for master, slave and
 superslave operation. For full migration notes, please see
-`Migration <migration.md>`__.
+:doc:`Migration <../migration>` docs.
 
 With PostgreSQL, you may have to run ``createdb pdns`` first and then
 connect to that database with ``psql pdns``, and feed it the schema

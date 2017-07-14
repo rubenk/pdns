@@ -13,8 +13,7 @@ Generic Oracle backend
 * Module name: goracle
 * Launch name: ``goracle``
 
-The Generic Oracle Backend is a `Generic SQL
-backend <backend-generic-sql.md>`__. The default setup conforms to the
+The Generic Oracle Backend is a :doc:`generic-sql`. The default setup conforms to the
 following schema, which you should add to an Oracle database. You may
 need or want to add ``namespace`` statements.
 

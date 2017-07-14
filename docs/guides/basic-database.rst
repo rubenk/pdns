@@ -185,8 +185,7 @@ its socket. Can be resolved by figuring out this location (often
 with the :ref:`setting-gmysql-socket` parameter.
 
 Another solution is to not connect to the socket, but to 127.0.0.1,
-which can be achieved by specifying
-```gmysql-host=127.0.0.1`` <backend-generic-mysql.md#gmysql-host>`__.
+which can be achieved by specifying ``gmysql-host=127.0.0.1``.
 
 Host 'x.y.z.w' is not allowed to connect to this MySQL server
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

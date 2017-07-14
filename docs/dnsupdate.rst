@@ -13,11 +13,11 @@ The implementation requires the backend to support a number of new
 operations. Currently, the following backends have been modified to
 support DNS update:
 
--  `gmysql <backend-generic-mysql.md>`__
--  `gpgsql <backend-generic-postgresql.md>`__
--  `gsqlite3 <backend-generic-sqlite.md>`__
--  `goracle <backend-generic-oracle.md>`__
--  `godbc <backend-generic-odbc.md>`__
+- :doc:`gmysql <backends/generic-mysql>`
+- :doc:`gpgsql <backends/generic-postgresql>`
+- :doc:`gsqlite3 <backends/generic-sqlite>`
+- :doc:`goracle <backends/generic-oracle>`
+- :doc:`godbc <backends/generic-odbc>`
 
 .. _dnsupdate-configuration-options:
 
@@ -186,7 +186,7 @@ section 3.7 of :rfc:`2136`. The behaviour is configurable via domainmetadata
 with the ``SOA-EDIT-DNSUPDATE`` option. It has a number of options listed
 below. If no behaviour is specified, DEFAULT is used.
 
-:rfc:`2136 (Section 3.6) <2136#section-3.6>` defines some specific behaviour for updates of SOA
+:rfc:`2136, Section 3.6 <2136#section-3.6>` defines some specific behaviour for updates of SOA
 records. Whenever the SOA record is updated via the update message, the
 logic to change the SOA is not executed.
 
@@ -219,7 +219,7 @@ These are the settings available for **SOA-EDIT-DNSUPDATE**.
 -  EPOCH: Change the serial to the number of seconds since the EPOCH,
    aka unixtime.
 -  SOA-EDIT: Change the serial to whatever SOA-EDIT would provide. See
-   `Domain metadata <domainmetadata.md>`__
+   `Domain metadata <domainmetadata>`
 -  SOA-EDIT-INCREASE: Change the serial to whatever SOA-EDIT would
    provide. If what SOA-EDIT provides is lower than the current serial,
    increase the current serial by 1.
@@ -321,7 +321,7 @@ Setting up PowerDNS
 A number of small changes are needed to powerdns to make it accept
 dynamic updates from **dhcpd**.
 
-Enabled DNS update (RFC2136) support functionality in PowerDNS by adding
+Enabled DNS update (:rfc:`2136`) support functionality in PowerDNS by adding
 the following to the PowerDNS configuration file (pdns.conf).
 
 ::
@@ -407,7 +407,7 @@ PowerDNS.
 9.  A check is performed to make sure all updates/prerequisites are for
     the given zone. NotZone is returned if this is not the case.
 10. The transaction with the backend is started.
-11. The prerequisite checks are performed (section 3.2 of RFC2136). If a
+11. The prerequisite checks are performed (section 3.2 of :rfc:`2136 <2136#section-3.2>`). If a
     check fails, the corresponding RCode is returned. No further
     processing will happen.
 12. Per record in the update message, a the prescan checks are

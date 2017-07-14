@@ -89,7 +89,7 @@ Clear text password for authentication in combination with the username.
 Queries
 -------
 
-As with the `Generic SQL backends <backend-generic-sql.md>`__, queries
+As with the :doc:`generic-sql`, queries
 are configurable. Note: If you change one of the SELECT statements must
 not change the order of the retrieved columns! To get the default
 queries, run ``pdns_server --no-config --launch=opendbx --config``. The
@@ -131,7 +131,7 @@ Mysql
 ^^^^^
 
 The file below also contains trigger definitions which are necessary for
-`auto serial <backend-generic-sql.md#autoserial>`__ support, but they
+:ref:`autoserial` support, but they
 are only available in MySQL 5 and later. If you are still using MySQL
 4.x and don't want to utilize the automatically generated zone serials,
 you can safely remove the "CREATE TRIGGER" statements from the file
